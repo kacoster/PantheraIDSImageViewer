@@ -4,6 +4,12 @@ HTMLWidgets.widget({
 
   type: 'output',
 
+
+  /**
+   * Factory Function
+   * @params el -  , width , height
+  */
+
   factory: function(el, width, height) {
 
     // TODO: define shared variables for this instance
@@ -12,8 +18,11 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
+        /**
+         * Calling readServerData function
+         * Passing the filePath parameter as an argument
+        */
+        readServerData(x.message);
 
       },
 
