@@ -1,15 +1,15 @@
-#' <Add Title>
+#' PantheraIDSImageViewer
 #'
-#' <Add Description>
+#' Takes a path to a file and renders an image viewer
 #'
 #' @import htmlwidgets
 #'
 #' @export
-PantheraIDSImageViewer <- function(message, width = NULL, height = NULL, elementId = NULL) {
+PantheraIDSImageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = message
+    message = filePath
   )
 
   # create widget
