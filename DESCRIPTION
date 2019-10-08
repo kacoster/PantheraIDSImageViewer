@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "vtawira@panthera.org",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Views images in a title pattern .
+Description: Views images in a title format pattern .
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
