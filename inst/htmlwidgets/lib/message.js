@@ -337,7 +337,7 @@ function toJSON() {
   var myJSON = JSON.stringify(selected_images);
   console.log(myJSON);
    //myJson(selected_images);
-  resetSelected();
+  //resetSelected();
   return selected_images;
 // return myJSON;
 
