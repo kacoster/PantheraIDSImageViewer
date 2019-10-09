@@ -313,7 +313,7 @@ function resetSelected() {
       });
     }
     resetSel.length = 0;
-    //selected_images.length = 0;
+    selected_images.length = 0;
   }
 }
 
