@@ -15,10 +15,10 @@ dependencies:
   src: htmlwidgets
   script: ./lib/main.js
   style: ./lib/main.css
-- name: message
-  version: 1.8
+- name: processData
+  version: 0.0.3
   src: htmlwidgets
-  script: ./lib/message.js
+  script: ./lib/processData.js
   style: ./lib/style.css
 - name: reset
   version: 1.3

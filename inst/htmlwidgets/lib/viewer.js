@@ -1,11 +1,5 @@
 /*!
  * Viewer.js v1.3.5
- * https://fengyuanchen.github.io/viewerjs
- *
- * Copyright 2015-present Chen Fengyuan
- * Released under the MIT license
- *
- * Date: 2019-07-04T11:00:16.790Z
  */
 
 (function (global, factory) {
@@ -1194,7 +1188,7 @@
 
   var handlers = {
     click: function click(event) {
-
+  
       var target = event.target;
       var options = this.options,
           imageData = this.imageData;
@@ -1205,7 +1199,7 @@
       }
 
       switch (action) {
-
+       
         case 'mix':
           if (this.played) {
             this.stop();
@@ -1228,7 +1222,7 @@
         case 'view':
             this.view(getData(target, 'index'));
           break;
-
+          
         case 'zoom-in':
           this.zoom(0.1, true);
           break;
@@ -1776,7 +1770,7 @@
      */
     view: function view() {
       var _this = this;
-
+    
       var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.options.initialViewIndex;
       index = Number(index) || 0;
 
@@ -1804,10 +1798,22 @@
       var image = document.createElement('img');
       image.src = url;
       image.alt = alt;
-
-      //
-      if(getSelectedImages().includes(url))
+      
+      //var urlObject = new Object(url);
+      //var reffObject = new Object(removedRef());
+      console.log("In Viewer");
+      console.log(getSelectedImages());
+      console.log("url : " + url);
+      console.log("Includes url : " + removedRef() === url);
+      
+      console.log("getSelectedImages includes url : " +getSelectedImages().includes(url));
+      
+      /**
+       * 
+      */
+      if(getSelectedImages().includes(url) || removedRef() === url)
       {
+        console.log("Um hidding the clicked image");
         this.image = image;
         this.hide();
         return;
