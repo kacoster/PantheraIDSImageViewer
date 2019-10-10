@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-PantheraIDSImageViewer <- function(filePath, width = 0, height = 0, elementId = NULL) {
+PantheraIDSImageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
@@ -40,7 +40,7 @@ PantheraIDSImageViewer <- function(filePath, width = 0, height = 0, elementId = 
 #' @name PantheraIDSImageViewer-shiny
 #'
 #' @export
-PantheraIDSImageViewerOutput <- function(outputId, width = '100%', height = '400px'){
+PantheraIDSImageViewerOutput <- function(outputId, width = '0%', height = '0px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'PantheraIDSImageViewer', width, height, package = 'PantheraIDSImageViewer')
 }
 
