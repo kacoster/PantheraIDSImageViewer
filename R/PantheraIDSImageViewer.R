@@ -40,7 +40,7 @@ PantheraIDSImageViewer <- function(filePath, width = NULL, height = NULL, elemen
 #' @name PantheraIDSImageViewer-shiny
 #'
 #' @export
-PantheraIDSImageViewerOutput <- function(outputId, width = '0%', height = '0px'){
+PantheraIDSImageViewerOutput <- function(outputId, width = '100%', height = '4px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'PantheraIDSImageViewer', width, height, package = 'PantheraIDSImageViewer')
 }
 
