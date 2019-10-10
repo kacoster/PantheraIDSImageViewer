@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-PantheraIDSImageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+PantheraIDSImageViewer <- function(filePath, width = 0, height = 0, elementId = NULL) {
 
   # forward options using x
   x = list(
