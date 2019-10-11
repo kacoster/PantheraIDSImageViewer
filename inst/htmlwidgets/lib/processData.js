@@ -97,6 +97,7 @@ function myFunction1(xhttp) {
   ar[0] = ar[0].replace("Source", "");
   ar[0] = ar[ar.length - 1] + ar[0];
   ar.splice(ar.length - 1, 1);
+  console.log("Number of Images : " + ar.length );
 
   Shiny.addCustomMessageHandler("testmessage",
     function (message) {
