@@ -102,20 +102,20 @@ function myFunction1(xhttp) {
   ar[0] = ar[0].replace("Source", "");
   ar[0] = ar[ar.length - 1] + ar[0];
   ar.splice(ar.length - 1, 1);
-  var imgNumb = 30;
+  //var imgNumb = 30;
 
 
   Shiny.addCustomMessageHandler("testmessage",
-                                function(message) {
-                                  imgNumb =  parseInt(JSON.stringify(message));
-                                }
+    function(message) {
+      imgNumb =  parseInt(JSON.stringify(message));
+    }
   );
 
   Shiny.addCustomMessageHandler("testmsg",
-                                function(message) {
-                                  batnum =  parseInt(JSON.stringify(message));
-                                  initial(imgNumb,batnum);
-                                }
+    function(message) {
+      batnum =  parseInt(JSON.stringify(message));
+      initial(imgNumb,batnum);
+    }
   );
 }
 
@@ -297,7 +297,7 @@ function tester()
       // img.onload = function() {
       img.src = ((ar[i].trim()).replace(/['"]+/g, '')); // Triming the double quotes passed on each image src
       //console.log("Image Source : " + img.src);
-      img.alt = "Historic";
+      img.alt = "CameraTrap";
       img.datamarked = 0;
       ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' +
       img.src + '" alt="' + img.alt + '" /> </li>'; // inserting an list of images uinside the ul tag
@@ -442,6 +442,7 @@ function getSelectedImages()
  * @return selected_images
 */
   function selectAll() {
+    deSelectAll();
     $("img").each(function (index) {
       $('#' + $(this).attr('id') + '').css({
         'opacity': '0.4',
