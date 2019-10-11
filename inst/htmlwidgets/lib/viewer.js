@@ -1,5 +1,6 @@
 /*!
  * Viewer.js v1.3.5
+ * Valentine Tawira 
  */
 console.log("viewerJS called");
 (function (global, factory) {

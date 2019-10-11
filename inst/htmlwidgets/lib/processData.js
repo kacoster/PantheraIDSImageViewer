@@ -2,6 +2,8 @@
  *  JS Script handling the processing of the file data and rendering of the viewer panel
  *
  *  Viewer.js v1.3.5
+ *
+ * Valentine Tawira
  */
 
 
@@ -29,6 +31,7 @@ $(document).ready(function () {
 
   //goButton
 
+// deSelectAll
   $("#deSelectAll").on("click", function () {
     //deSelectAll();
     next();
