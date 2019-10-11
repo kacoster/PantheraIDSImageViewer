@@ -1,15 +1,15 @@
 /**
  *  JS Script handling the processing of the file data and rendering of the viewer panel
- *  
+ *
  *  Viewer.js v1.3.5
  */
 
 
 /**
  * code included inside $(document).ready() will only run once the page is ready for JavaScript code to execute
-*/ 
+*/
 $(document).ready(function () {
-  
+
   //alert("Factor : " + factor);
   //readSeverData("csv",1,350);
   readSeverData();
@@ -17,30 +17,34 @@ $(document).ready(function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
   });
-  
+
   $("#apply").on("click", function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
   });
-  
+
   $("#selectAll").on("click", function () {
     selectAll();
   });
-  
+
   //goButton
-  
+
   $("#deSelectAll").on("click", function () {
     deSelectAll();
   });
-  
+
+  $("#next").on("click", function () {
+    next();
+  });
+
   $("#tester").on("click", function () {
     tester();
   });
-  
+
 });
 
 /**
- * 
+ *
 */
 var ar = [];
 var resetSel = [];
@@ -51,6 +55,9 @@ var result;
 var factor = 45;
 var start, end;
 var path;
+
+var batnum = 0;
+var imgNumb = 9;
  // array to store selected images
 //var viewer;
 
@@ -61,20 +68,20 @@ var path;
                                     alert("Factor in Custom : " + factor);
                                     alert(JSON.stringify(message));
                                     initial(parseInt(JSON.stringify(message)));
-                                    
+
                                   }
   );*/
 /**********************************************************************************************/
-  
+
   /* Function to read Server Data from Server-Side */
   function readSeverData() {  // datapath , batchNumber , loadSize
-    
+
     loadDoc('S18_20160902_20160923_tbl.csv', myFunction1);
-    
+
   }
 
 function loadDoc(url, cFunction) {
-  
+
   var xhttp;
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -87,23 +94,23 @@ function loadDoc(url, cFunction) {
 }
 
 function myFunction1(xhttp) {
-  
-  var batnum , fact;
-  
+
+  //var batnum , fact;
+
   ar = (xhttp.responseText.replace(/^\s*$[\n\r]{1,}/gm, '')).split(',');
   ar.splice(0, 1);
   ar[0] = ar[0].replace("Source", "");
   ar[0] = ar[ar.length - 1] + ar[0];
   ar.splice(ar.length - 1, 1);
   var imgNumb = 30;
-  
-  
+
+
   Shiny.addCustomMessageHandler("testmessage",
                                 function(message) {
                                   imgNumb =  parseInt(JSON.stringify(message));
                                 }
   );
-  
+
   Shiny.addCustomMessageHandler("testmsg",
                                 function(message) {
                                   batnum =  parseInt(JSON.stringify(message));
@@ -114,8 +121,8 @@ function myFunction1(xhttp) {
 
 /******************************************************************************************* */
  /**
-  * Highlights a selected image 
-  * @parameter selected image id 
+  * Highlights a selected image
+  * @parameter selected image id
   * Applies opacity 0.4
   * @return void
  */
@@ -126,10 +133,10 @@ function myFunction1(xhttp) {
           'filter': 'alpha(opacity=40)'
         });
   }
-  
+
   /**
-  * Removes Highlights a unselected image 
-  * @parameter selected image id 
+  * Removes Highlights a unselected image
+  * @parameter selected image id
   * Removes opacity - reverts to original opacity
   * @return void
  */
@@ -140,13 +147,13 @@ function myFunction1(xhttp) {
           'filter': ''
         });
   }
-  
+
   /**
   * Helper function for isKeyPressed()
   * @parameter - array of selected images - selected_images
   *            - target image src
-  *            - target element id 
-  * Checks if target image has already been selected 
+  *            - target element id
+  * Checks if target image has already been selected
   * @return void
  */
   function handleExistance(params,src,id)
@@ -169,43 +176,43 @@ function myFunction1(xhttp) {
     console.log("Selected Images");
     console.log(params);
   }
-  
+
   function removedRef()
   {
-   
+
     return tempRemoved;
   }
   /**
-  * Handles all image panel click events 
+  * Handles all image panel click events
   * @parameter - event click/shiftKey
-  *            
-  * Checks if event is shiftKey/click 
-  * Execute appropriate instructions based on event 
+  *
+  * Checks if event is shiftKey/click
+  * Execute appropriate instructions based on event
   * @return void
  */
   function isKeyPressed(event)
   {
-     
+
     if(event.shiftKey)
     {
-      
+
       console.log(selected_images.length);
       // console.log("shiftKey Pressed");
       console.log("Target src :" + event.target.src);
       handleExistance(selected_images,event.target.src,event.target.id);
-      
+
     }
     else{
      console.log("Clicked");
       myFunction();
-      
+
     }
-    
+
     console.log("selected_images");
     console.log(selected_images);
   }
-  
-  
+
+
   function initial(imgnumb,bat) {
     // alert("Initail Factor : " + factor);
     clearImages();
@@ -232,11 +239,14 @@ function tester()
   //clearImages();
   callImges(result);
 }*/
-  
+
   /* Takes - Uses an Array ar[] */
   function next() {
+
+      batnum++;
+      initial(imgNumb, batnum);
     //viewer.destroy();
-    if (numb * factor <= ar.length) {
+   /* if (numb * factor <= ar.length) {
       //console.log("Batch Number " + numb);
       start = numb * factor;
       end = start + factor;
@@ -251,8 +261,9 @@ function tester()
     }
     clearImages();
     callImges(result);
-    // document.getElementById("demo").innerHTML = result; 
-    //console.log("Next Out");
+    // document.getElementById("demo").innerHTML = result;
+    //console.log("Next Out");*/
+
   }
 
 /* Takes - Uses an Array ar[] */
@@ -261,7 +272,7 @@ function tester()
     //console.log("Im in the Prev");
     if (numb <= 1) {
       initial();
-    } else(numb != 0 || numb < 0) 
+    } else(numb != 0 || numb < 0)
     {
       //console.log("Batch Number " + numb);
       end = start;
@@ -271,12 +282,12 @@ function tester()
       clearImages();
       callImges(result);
     }
-    
+
   }
 /***************************************************************************/
 
 /*****************************************************************************/
-  
+
   /* Takes - Uses an Array ar[] */
   function imgloop(ar) {
     for (i = 0; i < ar.length; i++) {
@@ -288,8 +299,8 @@ function tester()
       //console.log("Image Source : " + img.src);
       img.alt = "Historic";
       img.datamarked = 0;
-      ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + 
-      img.src + '" alt="' + img.alt + '" /> </li>'; // inserting an list of images uinside the ul tag 
+      ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' +
+      img.src + '" alt="' + img.alt + '" /> </li>'; // inserting an list of images uinside the ul tag
   }
 }
 
@@ -309,7 +320,7 @@ function myFunction() {
   return;
 }
 
-//Function that creates the viewer component that 
+//Function that creates the viewer component that
 function vjs() {
   //console.log("In ViewerJS ");
   var viewer = new Viewer(document.getElementById('galley'), {
@@ -326,21 +337,21 @@ function vjs() {
 
 /*function isKeyPressed(event)
 {
-  
+
   //$('').addClass('highlight');
   //var imgsrc = $('#imgSrc').val(event.target.src);
   console.log("Checking : " + $('#imgSrc').val(event.target.src));
-  
+
   if(event.shiftKey)
   {
     tid = event.target.id;
     console.log("Key Pressed");
     console.log("SRC : " + event.target.alt);
    // console.log("DO : " + event.target.marked);
-    
+
      console.log("SRC included : " + selected_images.includes(event.target.src));
-    
-    if (selected_images.includes(event.target.src)) // Its already marked  
+
+    if (selected_images.includes(event.target.src)) // Its already marked
     {
       $('#' + tid + '').css({
         'opacity': '',
@@ -350,20 +361,20 @@ function vjs() {
     }else
     {
         console.log("SRC included : " + selected_images.includes(event.target.src));
-        
+
         selected_images.push(event.target.src); // jquery - fetching the src of the image and pushing it to an array
         $('#' + tid + '').css({
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
         });
         //resetSel.push(tid);
-    
-        
+
+
     }
     console.log("Current Selected Images");
     console.log(selected_images);
-    
- 
+
+
   }
   else{
     console.log("Key Not Pressed");
@@ -378,9 +389,9 @@ function vjs() {
 /*
 
 function isKeyPressed(event) {
-  
+
   var x = event.key;
-  
+
   if (event.shiftKey) {
     console.log("SHIFT KEY IS PRESSED");
 
@@ -397,9 +408,9 @@ if (selected_images.includes(event.target.src)) {
     'filter': ''
   });
   console.log(selected_images);
-  
+
 } else {
-  
+
   selected_images.push(event.target.src); // jquery - fetching the src of the image and pushing it to an array
   $('#' + tid + '').css({
     'opacity': '0.4',
@@ -418,7 +429,7 @@ if (selected_images.includes(event.target.src)) {
 {
   console.log("Marked Images : " + marked);
   return marked;
-  
+
 }*/
 
 function getSelectedImages()
@@ -440,12 +451,12 @@ function getSelectedImages()
       //console.log( index + " : " + "The SRC is : " + $( this ).attr('src'));
     });
     console.log(selected_images);
-    return selected_images; // I might not want to return an array here ? Think about it clearly 
+    return selected_images; // I might not want to return an array here ? Think about it clearly
   }
 
 
 /**
- * Function to de-select all the images 
+ * Function to de-select all the images
  * Tested ----> (1/1)
 */
   function deSelectAll() {
@@ -460,28 +471,28 @@ function getSelectedImages()
     console.log(selected_images);
     //return  selected_images;
   }
-  
-  
+
+
   function sendDataToShinny()
   {
-    
+
     if (selected_images === undefined || selected_images.length === 0) {
       alert("No Images Selected");
       return ;
     }
     else{
-      
+
       const copy_selected_images = [...selected_images];
       console.log("copy_selected_images");
       console.log(copy_selected_images);
       deSelectAll();
       return copy_selected_images;
     }
-    
+
   }
 
 /*Function to empty our selected images*/
-  /* Takes - Uses an Array selected_images[] 
+  /* Takes - Uses an Array selected_images[]
   function resetSelected() {
     if (selected_images === undefined || selected_images.length == 0) {
       alert("No Images Selected");
@@ -497,7 +508,7 @@ function getSelectedImages()
       selected_images.length = 0;
     }
   }
-  
+
   */
 /*
 function myJson(params) {
@@ -513,20 +524,19 @@ function myJson(params) {
 
 
 /* Convert the Array of Serlected Images to a JSON object*/
-  
-  /* Takes - Uses an Array selected_images[] 
+
+  /* Takes - Uses an Array selected_images[]
   function toJSON() {
     console.log(selected_images);
     var myJSON = JSON.stringify(selected_images);
     const tempSelected = [...selected_images];
     resetSelected();
     return tempSelected;
-    
+
     //myJson(selected_images);
   }
 */
 /*Function to get the Details of Selected Images */
-  
-  
+
+
   /***********************************************************************************************************/
-  
