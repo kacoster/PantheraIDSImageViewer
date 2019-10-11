@@ -30,7 +30,8 @@ $(document).ready(function () {
   //goButton
 
   $("#deSelectAll").on("click", function () {
-    deSelectAll();
+    //deSelectAll();
+    next();
   });
 
   $("#next").on("click", function () {
