@@ -13,7 +13,6 @@ $(document).ready(function () {
   //alert("Factor : " + factor);
   //readSeverData("csv",1,350);
   readSeverData();
-  totalBatches();
   $("#goButton").on("click", function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
@@ -73,18 +72,7 @@ var totalImgBatches;
   );*/
 /**********************************************************************************************/
 
-function totalBatches()
-{
-  if((ar.length % imgNumb) === 0 )
-  {
-    totalImgBatches = ar.length / imgNumb ;
-    //return totalBatches;
-  }
-  else{
-    totalImgBatches = (Math.floor(ar.length / imgNumb)) + 1;
-    //return totalBatches;
-  }
-}
+
   /* Function to read Server Data from Server-Side */
   function readSeverData() {  // datapath , batchNumber , loadSize
 
@@ -294,7 +282,11 @@ function myFunction() {
   return;
 }
 
-//Function that creates the viewer component that
+/**
+ * @function vjs() 
+ * @description Function that creates the viewer component to view images 
+ * @returns viewer component 
+ */
 function vjs() {
   //console.log("In ViewerJS ");
   var viewer = new Viewer(document.getElementById('galley'), {
@@ -308,14 +300,18 @@ function vjs() {
 
 
 
-
+/**
+ * @function getSelectedImages()
+ * @returns an array with the currently selected images 
+*/
 function getSelectedImages()
 {
   return selected_images;
 }
+
 /**
- * Function to select all the images
- * Tested ----> (1/1)
+ * @function selectAll() 
+ * @description selects all the panel images
  * @return selected_images
 */
   function selectAll() {
@@ -333,8 +329,9 @@ function getSelectedImages()
 
 
 /**
- * Function to de-select all the images
- * Tested ----> (1/1)
+ * @function deSelectAll()
+ * @description deselects the currently selected images 
+ * @returns void 
 */
   function deSelectAll() {
     $("img").each(function (index) {
@@ -349,7 +346,11 @@ function getSelectedImages()
     //return  selected_images;
   }
 
-
+/**
+ * @function sendDataToShinny()
+ * @returns an array of selected images
+ * @description sends the client selected image data back to server (Shinny)
+*/
   function sendDataToShinny(){
     if (selected_images === undefined || selected_images.length === 0) {
       alert("No Images Selected");
