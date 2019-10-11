@@ -240,7 +240,7 @@ function tester()
   /* Takes - Uses an Array ar[] */
   function next() {
   if(batnum > totalImgBatches){
-    alert("End of Batches");
+    alert("End of Batches " +  totalImgBatches-1) ;
     initial(imgNumb, totalImgBatches-1);
     }else{
       batnum++;
