@@ -243,8 +243,8 @@ function getBatchNumber()
 }
   /* Takes - Uses an Array ar[] */
   function next() {
-    alert("Total Number of Batches : " + getBatchNumber());
-  if(batnum > totalImgBatches){
+   // alert("Total Number of Batches : " + getBatchNumber());
+  if(batnum > getBatchNumber()){
     //alert("End of Batches " +  totalImgBatches-1) ;
     initial(imgNumb, totalImgBatches);
     }else{
