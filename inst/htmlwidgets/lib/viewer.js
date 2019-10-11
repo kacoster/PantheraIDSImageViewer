@@ -1805,7 +1805,7 @@ console.log("viewerJS called");
       console.log("In Viewer");
       console.log(getSelectedImages());
       console.log("url : " + url);
-      console.log("Prev url " + getLastViewed());
+      //console.log("Prev url " + getLastViewed());
       console.log("Includes url : " + removedRef() === url);
 
       console.log("getSelectedImages includes url : " +getSelectedImages().includes(url));
