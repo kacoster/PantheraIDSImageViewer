@@ -27,8 +27,6 @@ $(document).ready(function () {
     selectAll();
   });
 
-  //goButton
-
   $("#deSelectAll").on("click", function () {
     deSelectAll();
   });
@@ -37,9 +35,6 @@ $(document).ready(function () {
     next();
   });
 
-  $("#tester").on("click", function () {
-    tester();
-  });
 
 });
 
@@ -94,31 +89,28 @@ function loadDoc(url, cFunction) {
 }
 
 function myFunction1(xhttp) {
-
-  //var batnum , fact;
+  //console.log("myFunction1 called  :" + tracker++);
+  
 
   ar = (xhttp.responseText.replace(/^\s*$[\n\r]{1,}/gm, '')).split(',');
   ar.splice(0, 1);
   ar[0] = ar[0].replace("Source", "");
   ar[0] = ar[ar.length - 1] + ar[0];
   ar.splice(ar.length - 1, 1);
-  var imgNumb = 30;
-
 
   Shiny.addCustomMessageHandler("testmessage",
-                                function(message) {
-                                  imgNumb =  parseInt(JSON.stringify(message));
-                                }
+    function (message) {
+      imgNumb = parseInt(JSON.stringify(message));
+    }
   );
 
   Shiny.addCustomMessageHandler("testmsg",
-                                function(message) {
-                                  batnum =  parseInt(JSON.stringify(message));
-                                  initial(imgNumb,batnum);
-                                }
+    function (message) {
+      batnum = parseInt(JSON.stringify(message));
+      initial(imgNumb, batnum);
+    }
   );
 }
-
 /******************************************************************************************* */
  /**
   * Highlights a selected image
@@ -190,27 +182,26 @@ function myFunction1(xhttp) {
   * Execute appropriate instructions based on event
   * @return void
  */
-  function isKeyPressed(event)
-  {
+function isKeyPressed(event) {
 
-    if(event.shiftKey)
-    {
+  if (event.shiftKey) {
 
-      console.log(selected_images.length);
-      // console.log("shiftKey Pressed");
-      console.log("Target src :" + event.target.src);
-      handleExistance(selected_images,event.target.src,event.target.id);
+    console.log(selected_images.length);
+    // console.log("shiftKey Pressed");
+    console.log("Target src :" + event.target.src);
+    handleExistance(selected_images, event.target.src, event.target.id);
 
-    }
-    else{
-     console.log("Clicked");
-      myFunction();
+  } else {
+    console.log("Clicked");
+    //lastViewed = event.target.src;
+    console.log(event.target.src);
+    myFunction();
 
-    }
-
-    console.log("selected_images");
-    console.log(selected_images);
   }
+
+  console.log("selected_images");
+  console.log(selected_images);
+}
 
 
   function initial(imgnumb,bat) {
@@ -243,8 +234,6 @@ function tester()
   /* Takes - Uses an Array ar[] */
   function next() {
 
-      batnum++;
-      initial(imgNumb, batnum);
     //viewer.destroy();
    /* if (numb * factor <= ar.length) {
       //console.log("Batch Number " + numb);
@@ -263,6 +252,8 @@ function tester()
     callImges(result);
     // document.getElementById("demo").innerHTML = result;
     //console.log("Next Out");*/
+    batnum++;
+    initial(imgNumb, batnum);
 
   }
 
@@ -473,22 +464,18 @@ function getSelectedImages()
   }
 
 
-  function sendDataToShinny()
-  {
-
+  function sendDataToShinny(){
     if (selected_images === undefined || selected_images.length === 0) {
       alert("No Images Selected");
       return ;
     }
     else{
-
       const copy_selected_images = [...selected_images];
       console.log("copy_selected_images");
       console.log(copy_selected_images);
       deSelectAll();
       return copy_selected_images;
     }
-
   }
 
 /*Function to empty our selected images*/
