@@ -55,9 +55,8 @@ var path;
 var batnum = 0;
 var imgNumb = 9;
 
-let totalBatches;
-let b = Math.floor(ar.length / imgNumb);
-let r = ar.length / imgNumb
+var totalBatches=0;
+
 console.log("Total Batches : " + totalBatches);
  // array to store selected images
 //var viewer;
