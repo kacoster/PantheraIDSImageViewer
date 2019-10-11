@@ -13,6 +13,7 @@ $(document).ready(function () {
   //alert("Factor : " + factor);
   //readSeverData("csv",1,350);
   readSeverData();
+  totalBatches();
   $("#goButton").on("click", function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
@@ -54,7 +55,7 @@ var path;
 var batnum = 0;
 var imgNumb = 9;
 
-var totalBatches=0;
+var totalImgBatches;
 
 
  // array to store selected images
@@ -76,12 +77,12 @@ function totalBatches()
 {
   if((ar.length % imgNumb) === 0 )
   {
-    totalBatches = ar.length / imgNumb ;
-    return totalBatches;
+    totalImgBatches = ar.length / imgNumb ;
+    //return totalBatches;
   }
   else{
-    totalBatches = (Math.floor(ar.length / imgNumb)) + 1;
-    return totalBatches;
+    totalImgBatches = (Math.floor(ar.length / imgNumb)) + 1;
+    //return totalBatches;
   }
 }
   /* Function to read Server Data from Server-Side */
@@ -238,14 +239,13 @@ function tester()
 }
   /* Takes - Uses an Array ar[] */
   function next() {
-  /*  if(batnum > totalBatches())
-    {
-      alert("End of Batches");
-      initial(imgNumb, totalBatches());
-    }else{*/
+  if(batnum > totalImgBatches){
+    alert("End of Batches");
+    initial(imgNumb, totalImgBatches-1);
+    }else{
       batnum++;
       initial(imgNumb, batnum);
-    //}
+    }
   }
 
 /* Takes - Uses an Array ar[] */
