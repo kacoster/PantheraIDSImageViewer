@@ -242,7 +242,7 @@ function tester()
 
   /* Takes - Uses an Array ar[] */
   function next() {
-
+      console.log("Clicked next");
       batnum++;
       initial(imgNumb, batnum);
     //viewer.destroy();
