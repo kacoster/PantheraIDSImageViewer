@@ -57,7 +57,7 @@ var imgNumb = 9;
 
 var totalBatches=0;
 
-console.log("Total Batches : " + totalBatches);
+
  // array to store selected images
 //var viewer;
 
@@ -78,9 +78,11 @@ function totalBatches()
   if((ar.length % imgNumb) === 0 )
   {
     totalBatches = ar.length / imgNumb ;
+    return totalBatches;
   }
   else{
     totalBatches = (Math.floor(ar.length / imgNumb)) + 1;
+    return totalBatches;
   }
 }
   /* Function to read Server Data from Server-Side */
@@ -91,7 +93,6 @@ function totalBatches()
   }
 
 function loadDoc(url, cFunction) {
-
   var xhttp;
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -236,68 +237,26 @@ function tester()
 {
   initial(9,0);
 }
-/*function initial(imgnumb) {
-  // alert("Initail Factor : " + factor);
-  clearImages();
-  start = 1 * imgnumb;
-  end = start + imgnumb;
-  result = ar.slice(start, end);
-  //numb++;
-  //clearImages();
-  callImges(result);
-}*/
-
   /* Takes - Uses an Array ar[] */
   function next() {
-
-    //viewer.destroy();
-   /* if (numb * factor <= ar.length) {
-      //console.log("Batch Number " + numb);
-      start = numb * factor;
-      end = start + factor;
-      result = ar.slice(start, end);
-      numb++;
-    } else {
-      if (isNaN(ar * factor)) {
-        result = ar.slice(numb * factor, ar.length);
-      }
-      // alert("In the next else " + ar*factor);
-      result = ar.slice((numb - 1) * factor, ar.length);
+    if(batnum > totalBatches())
+    {
+      alert("End of Batches");
+      initial(imgNumb, totalBatches());
+    }else{
+      batnum++;
+      initial(imgNumb, batnum);
     }
-    clearImages();
-    callImges(result);
-    // document.getElementById("demo").innerHTML = result;
-    //console.log("Next Out");*/
-    batnum++;
-    initial(imgNumb, batnum);
-
   }
 
 /* Takes - Uses an Array ar[] */
   function prev() {
-
-    
-    //viewer.destroy();
-    //console.log("Im in the Prev");
     if (numb <= 1) {
       initial(imgNumb ,0);
     }else{
       batnum--;
       initial(imgNumb, batnum);
-     // initial(imgNumb ,0);
     }
-    
-    /*else(numb != 0 || numb < 0)
-    {
-      //console.log("Batch Number " + numb);
-      end = start;
-      start = start - factor;
-      numb--;
-      result = ar.slice(start, end);
-      clearImages();
-      callImges(result);
-    }*/
-
   }
 /***************************************************************************/
 
@@ -349,103 +308,6 @@ function vjs() {
 
 
 
-
-/*function isKeyPressed(event)
-{
-
-  //$('').addClass('highlight');
-  //var imgsrc = $('#imgSrc').val(event.target.src);
-  console.log("Checking : " + $('#imgSrc').val(event.target.src));
-
-  if(event.shiftKey)
-  {
-    tid = event.target.id;
-    console.log("Key Pressed");
-    console.log("SRC : " + event.target.alt);
-   // console.log("DO : " + event.target.marked);
-
-     console.log("SRC included : " + selected_images.includes(event.target.src));
-
-    if (selected_images.includes(event.target.src)) // Its already marked
-    {
-      $('#' + tid + '').css({
-        'opacity': '',
-        'filter': ''
-       });
-       selected_images.splice(selected_images.indexOf(imgsrc), 1);
-    }else
-    {
-        console.log("SRC included : " + selected_images.includes(event.target.src));
-
-        selected_images.push(event.target.src); // jquery - fetching the src of the image and pushing it to an array
-        $('#' + tid + '').css({
-          'opacity': '0.4',
-          'filter': 'alpha(opacity=40)'
-        });
-        //resetSel.push(tid);
-
-
-    }
-    console.log("Current Selected Images");
-    console.log(selected_images);
-
-
-  }
-  else{
-    console.log("Key Not Pressed");
-    console.log("Current Selected Images");
-    console.log(selected_images);
-     myFunction();
-  }
-}
-*/
-/* Function that checks for the fired event (click / shift click) */
-/* Takes - Uses an Array selectedImages[] */
-/*
-
-function isKeyPressed(event) {
-
-  var x = event.key;
-
-  if (event.shiftKey) {
-    console.log("SHIFT KEY IS PRESSED");
-
-    tid = event.target.id;
-
-    $('').addClass('highlight');
-    var imgsrc = $('#imgSrc').val(event.target.src);
-if (selected_images.includes(event.target.src)) {
-  var temp = selected_images.splice(selected_images.indexOf(imgsrc), 1)[0];
-  marked.push(temp);
-  // console.log(temp);
-  $('#' + tid + '').css({
-    'opacity': '',
-    'filter': ''
-  });
-  console.log(selected_images);
-
-} else {
-
-  selected_images.push(event.target.src); // jquery - fetching the src of the image and pushing it to an array
-  $('#' + tid + '').css({
-    'opacity': '0.4',
-    'filter': 'alpha(opacity=40)'
-  });
-  resetSel.push(tid);
-  //console.log(selected_images);
-}
-      } else {
-        console.log("SHIFT KEY IS NOT PRESSED");
-        myFunction();
-      }
-    } */
-
-/*function getMarked()
-{
-  console.log("Marked Images : " + marked);
-  return marked;
-
-}*/
 
 function getSelectedImages()
 {
@@ -501,53 +363,5 @@ function getSelectedImages()
       return copy_selected_images;
     }
   }
-
-/*Function to empty our selected images*/
-  /* Takes - Uses an Array selected_images[]
-  function resetSelected() {
-    if (selected_images === undefined || selected_images.length == 0) {
-      alert("No Images Selected");
-    } else {
-      for (var idIndex in resetSel) {
-        $('#' + resetSel[idIndex] + '').css({
-          'opacity': '',
-          'filter': ''
-        });
-      }
-      //alert("Applied " + resetSel.length + " Selected Images ");
-      resetSel.length = 0;
-      selected_images.length = 0;
-    }
-  }
-
-  */
-/*
-function myJson(params) {
-  //alert("In myJson");
-  var myJSON = JSON.stringify(params);
-  resetSelected();
-  console.log("After Reseting ...", selected_images);
-  // Shiny.setInputValue(id, myJSON);
-  console.log(myJSON);
-  //Shiny.onInputChange("count", myJSON);
-  return myJSON;
-}*/
-
-
-/* Convert the Array of Serlected Images to a JSON object*/
-
-  /* Takes - Uses an Array selected_images[]
-  function toJSON() {
-    console.log(selected_images);
-    var myJSON = JSON.stringify(selected_images);
-    const tempSelected = [...selected_images];
-    resetSelected();
-    return tempSelected;
-
-    //myJson(selected_images);
-  }
-*/
-/*Function to get the Details of Selected Images */
-
 
   /***********************************************************************************************************/
