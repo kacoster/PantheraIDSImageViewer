@@ -13,6 +13,7 @@ $(document).ready(function () {
   //alert("Factor : " + factor);
   //readSeverData("csv",1,350);
   readSeverData();
+  totalBatches();
   $("#goButton").on("click", function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
@@ -53,6 +54,11 @@ var path;
 
 var batnum = 0;
 var imgNumb = 9;
+
+let totalBatches;
+let b = Math.floor(ar.length / imgNumb);
+let r = ar.length / imgNumb
+console.log("Total Batches : " + totalBatches);
  // array to store selected images
 //var viewer;
 
@@ -68,6 +74,16 @@ var imgNumb = 9;
   );*/
 /**********************************************************************************************/
 
+function totalBatches()
+{
+  if((ar.length % imgNumb) === 0 )
+  {
+    totalBatches = ar.length / imgNumb ;
+  }
+  else{
+    totalBatches = (Math.floor(ar.length / imgNumb)) + 1;
+  }
+}
   /* Function to read Server Data from Server-Side */
   function readSeverData() {  // datapath , batchNumber , loadSize
 
@@ -260,11 +276,19 @@ function tester()
 
 /* Takes - Uses an Array ar[] */
   function prev() {
+
+    
     //viewer.destroy();
     //console.log("Im in the Prev");
     if (numb <= 1) {
-      initial();
-    } else(numb != 0 || numb < 0)
+      initial(imgNumb ,0);
+    }else{
+      batnum--;
+      initial(imgNumb, batnum);
+     // initial(imgNumb ,0);
+    }
+    
+    /*else(numb != 0 || numb < 0)
     {
       //console.log("Batch Number " + numb);
       end = start;
@@ -273,7 +297,7 @@ function tester()
       result = ar.slice(start, end);
       clearImages();
       callImges(result);
-    }
+    }*/
 
   }
 /***************************************************************************/
