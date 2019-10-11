@@ -238,14 +238,14 @@ function tester()
 }
   /* Takes - Uses an Array ar[] */
   function next() {
-    if(batnum > totalBatches())
+  /*  if(batnum > totalBatches())
     {
       alert("End of Batches");
       initial(imgNumb, totalBatches());
-    }else{
+    }else{*/
       batnum++;
       initial(imgNumb, batnum);
-    }
+    //}
   }
 
 /* Takes - Uses an Array ar[] */
