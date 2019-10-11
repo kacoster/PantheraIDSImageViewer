@@ -239,9 +239,10 @@ function tester()
 }
   /* Takes - Uses an Array ar[] */
   function next() {
+    alert("Total Number of Batches : " + totalImgBatches);
   if(batnum > totalImgBatches){
-    alert("End of Batches " +  totalImgBatches-1) ;
-    initial(imgNumb, totalImgBatches-1);
+    //alert("End of Batches " +  totalImgBatches-1) ;
+    initial(imgNumb, totalImgBatches);
     }else{
       batnum++;
       initial(imgNumb, batnum);
