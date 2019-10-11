@@ -13,7 +13,6 @@ $(document).ready(function () {
   //alert("Factor : " + factor);
   //readSeverData("csv",1,350);
   readSeverData();
-  totalBatches();
   $("#goButton").on("click", function () {
     // send message to Shiny
     Shiny.onInputChange("sources", sendDataToShinny());
