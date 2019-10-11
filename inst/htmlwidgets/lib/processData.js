@@ -2,6 +2,8 @@
  *  JS Script handling the processing of the file data and rendering of the viewer panel
  *
  *  Viewer.js v1.3.5
+ * @author Valentine Tawira 
+ * @Panthera
  */
 
 
@@ -208,26 +210,40 @@ function isKeyPressed(event) {
   console.log(selected_images);
 }
 
-
-  function initial(imgnumb,bat) {
-    // alert("Initail Factor : " + factor);
+/**
+ * @function initial(a,b)
+ * @description determines the images to be rendered
+ * @argument - number of images of render
+ *           - batch number of the image lot
+ * @returns void 
+ * 
+*/
+function initial(imgnumb,bat) {
     clearImages();
     start = bat * imgnumb;
     end = start + imgnumb;
     result = ar.slice(start, end);
-    //numb++;
-    //clearImages();
     callImges(result);
-    //checkParams();
-  }
+
+}
 
 function tester()
 {
   initial(9,0);
 }
+
+function getBatchNumber()
+{
+  if((ar.length %  imgNumb)==0){
+      return (ar.length / imgNumb);
+  }
+  else{
+    return ((Math.floor(ar.length / imgNumb)) + 1);
+  }
+}
   /* Takes - Uses an Array ar[] */
   function next() {
-    alert("Total Number of Batches : " + totalImgBatches);
+    alert("Total Number of Batches : " + getBatchNumber());
   if(batnum > totalImgBatches){
     //alert("End of Batches " +  totalImgBatches-1) ;
     initial(imgNumb, totalImgBatches);
@@ -250,7 +266,11 @@ function tester()
 
 /*****************************************************************************/
 
-  /* Takes - Uses an Array ar[] */
+  /**
+   * @description - creates html component to display the images 
+   * @param {String} ar - an array of images 
+   * @returns {void}
+   */
   function imgloop(ar) {
     for (i = 0; i < ar.length; i++) {
       var liId = i;
@@ -266,16 +286,25 @@ function tester()
   }
 }
 
+/**
+ * @description clears inner html components identified by elementId 'x'
+ * 
+ */
 function clearImages() {
   $("#x").html("");
 }
 
-/* Takes - Uses an Array ar[] */
+/**
+ * 
+ * @param {String} arry 
+ */
 function callImges(arry) {
   imgloop(arry);
 }
 
-
+/**
+ * 
+ */
 function myFunction() {
   //console.log("In myFunction");
   vjs();
