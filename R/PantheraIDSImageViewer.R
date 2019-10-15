@@ -1,7 +1,11 @@
 #' @title Image Viewer Function
 #' @description This function maps images to a html component to complete the
 #'              rendering of images...
-#'
+#' @details  Click Events And Keyboard Shortcuts
+#'            \itemize{
+#'            \item{"click "}{Views an image}
+#'            \item{"Shift + click "}{selects / mark an image}
+#'            }
 #' @param filePath  A string path to a csv file which contains the images source's
 #' @param width  Fixed width for widget (in css units). The default is NULL, which
 #'               results in intelligent automatic sizing based on the widget’s

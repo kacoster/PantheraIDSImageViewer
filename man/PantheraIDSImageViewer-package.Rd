@@ -6,7 +6,7 @@
 \alias{PantheraIDSImageViewer-package}
 \title{PantheraIDSImageViewer: View Image Panels with the JavaScript 'viewer.js' Library}
 \description{
-Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating
+Image viewer widget for displaying images as tile/thumbnail
 }
 \author{
 \strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org}

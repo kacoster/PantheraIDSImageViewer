@@ -27,6 +27,13 @@ automatically generated one.}
 This function maps images to a html component to complete the
              rendering of images...
 }
+\details{
+Click Events And Keyboard Shortcuts
+           \itemize{
+           \item{"click "}{Views an image}
+           \item{"Shift + click "}{selects / mark an image}
+           }
+}
 \examples{
 imageViewer('./www/data/myfile.csv')
 

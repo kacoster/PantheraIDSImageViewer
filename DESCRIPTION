@@ -6,7 +6,7 @@ Authors@R:
            family = "Tawira",
            role = c("aut", "cre"),
            email = "vtawira@panthera.org")
-Description: Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating 
+Description: Image viewer widget for displaying images as tile/thumbnail 
 Usage: imageViewer('filePath',width,height,elementId)
 License: Panthera Cooperation + file LICENSE
 Encoding: UTF-8
