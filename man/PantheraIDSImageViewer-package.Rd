@@ -4,12 +4,12 @@
 \name{PantheraIDSImageViewer-package}
 \alias{PantheraIDSImageViewer}
 \alias{PantheraIDSImageViewer-package}
-\title{PantheraIDSImageViewer: Image Viewer Widget}
+\title{PantheraIDSImageViewer: View Image Panels with the JavaScript 'viewer.js' Library}
 \description{
-image viewer .
+Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating
 }
 \author{
-\strong{Maintainer}: Panthera Panthera Cooperation \email{@panthera.org} (YOUR-ORCID-ID)
+\strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org} (YOUR-ORCID-ID)
 
 }
 \keyword{internal}

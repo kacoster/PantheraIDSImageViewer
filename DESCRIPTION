@@ -1,14 +1,30 @@
 Package: PantheraIDSImageViewer
-Title: Image Viewer Widget
+Title: View Image Panels with the JavaScript 'viewer.js' Library
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Panthera",
-           family = "Panthera Cooperation",
+    person(given = "Valentine",
+           family = "Tawira",
            role = c("aut", "cre"),
-           email = "@panthera.org",
+           email = "vtawira@panthera.org",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: image viewer .
-License: open source
+Description: Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating 
+Usage: imageViewer('filePath',width,height,elementId)
+License: Panthera Cooperation + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2019-10-01 22:11:06 UTC; 
+Maintainer: Valentine Tawira  <vtawira@panthera.org>
+Repository: GitHub
+RemoteType: github
+RemoteHost: api.github.com
+RemoteRepo: PantheraIDSImageViewer 
+RemoteUsername: kacoster
+RemoteRef: master
+RemoteSha: b44c19b4eea6c9b937f129a3b82c30fd7d0f913f
+GithubRepo: PantheraIDSImageViewer 
+GithubUsername: kacoster
+GithubRef: master
+GithubSHA1: b44c19b4eea6c9b937f129a3b82c30fd7d0f913f
+
