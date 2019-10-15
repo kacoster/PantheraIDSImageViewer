@@ -1,8 +1,6 @@
 #' @title Image Viewer Function
 #' @description This function maps images to a html component to complete the
 #'              rendering of images...
-#'             if{html}{figure{authorization_token.png}
-#'             {options: width="60%" alt="Figure: div.png"}}
 #'
 #' @param filePath  A string path to a csv file which contains the images source's
 #' @param width  Fixed width for widget (in css units). The default is NULL, which
