@@ -1,7 +1,10 @@
-#' PantheraIDSImageViewer
-#'
-#' Takes a path to a file and renders an image viewer
-#'
+#'@param filePath  A path to a csv file with image details ie image source path
+#'@param width  Fixed width for widget (in css units). The default is NULL, which
+#'               results in intelligent automatic sizing based on the widget’s
+#'               container.
+#'@param height Fixed height for widget (in css units). The default is NULL, which
+#'              results in intelligent automatic sizing based on the widget’s
+#'              container.
 #' @import htmlwidgets
 #'
 #' @export

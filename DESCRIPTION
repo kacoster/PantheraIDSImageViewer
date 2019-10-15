@@ -2,13 +2,13 @@ Package: PantheraIDSImageViewer
 Title: Image Viewer Widget
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Valentine",
-           family = "Tawira",
+    person(given = "Panthera",
+           family = "Panthera Cooperation",
            role = c("aut", "cre"),
-           email = "vtawira@panthera.org",
+           email = "@panthera.org",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Views images in a title format pattern .
-License: What license it uses
+Description: image viewer .
+License: open source
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

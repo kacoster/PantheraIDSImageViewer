@@ -2,10 +2,22 @@
 % Please edit documentation in R/PantheraIDSImageViewer.R
 \name{PantheraIDSImageViewer}
 \alias{PantheraIDSImageViewer}
-\title{PantheraIDSImageViewer}
+\title{PantheraIDSImageViewer
+Image viewing Package}
 \usage{
 PantheraIDSImageViewer(filePath, width = NULL, height = NULL,
   elementId = NULL)
+}
+\arguments{
+\item{filePath}{A path to a csv file with image details ie image source path}
+
+\item{width}{Fixed width for widget (in css units). The default is NULL, which
+results in intelligent automatic sizing based on the widget’s
+container.}
+
+\item{height}{Fixed height for widget (in css units). The default is NULL, which
+results in intelligent automatic sizing based on the widget’s
+container.}
 }
 \description{
 Takes a path to a file and renders an image viewer

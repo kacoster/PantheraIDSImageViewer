@@ -6,10 +6,10 @@
 \alias{PantheraIDSImageViewer-package}
 \title{PantheraIDSImageViewer: Image Viewer Widget}
 \description{
-Views images in a title pattern .
+image viewer .
 }
 \author{
-\strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org} (YOUR-ORCID-ID)
+\strong{Maintainer}: Panthera Panthera Cooperation \email{@panthera.org} (YOUR-ORCID-ID)
 
 }
 \keyword{internal}
