@@ -1,14 +1,25 @@
-#'@param filePath  A path to a csv file with image details ie image source path
-#'@param width  Fixed width for widget (in css units). The default is NULL, which
+#' @title Image Viewer Function
+#' @description This function allows renders images to a html component.
+#'
+#' @param filePath  A path to a csv file which contains the images source path's
+#' @param width  Fixed width for widget (in css units). The default is NULL, which
 #'               results in intelligent automatic sizing based on the widget’s
 #'               container.
-#'@param height Fixed height for widget (in css units). The default is NULL, which
+#' @param height Fixed height for widget (in css units). The default is NULL, which
 #'              results in intelligent automatic sizing based on the widget’s
 #'              container.
-#' @import htmlwidgets
+#' @param elementId  Use an explicit element ID for the widget
+#'                   Useful if you have other JavaScript that needs to
+#'                   explicitly discover and interact with a specific widget instance.
+#'                  in any other case leave as NULL which results in an
+#'                  automatically generated one.
+#'
+#' @keywords viewer.js
+#' @examples
+#' imageViewer('./www/data/myfile.csv')
 #'
 #' @export
-PantheraIDSImageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+imageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
