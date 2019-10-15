@@ -5,8 +5,7 @@ Authors@R:
     person(given = "Valentine",
            family = "Tawira",
            role = c("aut", "cre"),
-           email = "vtawira@panthera.org",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "vtawira@panthera.org")
 Description: Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating 
 Usage: imageViewer('filePath',width,height,elementId)
 License: Panthera Cooperation + file LICENSE
@@ -14,7 +13,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-10-01 22:11:06 UTC; 
+Packaged: 2019-10-01 14:59:45 UTC; 
 Maintainer: Valentine Tawira  <vtawira@panthera.org>
 Repository: GitHub
 RemoteType: github

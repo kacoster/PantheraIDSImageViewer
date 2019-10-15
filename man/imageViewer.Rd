@@ -24,7 +24,8 @@ in any other case leave as NULL which results in an
 automatically generated one.}
 }
 \description{
-Image Viewer Function
+This function maps images to a html component to complete the
+             rendering of images...
 }
 \examples{
 imageViewer('./www/data/myfile.csv')

@@ -9,7 +9,7 @@
 Image viewer widget for displaying images in tile/thumbnail fashion allowing easy viewing zooming and rotating
 }
 \author{
-\strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org} (YOUR-ORCID-ID)
+\strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org}
 
 }
 \keyword{internal}
