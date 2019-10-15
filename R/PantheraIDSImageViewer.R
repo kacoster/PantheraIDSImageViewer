@@ -3,9 +3,16 @@
 #'              rendering of images...
 #' @details  Click Events And Keyboard Shortcuts
 #'            \itemize{
-#'            \item{"click "}{Views an image}
-#'            \item{"Shift + click "}{selects / mark an image}
-#'            }
+#'            \item{click - }{Views an image}
+#'            \item{shiftKey + click - }{selects / mark an image.}
+#'            \item{left arrow - }{View the previous image.}
+#'            \item{right arrow - }{View the next image.}
+#'            \item{up arrow - }{Zoom in the image.}
+#'            \item{down arrow - }{Zoom out the image.}
+#'            \item{Ctrl + 0 - }{Zoom out to initial size.}
+#'            \item{Ctrl + 1 - }{Zoom in to natural size.}
+#'            \item{Esc - }{ Exit full screen or stop play.}
+#'              }
 #' @param filePath  A string path to a csv file which contains the images source's
 #' @param width  Fixed width for widget (in css units). The default is NULL, which
 #'               results in intelligent automatic sizing based on the widget’s
