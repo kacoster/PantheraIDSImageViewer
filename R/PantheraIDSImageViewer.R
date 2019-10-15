@@ -1,6 +1,6 @@
 #' @title Image Viewer Function
 #' @description This function maps images to a html component to complete the
-#'              rendering of images.
+#'              rendering of images...
 #'             if{html}{figure{authorization_token.png}
 #'             {options: width="60%" alt="Figure: div.png"}}
 #'
