@@ -1,7 +1,7 @@
 /*!
  * Viewer.js v1.3.5
  */
-console.log("viewerJS called");
+//console.log("viewerJS called");
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -1769,7 +1769,7 @@ console.log("viewerJS called");
      * @returns {Viewer} this
      */
     view: function view() {
-      this.update();  // this is where the magic happens
+      this.update();
       var _this = this;
 
       var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.options.initialViewIndex;
