@@ -29,8 +29,9 @@ This function maps images to a html component to complete the
 }
 \details{
 Click Events And Keyboard Shortcuts
+
            \itemize{
-           \item{click - }{Views an image}
+           \item{click - }{View an image}
            \item{shiftKey + click - }{selects / mark an image.}
            \item{left arrow - }{View the previous image.}
            \item{right arrow - }{View the next image.}
