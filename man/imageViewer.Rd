@@ -7,7 +7,7 @@
 imageViewer(filePath, width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
-\item{filePath}{A path to a csv file which contains the images source path's}
+\item{filePath}{A string path to a csv file which contains the images source's}
 
 \item{width}{Fixed width for widget (in css units). The default is NULL, which
 results in intelligent automatic sizing based on the widget’s
@@ -24,7 +24,7 @@ in any other case leave as NULL which results in an
 automatically generated one.}
 }
 \description{
-This function allows renders images to a html component.
+Image Viewer Function
 }
 \examples{
 imageViewer('./www/data/myfile.csv')
