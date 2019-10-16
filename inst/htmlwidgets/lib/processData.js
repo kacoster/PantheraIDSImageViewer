@@ -13,6 +13,8 @@
       */
       $(document).ready(function () {
 
+        $('PantheraIDSImageViewer html-widget html-widget-static-bound').css('height', '0px');
+
         readSeverData();
         $("#goButton").on("click", function () {
           // send message to Shiny
