@@ -13,7 +13,7 @@
       */
       $(document).ready(function () {
 
-        $('PantheraIDSImageViewer html-widget html-widget-static-bound').css('height', '0px');
+       /// $('PantheraIDSImageViewer html-widget html-widget-static-bound').css('height', '0px');
 
         readSeverData();
         $("#goButton").on("click", function () {
@@ -104,13 +104,13 @@
         ar.splice(ar.length - 1, 1);
         console.log("Number of Images : " + ar.length );
 
-        Shiny.addCustomMessageHandler("testmessage",
+        Shiny.addCustomMessageHandler("imageNumber",
           function (message) {
             imgNumb = parseInt(JSON.stringify(message));
           }
         );
 
-        Shiny.addCustomMessageHandler("testmsg",
+        Shiny.addCustomMessageHandler("batchNumber",
           function (message) {
             batnum = parseInt(JSON.stringify(message));
             initial(imgNumb, batnum);
