@@ -104,7 +104,7 @@
         ar.splice(ar.length - 1, 1);
         console.log("Number of Images : " + ar.length );
 
-        Shiny.addCustomMessageHandler("testmessage",
+       /* Shiny.addCustomMessageHandler("testmessage",
           function (message) {
             imgNumb = parseInt(JSON.stringify(message));
           }
@@ -115,7 +115,22 @@
             batnum = parseInt(JSON.stringify(message));
             initial(imgNumb, batnum);
           }
-        );
+        );*/
+
+      Shiny.addCustomMessageHandler("btch_img_msg",
+        function(message) {
+          imgNumb =  parseInt(JSON.stringify(message));
+          }
+      );
+
+      Shiny.addCustomMessageHandler("btch_num_msg",
+          function(message) {
+            batnum =  parseInt(JSON.stringify(message));
+            initial(imgNumb,batnum);
+          }
+      );
+
+
       }
       /************************************************************************/
        /**
