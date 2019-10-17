@@ -104,13 +104,13 @@
         ar.splice(ar.length - 1, 1);
         console.log("Number of Images : " + ar.length );
 
-        Shiny.addCustomMessageHandler("imageNumber",
+        Shiny.addCustomMessageHandler("testmessage",
           function (message) {
             imgNumb = parseInt(JSON.stringify(message));
           }
         );
 
-        Shiny.addCustomMessageHandler("batchNumber",
+        Shiny.addCustomMessageHandler("testmsg",
           function (message) {
             batnum = parseInt(JSON.stringify(message));
             initial(imgNumb, batnum);
