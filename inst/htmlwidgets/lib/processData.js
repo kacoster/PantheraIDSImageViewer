@@ -396,7 +396,7 @@
       */
         function sendDataToShinny(){
           if (selected_images === undefined || selected_images.length === 0) {
-            alert("No Images Selected");
+            alert("No Images Selected !!");
             return ;
           }
           else{
