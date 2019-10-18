@@ -36,16 +36,15 @@
         });
 
          $("#next").on("click", function () {
-           console.log("Yeeey i have been clicked");
-          alert("Hey i have been Clicked!!");
+           alert("Hey i have been Clicked!");
           Shiny.onInputChange("sources", next());
          // next();
         });
-        // $("#next").on("click", function () {
-        //  alert("Hey i have been Clicked!!");
-        //  Shiny.onInputChange("next", next());
-        // // next();
-        //});
+        $("#next").on("click", function () {
+         alert("Hey i have been Clicked!!");
+         Shiny.onInputChange("next", next());
+        // next();
+       });
       });
 
       /**
