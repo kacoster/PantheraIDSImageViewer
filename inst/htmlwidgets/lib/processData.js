@@ -36,6 +36,7 @@
         });
 
          $("#next").on("click", function () {
+           console.log("Yeeey i have been clicked");
           alert("Hey i have been Clicked!!");
           Shiny.onInputChange("sources", next());
          // next();
