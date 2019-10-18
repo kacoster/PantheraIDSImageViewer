@@ -1,9 +1,9 @@
 # (uncomment to add a dependency)
 dependencies:
-- name: bootstrap
-  version: 3.5.0
-  src: htmlwidgets
-  script: ./lib/bootstrap.bundle.min.js
+#- name: bootstrap
+#  version: 3.5.0
+#  src: htmlwidgets
+#  script: ./lib/bootstrap.bundle.min.js
 - name: jquery
   version: 0.4.10
   src: htmlwidgets
