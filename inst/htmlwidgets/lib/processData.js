@@ -27,7 +27,8 @@
         });
 
         $("#selectAll").on("click", function () {
-          selectAll();
+           Shiny.onInputChange("sources", selectAll());
+          //selectAll();
         });
 
         $("#deSelectAll").on("click", function () {
@@ -35,7 +36,8 @@
         });
 
         $("#next").on("click", function () {
-          next();
+          Shiny.onInputChange("sources", next());
+         // next();
         });
       });
 
