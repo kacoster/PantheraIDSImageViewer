@@ -4,7 +4,6 @@ dependencies:
   version: 3.5.0
   src: htmlwidgets
   script: ./lib/bootstrap.bundle.min.js
-  #style: ./lib/bootstrap.min.css
 - name: jquery
   version: 0.4.10
   src: htmlwidgets
@@ -19,21 +18,7 @@ dependencies:
   version: 0.0.3
   src: htmlwidgets
   script: ./lib/processData.js
-  #style: ./lib/style.css
-#- name: reset
-#  version: 1.3
-#  src: htmlwidgets
-#  #style: ./lib/reset.min.css
 - name: viewer
   version: 1.7.0
   src: htmlwidgets
   script: ./lib/viewer.js
-  #style: ./lib/viewer.css
-#- name: font-awesome
-#  version: 1.2.9
-#  src: htmlwidgets
-#  #style: ./lib/font-awesome.min.css
-#- name: styles
-#  version: 1.2.9
-#  src: htmlwidgets
-#  #style: ./lib/styles.css
