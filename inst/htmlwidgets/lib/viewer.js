@@ -1808,7 +1808,7 @@
       //console.log("Prev url " + getLastViewed());
       console.log("Includes url : " + removedRef() === url);
 
-      console.log("getSelectedImages includes url : " +getSelectedImages().includes(url));
+      console.log("getSelectedImages includes url-check : " +getSelectedImages().includes(url));
 
       /**
        *
