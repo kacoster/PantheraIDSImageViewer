@@ -11,6 +11,7 @@
        * code included inside $(document).ready() will only run once the page is
        * * ready for JavaScript code to execute
       */
+      console.log("Woow Woow Woow !!!");
       $(document).ready(function () {
 
        /// $('PantheraIDSImageViewer html-widget html-widget-static-bound').css('height', '0px');
