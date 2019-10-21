@@ -41,11 +41,18 @@
         //  Shiny.onInputChange("sources", next());
         // // next();
         //});
-        $("#next").on("click", function () {
-         //alert("Hey i have been Clicked!!");
+        $("#img_clssfctn_ud_nxt_bttn").on("click", function () {
+         //alert("Click Click Bang!!");
          Shiny.onInputChange("next", next());
         // next();
        });
+
+       /*$("#next").on("click", function () {
+        //alert("Hey i have been Clicked!!");
+        Shiny.onInputChange("next", next());
+       // next();
+       });*/
+
       });
 
       /**
