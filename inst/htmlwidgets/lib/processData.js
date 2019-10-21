@@ -46,6 +46,12 @@
         // next();
        });
 
+       $("#img_clssfctn_ud_prvs_bttn").on("click", function () {
+         alert("Click  Bang!!");
+         Shiny.onInputChange("prev", prev());
+        // next();
+       });
+
        /*$("#next").on("click", function () {
         //alert("Hey i have been Clicked!!");
         Shiny.onInputChange("next", next());
@@ -290,11 +296,11 @@
 
       /* Takes - Uses an Array ar[] */
         function prev() {
-          if (numb <= 1) {
-            initial(imgNumb ,0);
+          batnum--;
+          if (getBatchNumber() -  batnum >= 0 ) {
+            initial(imgNumb ,batnum);
           }else{
-            batnum--;
-            initial(imgNumb, batnum);
+            initial(imgNumb, 0);
           }
         }
       /************************************************************************/
