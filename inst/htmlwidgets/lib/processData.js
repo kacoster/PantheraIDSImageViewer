@@ -131,12 +131,13 @@
       );
       // Start at batch Number 0 possibly :: img_clssfctn_ud_srvr_btch_img_thrshld
       //Shiny.addCustomMessageHandler("btch_num_msg",
-      Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_btch_img_thrshld",
-          function(message) {
-            batnum =  parseInt(JSON.stringify(message));
-            initial(imgNumb,batnum);
-          }
-      );
+
+      //Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_btch_img_thrshld",
+      //    function(message) {
+      //      batnum =  parseInt(JSON.stringify(message));
+      //      initial(imgNumb,batnum);
+      //    }
+      //);
 
 
       }
