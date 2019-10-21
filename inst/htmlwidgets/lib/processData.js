@@ -1,11 +1,11 @@
 
-    /******************************************************************************
+    /***************************************************************************
       @version Viewer.js v1.3.5
       @author Valentine Tawira
       @description PantheraImageViewer Script for handling the processing of the
                   file data and rendering of the viewer panel
       Copyright (C) 2019 | Panthera Corporation
-     ********************************************************************************/
+     ***************************************************************************/
 
       /**
        * code included inside $(document).ready() will only run once the page is
@@ -35,13 +35,13 @@
           deSelectAll();
         });
 
-         $("#next").on("click", function () {
-           alert("Hey i have been Clicked!");
-          Shiny.onInputChange("sources", next());
-         // next();
-        });
+        // $("#next").on("click", function () {
+        //   alert("Hey i have been Clicked!");
+        //  Shiny.onInputChange("sources", next());
+        // // next();
+        //});
         $("#next").on("click", function () {
-         alert("Hey i have been Clicked!!");
+         //alert("Hey i have been Clicked!!");
          Shiny.onInputChange("next", next());
         // next();
        });
@@ -103,8 +103,6 @@
 
       function myFunction1(xhttp) {
         //console.log("myFunction1 called  :" + tracker++);
-
-
         ar = (xhttp.responseText.replace(/^\s*$[\n\r]{1,}/gm, '')).split(',');
         ar.splice(0, 1);
         ar[0] = ar[0].replace("Source", "");
@@ -124,14 +122,15 @@
             initial(imgNumb, batnum);
           }
         );*/
-
+      // Read the batch Image Number from from slider
       Shiny.addCustomMessageHandler("btch_img_msg",
         function(message) {
           imgNumb =  parseInt(JSON.stringify(message));
           }
       );
-
-      Shiny.addCustomMessageHandler("btch_num_msg",
+      // Start at batch Number 0 possibly :: img_clssfctn_ud_srvr_btch_img_thrshld
+      //Shiny.addCustomMessageHandler("btch_num_msg",
+      Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_btch_img_thrshld",
           function(message) {
             batnum =  parseInt(JSON.stringify(message));
             initial(imgNumb,batnum);
@@ -254,6 +253,12 @@
         initial(9,0);
       }
 
+      /**
+       * @function getBatchNumber()
+       * @description computes the total number of available batches
+       * @constrains the number of images per batchimgNumb()
+       * @return the total number of batches
+      */
       function getBatchNumber()
       {
         if((ar.length %  imgNumb)==0){
@@ -299,12 +304,14 @@
             var img = new Image();
             var ul = document.getElementById('x');
             // img.onload = function() {
-            img.src = ((ar[i].trim()).replace(/['"]+/g, '')); // Triming the double quotes passed on each image src
-            //console.log("Image Source : " + img.src);
+            img.src = ((ar[i].trim()).replace(/['"]+/g, ''));
+            // Triming the double quotes passed on each image src
             img.alt = "Historic";
             img.datamarked = 0;
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' +
-            img.src + '" alt="' + img.alt + '" /> </li>'; // inserting an list of images uinside the ul tag
+            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
+            img.src + '"  marked="' + img.datamarked + '" src="' +
+            img.src + '" alt="' + img.alt + '" /> </li>';
+            // inserting an list of images uinside the ul tag
         }
       }
 
@@ -343,7 +350,8 @@
         var viewer = new Viewer(document.getElementById('galley'), {
           url: 'data-original',
           title: function (image) {
-            return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')'; // write image props here
+            return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
+            // write image props here
           },
         });
        // console.log("Outside Viewer Object");
@@ -393,8 +401,6 @@
             // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
           });
           selected_images.length = 0;
-          //console.log(selected_images);
-          //return  selected_images;
         }
 
       /**
@@ -409,8 +415,6 @@
           }
           else{
             const copy_selected_images = [...selected_images];
-            //console.log("copy_selected_images");
-            //console.log(copy_selected_images);
             deSelectAll();
             return copy_selected_images;
           }
