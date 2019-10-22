@@ -46,11 +46,11 @@
         // next();
        });
 
-       /*$("#img_clssfctn_ud_prvs_bttn").on("click", function () {
+       $("#img_clssfctn_ud_prvs_bttn").on("click", function () {
          alert("Click  Bang!!");
          Shiny.onInputChange("prev", prev());
         // next();
-       });*/
+       });
 
        /*$("#next").on("click", function () {
         //alert("Hey i have been Clicked!!");
