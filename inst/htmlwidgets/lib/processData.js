@@ -78,23 +78,6 @@
 
       var totalImgBatches;
 
-
-       // array to store selected images
-      //var viewer;
-
-      /*************************************************************************/
-        /*Shiny.addCustomMessageHandler("testmessage",
-                                        function(message) {
-                                          factor = parseInt(JSON.stringify(message));
-                                          alert("Factor in Custom : " + factor);
-                                          alert(JSON.stringify(message));
-                                          initial(parseInt(JSON.stringify(message)));
-
-                                        }
-        );*/
-      /*************************************************************************/
-
-
         /* Function to read Server Data from Server-Side */
         function readSeverData() {  // datapath , batchNumber , loadSize
 
