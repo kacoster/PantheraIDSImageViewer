@@ -283,26 +283,25 @@
         }
       }
         /* Takes - Uses an Array ar[] */
-        function next() {
-         // alert("Total Number of Batches : " + getBatchNumber());
-        if(batnum > getBatchNumber()){
-          //alert("End of Batches " +  totalImgBatches-1) ;
-          initial(imgNumb, totalImgBatches);
-          }else{
-            batnum++;
-            initial(imgNumb, batnum);
-          }
+      function next() {
+       // alert("Total Number of Batches : " + getBatchNumber());
+      if(batnum > getBatchNumber()){
+        //alert("End of Batches " +  totalImgBatches-1) ;
+        initial(imgNumb, totalImgBatches);
+        }else{
+          batnum++;
+          initial(imgNumb, batnum);
         }
-
-      /* Takes - Uses an Array ar[] */
-        function prev() {
-          batnum--;
-          if (getBatchNumber() -  batnum >= 0 ) {
-            initial(imgNumb ,batnum);
-          }else{
-            initial(imgNumb, 0);
-          }
+      }
+    /* Takes - Uses an Array ar[] */
+      function prev() {
+        batnum--;
+        if (getBatchNumber() -  batnum >= 0 ) {
+          initial(imgNumb ,batnum);
+        }else{
+          initial(imgNumb, 0);
         }
+      }
       /************************************************************************/
 
       /************************************************************************/
