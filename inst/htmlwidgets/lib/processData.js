@@ -13,8 +13,6 @@
       */
       $(document).ready(function () {
 
-       /// $('PantheraIDSImageViewer html-widget html-widget-static-bound').css('height', '0px');
-
         readSeverData();
         $("#goButton").on("click", function () {
           // send message to Shiny
@@ -35,28 +33,13 @@
           deSelectAll();
         });
 
-        // $("#next").on("click", function () {
-        //   alert("Hey i have been Clicked!");
-        //  Shiny.onInputChange("sources", next());
-        // // next();
-        //});
         $("#img_clssfctn_ud_nxt_bttn").on("click", function () {
-         alert("Click Click Bang!!");
          Shiny.onInputChange("next", next());
-        // next();
        });
 
        $("#img_clssfctn_ud_prvs_bttn").on("click", function () {
-         alert("Click  Bang!!");
          Shiny.onInputChange("prev", prev());
-        // next();
        });
-
-       /*$("#next").on("click", function () {
-        //alert("Hey i have been Clicked!!");
-        Shiny.onInputChange("next", next());
-       // next();
-       });*/
 
       });
 
@@ -372,7 +355,7 @@
         function selectAll() {
           $("img").each(function (index) {
             $('#' + $(this).attr('id') + '').css({
-              'opacity': '0.4',
+              'opacity': '0.1',
               'filter': 'alpha(opacity=40)'
             });
             selected_images.push($(this).attr('src'));
