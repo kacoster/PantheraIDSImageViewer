@@ -1,6 +1,6 @@
 Package: PantheraIDSImageViewer
 Title: View Image Panels with the JavaScript 'viewer.js' Library
-Version: 0.1
+Version: 0.2
 Authors@R: 
     person(given = "Valentine",
            family = "Tawira",
