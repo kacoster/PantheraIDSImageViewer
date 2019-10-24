@@ -13,7 +13,7 @@
       */
       $(document).ready(function () {
 
-        readSeverData();
+        //readSeverData();
         $("#goButton").on("click", function () {
           // send message to Shiny
           Shiny.onInputChange("sources", sendDataToShinny());
