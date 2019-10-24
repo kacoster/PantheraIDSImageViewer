@@ -13,7 +13,7 @@
       */
       $(document).ready(function () {
 
-        //readSeverData();
+        //readServerData();
         $("#goButton").on("click", function () {
           // send message to Shiny
           Shiny.onInputChange("sources", sendDataToShinny());
@@ -43,9 +43,7 @@
 
       });
 
-      /**
-       *
-      */
+
       var ar = [];
       var resetSel = [];
       var selected_images = [];
@@ -61,12 +59,14 @@
 
       var totalImgBatches;
 
-        /* Function to read Server Data from Server-Side */
-        function readSeverData() {  // datapath , batchNumber , loadSize
 
-          loadDoc('S18_20160902_20160923_tbl.csv', myFunction1);
 
-        }
+       /* Function to read Server Data from Server-Side */
+      function readServerData(msg) {  // datapath , batchNumber , loadSize
+         var csvfile = "" + msg + "";
+        console.log("readServerData : " +  csvfile);
+        loadDoc( csvfile, myFunction1);
+      }
 
       function loadDoc(url, cFunction) {
         var xhttp;
@@ -89,7 +89,8 @@
         ar.splice(ar.length - 1, 1);
         console.log("Number of Images : " + ar.length );
 
-       /* Shiny.addCustomMessageHandler("testmessage",
+       /************************************************************************
+       Shiny.addCustomMessageHandler("testmessage",
           function (message) {
             imgNumb = parseInt(JSON.stringify(message));
           }
@@ -100,113 +101,90 @@
             batnum = parseInt(JSON.stringify(message));
             initial(imgNumb, batnum);
           }
-        );*/
+        );
+        ************************************************************************/
+
       // Read the batch Image Number from from slider
       Shiny.addCustomMessageHandler("batchImageSize",
         function(message) {
           imgNumb =  parseInt(JSON.stringify(message));
           }
       );
-      // Start at batch Number 0 possibly :: img_clssfctn_ud_srvr_btch_img_thrshld
-      //Shiny.addCustomMessageHandler("btch_num_msg",
-
-      //Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_btch_img_thrshld",
-      //    function(message) {
-      //      batnum =  parseInt(JSON.stringify(message));
-      //      initial(imgNumb,batnum);
-      //    }
-      //);
 
 
       }
       /************************************************************************/
-       /**
-        * Highlights a selected image
-        * @parameter selected image id
-        * Applies opacity 0.4
-        * @return void
-       */
-        function highliter(elementID)
-        {
-          $('#' + elementID + '').css({
-                'opacity': '0.4',
-                'filter': 'alpha(opacity=40)'
-              });
-        }
+      /**
+       * Highlights a selected image
+       * @parameter selected image id
+       * Applies opacity 0.4
+       * @return void
+      */
+      function highliter(elementID)
+      {
+        $('#' + elementID + '').css({
+              'opacity': '0.4',
+              'filter': 'alpha(opacity=40)'
+            });
+      }
 
-        /**
-        * Removes Highlights a unselected image
-        * @parameter selected image id
-        * Removes opacity - reverts to original opacity
-        * @return void
-       */
-        function removeHighlight(elementID)
-        {
-          $('#' + elementID + '').css({
-                'opacity': '',
-                'filter': ''
-              });
-        }
+      /**
+      * Removes Highlights a unselected image
+      * @parameter selected image id
+      * Removes opacity - reverts to original opacity
+      * @return void
+      */
+      function removeHighlight(elementID)
+      {
+        $('#' + elementID + '').css({
+              'opacity': '',
+              'filter': ''
+            });
+      }
 
-        /**
-        * Helper function for isKeyPressed()
-        * @parameter - array of selected images - selected_images
-        *            - target image src
-        *            - target element id
-        * Checks if target image has already been selected
-        * @return void
-       */
-        function handleExistance(params,src,id)
+      /**
+      * Helper function for isKeyPressed()
+      * @parameter - array of selected images - selected_images
+      *            - target image src
+      *            - target element id
+      * Checks if target image has already been selected
+      * @return void
+     */
+      function handleExistance(params,src,id)
+      {
+        if(params.includes(src))
         {
-          if(params.includes(src))
-          {
-            //console.log("already marked");
-            //console.log("Index of src : " + params.indexOf(src));
-            //console.log("src : "  + src);
-          tempRemoved =  (params.splice(params.indexOf(src),1))[0];
-         // console.log("Removed Element");
-          //tempRemoved  = params.splice(params.indexOf(src),1);
-          removeHighlight(id);
-          }
-          else{
-            //console.log("Not marked");
-            params.push(src);
-            highliter(id);
-          }
-          //console.log("Selected Images");
-          //console.log(params);
+        tempRemoved =  (params.splice(params.indexOf(src),1))[0];
+        removeHighlight(id);
         }
-
-        function removedRef()
-        {
-
-          return tempRemoved;
+        else{
+          //console.log("Not marked");
+          params.push(src);
+          highliter(id);
         }
-        /**
-        * Handles all image panel click events
-        * @parameter - event click/shiftKey
-        *
-        * Checks if event is shiftKey/click
-        * Execute appropriate instructions based on event
-        * @return void
-       */
+      }
+
+      function removedRef()
+      {
+        return tempRemoved;
+      }
+
+      /**
+      * Handles all image panel click events
+      * @parameter - event click/shiftKey
+      *
+      * Checks if event is shiftKey/click
+      * Execute appropriate instructions based on event
+      * @return void
+      */
       function isKeyPressed(event) {
 
         if (event.shiftKey) {
-
-          //console.log(selected_images.length);
-          // console.log("shiftKey Pressed");
-          //console.log("Target src :" + event.target.src);
           handleExistance(selected_images, event.target.src, event.target.id);
 
         } else {
-          //console.log("Clicked");
-          //lastViewed = event.target.src;
-          //console.log(event.target.src);
           myFunction();
-
         }
-
       }
 
       /**
@@ -223,7 +201,6 @@
           end = start + imgnumb;
           result = ar.slice(start, end);
           callImges(result);
-
       }
 
       function tester()
@@ -248,19 +225,18 @@
       }
         /* Takes - Uses an Array ar[] */
       function next() {
-       // alert("Total Number of Batches : " + getBatchNumber());
       if(batnum > getBatchNumber()){
-        //alert("End of Batches " +  totalImgBatches-1) ;
         initial(imgNumb, totalImgBatches);
         }else{
           batnum++;
           initial(imgNumb, batnum);
         }
       }
-    /* Takes - Uses an Array ar[] */
+
+      /* Takes - Uses an Array ar[] */
       function prev() {
         batnum--;
-        if (getBatchNumber() -  batnum >= 0 ) {
+        if (getBatchNumber() - batnum >= 0 ) {
           initial(imgNumb ,batnum);
         }else{
           initial(imgNumb, 0);
@@ -270,25 +246,25 @@
 
       /************************************************************************/
 
-        /**
-         * @description - creates html component to display the images
-         * @param {String} ar - an array of images
-         * @returns {void}
-         */
-        function imgloop(ar) {
-          for (i = 0; i < ar.length; i++) {
-            var liId = i;
-            var img = new Image();
-            var ul = document.getElementById('x');
-            // img.onload = function() {
-            img.src = ((ar[i].trim()).replace(/['"]+/g, ''));
-            // Triming the double quotes passed on each image src
-            img.alt = "Historic";
-            img.datamarked = 0;
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
-            img.src + '"  marked="' + img.datamarked + '" src="' +
-            img.src + '" alt="' + img.alt + '" /> </li>';
-            // inserting an list of images uinside the ul tag
+      /**
+       * @description - creates html component to display the images
+       * @param {String} ar - an array of images
+       * @returns {void}
+       */
+      function imgloop(ar) {
+        for (i = 0; i < ar.length; i++) {
+          var liId = i;
+          var img = new Image();
+          var ul = document.getElementById('x');
+          // img.onload = function() {
+          img.src = ((ar[i].trim()).replace(/['"]+/g, ''));
+          // Triming the double quotes passed on each image src
+          img.alt = "Historic";
+          img.datamarked = 0;
+          ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
+          img.src + '"  marked="' + img.datamarked + '" src="' +
+          img.src + '" alt="' + img.alt + '" /> </li>';
+          // inserting an list of images uinside the ul tag
         }
       }
 
@@ -358,9 +334,8 @@
             selected_images.push($(this).attr('src'));
             //console.log( index + " : " + "The SRC is : " + $( this ).attr('src'));
           });
-          //console.log(selected_images);
-          return selected_images; // I might not want to return an array here ?
-                                  //Think about it clearly
+          return selected_images;
+
         }
 
       /**

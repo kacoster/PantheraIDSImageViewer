@@ -5,6 +5,12 @@ dependencies:
 #  src: htmlwidgets
 #  script: ./lib/bootstrap.bundle.min.js
 #  #style: ./lib/bootstrap.min.css
+
+- name: processData
+  version: 0.0.3
+  src: htmlwidgets
+  script: ./lib/processData.js
+  #style: ./lib/style.css
 - name: jquery
   version: 0.4.10
   src: htmlwidgets
@@ -15,11 +21,6 @@ dependencies:
   src: htmlwidgets
   script: ./lib/main.js
   #style: ./lib/main.css
-- name: processData
-  version: 0.0.3
-  src: htmlwidgets
-  script: ./lib/processData.js
-  #style: ./lib/style.css
 - name: reset
   version: 1.3
   src: htmlwidgets
