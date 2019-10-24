@@ -207,8 +207,6 @@
 
         }
 
-        //console.log("selected_images");
-        //console.log(selected_images);
       }
 
       /**
@@ -314,7 +312,6 @@
        *
        */
       function myFunction() {
-        //console.log("In myFunction");
         vjs();
         return;
       }
