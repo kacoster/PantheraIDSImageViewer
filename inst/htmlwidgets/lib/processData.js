@@ -63,7 +63,7 @@
 
        /* Function to read Server Data from Server-Side */
       function readServerData(msg) {  // datapath , batchNumber , loadSize
-         var csvfile = "" + msg + "";
+        var csvfile = "" + msg + "";
         console.log("readServerData : " +  csvfile);
         loadDoc( csvfile, myFunction1);
       }
@@ -249,7 +249,9 @@
       /**
        * @description - creates html component to display the images
        * @param {String} ar - an array of images
-       * @returns {void}
+       * @returns {void} var src = ( ( ar[0].trim()).replace(/['"]+/g, ''));
+      someText = src.replace(/(\r\n|\n|\r)/gm,"");
+
        */
       function imgloop(ar) {
         for (i = 0; i < ar.length; i++) {
@@ -257,9 +259,9 @@
           var img = new Image();
           var ul = document.getElementById('x');
           // img.onload = function() {
-          img.src = ((ar[i].trim()).replace(/['"]+/g, ''));
+          img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
           // Triming the double quotes passed on each image src
-          img.alt = "Historic";
+          img.alt = "Camera Trap";
           img.datamarked = 0;
           ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
           img.src + '"  marked="' + img.datamarked + '" src="' +
