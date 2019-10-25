@@ -12,7 +12,7 @@
        * * ready for JavaScript code to execute
       */
       $(document).ready(function () {
-
+          console.log("v 0.4.8");
         //readServerData();
         $("#goButton").on("click", function () {
           // send message to Shiny
@@ -69,6 +69,7 @@
       }
 
       function loadDoc(url, cFunction) {
+        console.log("In loadDoc()");
         var xhttp;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -81,7 +82,7 @@
       }
 
       function myFunction1(xhttp) {
-        //console.log("myFunction1 called  :" + tracker++);
+        console.log("myFunction1()");
         ar = (xhttp.responseText.replace(/^\s*$[\n\r]{1,}/gm, '')).split(',');
         ar.splice(0, 1);
         ar[0] = ar[0].replace("Source", "");
@@ -107,9 +108,22 @@
       // Read the batch Image Number from from slider
       Shiny.addCustomMessageHandler("batchImageSize",
         function(message) {
+          //console.log() "btch_img_msg",
+
           imgNumb =  parseInt(JSON.stringify(message));
+          initial(imgNumb,0);
+          //console.log("Bat Numb : " + batnum);
+
           }
+
       );
+
+      /*Shiny.addCustomMessageHandler("btch_num_msg",
+      function(message) {
+        batnum =  parseInt(JSON.stringify(message));
+        initial(imgNumb,batnum);
+      }
+      );*/
 
 
       }
@@ -196,6 +210,7 @@
        *
       */
       function initial(imgnumb,bat) {
+        console.log("In initial()");
           clearImages();
           start = bat * imgnumb;
           end = start + imgnumb;
@@ -254,12 +269,15 @@
 
        */
       function imgloop(ar) {
+
+        console.log("In imgloop");
         for (i = 0; i < ar.length; i++) {
           var liId = i;
           var img = new Image();
           var ul = document.getElementById('x');
           // img.onload = function() {
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+          console.log("img.src " + img.src);
           // Triming the double quotes passed on each image src
           img.alt = "Camera Trap";
           img.datamarked = 0;
@@ -275,6 +293,7 @@
        *
        */
       function clearImages() {
+        console.log("In clearImages()");
         $("#x").html("");
       }
 
@@ -283,6 +302,7 @@
        * @param {String} arry
        */
       function callImges(arry) {
+        console.log("IN callImges()");
         imgloop(arry);
       }
 
@@ -290,6 +310,7 @@
        *
        */
       function myFunction() {
+        console.log("In myFunction()");
         vjs();
         return;
       }
@@ -300,7 +321,7 @@
        * @returns viewer component
        */
       function vjs() {
-        //console.log("In ViewerJS ");
+        console.log("In ViewerJS() ");
         var viewer = new Viewer(document.getElementById('galley'), {
           url: 'data-original',
           title: function (image) {
