@@ -4,9 +4,19 @@
 \name{PantheraIDSImageViewer-package}
 \alias{PantheraIDSImageViewer}
 \alias{PantheraIDSImageViewer-package}
-\title{PantheraIDSImageViewer: View Image Panels with the JavaScript 'viewer.js' Library}
+\title{PantheraIDSImageViewer: Creates and Displays interactive images thumbnail tiles using the
+      'viewer.js' JavaScript library and the 'htmlwidgets' package. 
+      The package is ideally developed to be used within Shiny Apps.}
 \description{
-Image viewer widget for displaying images as tile/thumbnail
+Image viewer widget for displaying images as tile/thumbnail.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/kacoster/PantheraIDSImageViewer}
+  \item Report bugs at \url{https://github.com/kacoster/PantheraIDSImageViewer/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Valentine Tawira \email{vtawira@panthera.org}

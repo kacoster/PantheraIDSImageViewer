@@ -41,9 +41,21 @@
          Shiny.onInputChange("prev", prev());
        });
 
+       /**********************************************************************
+        * For Testing Purposes
+        $("#prev").on("click", function () {
+            prev();
+       });
+       $("#next").on("click", function () {
+           next();
+       });
+      **********************************************************************/
+
+
+
       });
 
-
+      /**Program Global Variables */
       var ar = [];
       var resetSel = [];
       var selected_images = [];
@@ -54,14 +66,16 @@
       var start, end;
       var path;
 
-      var batnum = 0;
-      var imgNumb = 9;
-
-      var totalImgBatches;
+      var batnum = 0; // default batch Number
+      var imgNumb = 9; // default image size
 
 
 
-       /* Function to read Server Data from Server-Side */
+
+       /* Function to read Server Data from Server-Side
+       * @parameter msg A message from Shiny indication the csv file
+       *
+       */
       function readServerData(msg) {  // datapath , batchNumber , loadSize
         var csvfile = "" + msg + "";
         console.log("readServerData : " +  csvfile);
@@ -112,8 +126,6 @@
 
           imgNumb =  parseInt(JSON.stringify(message));
           initial(imgNumb,0);
-          //console.log("Bat Numb : " + batnum);
-
           }
 
       );
@@ -178,6 +190,9 @@
         }
       }
 
+      /**
+       * Function inprogress to fix the previous image Reference
+      */
       function removedRef()
       {
         return tempRemoved;
@@ -204,7 +219,7 @@
       /**
        * @function initial(a,b)
        * @description determines the images to be rendered
-       * @argument - number of images of render
+       * @parameter - number of images of render
        *           - batch number of the image lot
        * @returns void
        *
@@ -231,6 +246,8 @@
       */
       function getBatchNumber()
       {
+
+
         if((ar.length %  imgNumb)==0){
             return (ar.length / imgNumb);
         }
@@ -238,23 +255,33 @@
           return ((Math.floor(ar.length / imgNumb)) + 1);
         }
       }
-        /* Takes - Uses an Array ar[] */
+
+      /**
+       * @description computes and displays the next image batch
+       *
+      */
       function next() {
-      if(batnum > getBatchNumber()){
-        initial(imgNumb, totalImgBatches);
+
+      if(batnum < getBatchNumber()-1){
+               batnum++;
+             initial(imgNumb, batnum);
         }else{
-          batnum++;
-          initial(imgNumb, batnum);
+          initial(imgNumb, getBatchNumber()-1);
+          batnum = getBatchNumber()-1;
         }
       }
 
-      /* Takes - Uses an Array ar[] */
+       /**
+       * @description computes and displays the previous image batch
+       *
+      */
       function prev() {
-        batnum--;
-        if (getBatchNumber() - batnum >= 0 ) {
+           batnum--;
+        if (batnum > 0 ) {
           initial(imgNumb ,batnum);
         }else{
           initial(imgNumb, 0);
+          batnum = 0;
         }
       }
       /************************************************************************/
@@ -307,7 +334,8 @@
       }
 
       /**
-       *
+       * @description - indirect call to the vjs() function
+       * @returns image view
        */
       function myFunction() {
         console.log("In myFunction()");
@@ -326,10 +354,8 @@
           url: 'data-original',
           title: function (image) {
             return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
-            // write image props here
           },
         });
-       // console.log("Outside Viewer Object");
       }
 
 
