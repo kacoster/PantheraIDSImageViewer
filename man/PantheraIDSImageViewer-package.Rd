@@ -6,7 +6,7 @@
 \alias{PantheraIDSImageViewer-package}
 \title{PantheraIDSImageViewer: Creates and Displays interactive images thumbnail tiles using the
       'viewer.js' JavaScript library and the 'htmlwidgets' package. 
-      The package is ideally developed to be used within Shiny Apps.}
+      The package is ideally developed to be used within Shiny Apps}
 \description{
 Image viewer widget for displaying images as tile/thumbnail.
 }
