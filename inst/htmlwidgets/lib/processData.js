@@ -12,7 +12,7 @@
        * * ready for JavaScript code to execute
       */
       $(document).ready(function () {
-          console.log("v 0.4.8");
+          console.log("v 0.8");
         //readServerData();
         $("#goButton").on("click", function () {
           // send message to Shiny
@@ -139,6 +139,7 @@
 
 
       }
+
       /************************************************************************/
       /**
        * Highlights a selected image
@@ -207,6 +208,12 @@
       * @return void
       */
       function isKeyPressed(event) {
+
+          // send message to Shiny
+          //var URL = "http://stackoverflow.com/questions/10767815/remove-everything-before-the-last-occurrence-of-a-character.jpg";
+           //alert(URL.substring(URL.lastIndexOf("/") + 1, URL.length ));
+          var imageName = event.target.src;
+          Shiny.onInputChange("image_name", imageName.substring(imageName.lastIndexOf("/") + 1, imageName.length ));
 
         if (event.shiftKey) {
           handleExistance(selected_images, event.target.src, event.target.id);
