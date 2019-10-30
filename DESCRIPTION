@@ -9,8 +9,6 @@ Authors@R:
            role = c("aut", "cre"),
            email = "vtawira@panthera.org")
 Description: Image viewer widget for displaying images as tile/thumbnail. 
-Depends: R (>= 2.3.0)
-Imports: htmlwidgets
 Usage: imageViewer('filePath',width,height,elementId)
 License:  MIT + file LICENSE
 Encoding: UTF-8

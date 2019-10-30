@@ -60,11 +60,9 @@
       var resetSel = [];
       var selected_images = [];
       var tempRemoved ;
-      var numb = 0;
+
       var result;
-      var factor = 45;
       var start, end;
-      var path;
 
       var batnum = 0; // default batch Number
       var imgNumb = 9; // default image size
@@ -210,14 +208,10 @@
       function isKeyPressed(event) {
 
           // send message to Shiny
-          //var URL = "http://stackoverflow.com/questions/10767815/remove-everything-before-the-last-occurrence-of-a-character.jpg";
-           //alert(URL.substring(URL.lastIndexOf("/") + 1, URL.length ));
           var imageName = event.target.src;
           Shiny.onInputChange("image_name", imageName.substring(imageName.lastIndexOf("/") + 1, imageName.length ));
-
         if (event.shiftKey) {
           handleExistance(selected_images, event.target.src, event.target.id);
-
         } else {
           myFunction();
         }
