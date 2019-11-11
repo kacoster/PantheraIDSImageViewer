@@ -6,9 +6,15 @@
     console.log("viewer.js loaded");
 
     var whichViewer ;
+    var nextPrev = "0";
     function objectOf(viewerType)
     {
       whichViewer = viewerType;
+    }
+
+    function nextPrevClicked(status)
+    {
+        nextPrev = status;
     }
     (function (global, factory) {
       typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -1779,6 +1785,8 @@
          * @returns {Viewer} this
          */
         view: function view() {
+
+
           this.update();
           var _this = this;
 
@@ -1786,6 +1794,11 @@
           index = Number(index) || 0;
 
           if (!this.isShown) {
+            //console.log("Line 1800'");
+            if(nextPrev === "1"){
+              nextPrev = "0";
+              return;
+            }
             this.index = index;
             return this.show();
           }
@@ -1887,6 +1900,7 @@
           title.innerHTML = ''; // Generate title after viewed
 
           var onViewed = function onViewed() {
+            //console.log("Line 1901");
             var imageData = _this.imageData;
             var render = Array.isArray(options.title) ? options.title[1] : options.title;
             title.innerHTML = escapeHTMLEntities(isFunction(render) ? render.call(_this, image, imageData) : "".concat(alt, " (").concat(imageData.naturalWidth, " \xD7 ").concat(imageData.naturalHeight, ")"));

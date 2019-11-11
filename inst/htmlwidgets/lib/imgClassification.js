@@ -56,6 +56,7 @@
       var resetSel = [];
       var selected_images = [];
       var tempRemoved ;
+      var nextPrev = "0";
 
       var result;
       var start, end;
@@ -257,7 +258,10 @@
        *
       */
       function next() {
+        nextPrevClicked("1");
+        //nextPrev = ;
         console.log("img_clssfcnt Next ");
+
 
       if(batnum < getBatchNumber()-1){
                batnum++;
@@ -272,6 +276,7 @@
           initial(imgNumb, getBatchNumber()-1);
           batnum = getBatchNumber()-1;
         }
+
       }
 
        /**
@@ -279,6 +284,7 @@
        *
       */
       function prev() {
+        nextPrevClicked("1");
         console.log("img_clssfcnt Prev");
            batnum--;
         if (batnum > 0 ) {
@@ -293,6 +299,7 @@
           batnum = 0;
 
         }
+
       }
       /************************************************************************/
 
@@ -314,7 +321,7 @@
           var ul = document.getElementById('x');
           // img.onload = function() {
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-          console.log("img.src " + img.src);
+          //console.log("img.src " + img.src);
           // Triming the double quotes passed on each image src
           img.alt = "Camera Trap";
           img.datamarked = 0;
@@ -360,12 +367,15 @@
        */
       function vjs() {
         console.log("In ViewerJS() ");
-        var viewer = new Viewer(document.getElementById('galley'), {
+
+          var viewer = new Viewer(document.getElementById('galley'), {
           url: 'data-original',
           title: function (image) {
             return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
           },
         });
+
+
       }
 
 
