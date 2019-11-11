@@ -22,7 +22,20 @@ HTMLWidgets.widget({
          * Calling readServerData function
          * Passing the filePath parameter as an argument
         */
-        readServerData(x.message);
+
+        if(x.componentID === "img_clssfctn_ud")
+        {
+          console.log("CASE : classification module ");
+           readServerData(x.message);
+        }
+        else if (x.componentID === "spcs_idntfctn_id_rf_1")
+        {
+          fetchServerData(x.message);
+        }
+        else
+        {
+          fetchServerData_rf2(x.message);
+        }
 
       },
 
