@@ -36,7 +36,8 @@ imageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL)
 
   # forward options using x
   x = list(
-    message = filePath
+    message = filePath,
+    componentID = elementId
   )
 
   # create widget
@@ -49,6 +50,26 @@ imageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL)
     elementId = elementId
   )
 }
+
+# imageViewerIdentification <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+#
+#   # forward options using x
+#   x = list(
+#     message = filePath,
+#     componentID = elementId
+#   )
+#
+#   # create widget
+#   htmlwidgets::createWidget(
+#     name = 'PantheraIDSImageViewer',
+#     x,
+#     width = width,
+#     height = height,
+#     package = 'PantheraIDSImageViewer',
+#     elementId = elementId
+#   )
+# }
+
 
 #' Shiny bindings for PantheraIDSImageViewer
 #'
