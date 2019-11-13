@@ -1843,35 +1843,28 @@
 
           if(getSelectedImages().includes(url) || removedRef() === url)
           {
-              console.log("Checking from clonesd : " + getSelectedImages().includes(url) || selected_images_clone.includes(url) );
               if(getSelectedImages().includes(url) || selected_images_clone.includes(url))
               {
                 this.image = image;
-                console.log("Um hidding the clicked image");
                 this.hide();
                 return;
               }
-
           }
 
           if( whichViewer === "imgClassification")
           {
             getCurrClckdImg("clssfctn_vw_curr_img",
                 url.substring(url.lastIndexOf("/") + 1, url.length ));
-
           }
           else if(whichViewer === "imgIdentification")
           {
-
             getCurrClckdImg("spcs_idntfctn_id_rf_1_vw_curr_img",
                url.substring(url.lastIndexOf("/") + 1, url.length ));
-
           }
           else if (whichViewer === "imgIdentification_rf2")
           {
              getCurrClckdImg("spcs_idntfctn_id_rf_2_vw_curr_img",
              url.substring(url.lastIndexOf("/") + 1,url.length ));
-
           }
 
           if (isFunction(options.view)) {
