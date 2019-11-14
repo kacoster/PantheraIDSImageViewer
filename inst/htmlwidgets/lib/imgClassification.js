@@ -163,6 +163,7 @@
     }
     else{
       params.push(src);
+      $(".pictures > li").css("background-color", "yellow");
       highliter(id);
        getCurrClckdImg("clssfctn_slctd_img",
         src.substring(src.lastIndexOf("/") + 1, src.length ));
@@ -292,7 +293,7 @@
 
    */
   function imgloop(ar) {
-
+    $(".pictures > li").css("background-color", "white");
     for (i = 0; i < ar.length; i++) {
       var liId = i;
       var img = new Image();
