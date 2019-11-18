@@ -51,7 +51,7 @@
       imageArray_rf2.splice(imageArray_rf2.length - 1, 1);
       console.log("Number of Images : " + imageArray_rf2.length );
       displayImages_rf2(20,0);
-    
+
     }
 
     /**
@@ -118,12 +118,13 @@
     }
 
     /**
-     * @description clears inner html components identified by elementId 'x'
+     * @description clears inner html components identified by elementId 'spcs_idntfctn_id_rf_2'
      *
      */
     function removeImages_rf2() {
       console.log("In removeImages_rf2() imgIdentification");
-      $("#x").html("");
+      //$("#x").html("");
+      $("#spcs_idntfctn_id_rf_2").html("");
     }
 
     /**
@@ -172,4 +173,3 @@
       return highlighted_images_rf2;
     }
 
-    

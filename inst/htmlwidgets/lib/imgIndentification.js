@@ -51,11 +51,11 @@
       imageArray.splice(imageArray.length - 1, 1);
       console.log("Number of Images : " + imageArray.length );
       displayImages(20,0);
-    
+
     }
 
-   
-   
+
+
 
     /**
     * Handles all image panel click events
@@ -126,7 +126,9 @@
      */
     function removeImages() {
       console.log("In removeImages() imgIdentification");
-      $("#x").html("");
+     // $("#x").html("");
+      $("#spcs_idntfctn_id_rf_1").html("");
+
     }
 
     /**
@@ -175,4 +177,3 @@
       return highlighted_images;
     }
 
-    
