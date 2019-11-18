@@ -12,7 +12,7 @@
        * * ready for JavaScript code to execute
       */
       $(document).ready(function () {
-          console.log("v 0.8");
+          console.log("v 0.10");
         //readServerData();
         $("#goButton").on("click", function () {
           // send message to Shiny
@@ -41,15 +41,15 @@
          Shiny.onInputChange("prev", prev());
        });
 
-       /**********************************************************************
-        * For Testing Purposes
+       /**********************************************************************/
+        // For Testing Purposes
         $("#prev").on("click", function () {
             prev();
        });
        $("#next").on("click", function () {
            next();
        });
-      **********************************************************************/
+      /**********************************************************************/
 
 
 
@@ -179,13 +179,14 @@
       {
         if(params.includes(src))
         {
-        tempRemoved =  (params.splice(params.indexOf(src),1))[0];
-        removeHighlight(id);
+          tempRemoved =  (params.splice(params.indexOf(src),1))[0];
+          removeHighlight(id);
         }
         else{
           //console.log("Not marked");
           params.push(src);
           highliter(id);
+          Shiny.onInputChange("image_name", src.substring(src.lastIndexOf("/") + 1, src.length ));
         }
       }
 
@@ -209,10 +210,12 @@
 
           // send message to Shiny
           var imageName = event.target.src;
-          Shiny.onInputChange("image_name", imageName.substring(imageName.lastIndexOf("/") + 1, imageName.length ));
+
         if (event.shiftKey) {
           handleExistance(selected_images, event.target.src, event.target.id);
+
         } else {
+
           myFunction();
         }
       }

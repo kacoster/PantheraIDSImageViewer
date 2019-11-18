@@ -12,7 +12,7 @@
     var imageArray_rf2 = [];
     var highlighted_images_rf2 = [];
     var resultsArray_rf2;
-    var startIndex, endIndex;
+    //var startIndex, endIndex;
     //var batnum  = 0 ; // default batch Number
     //var imgNumb = 0; // default image size
 
@@ -21,37 +21,18 @@
      * @parameter msg A message from Shiny indication the csv file
      *
      */
-    function fetchServerData_rf2(msg) {  // datapath , batchNumber , loadSize
-      var csvfile = "" + msg + "";
-      console.log("readServerData : " +  csvfile);
-      getData_rf2( csvfile, processXHTTPResponse_rf2);
-    }
-
-    function getData_rf2(url, cFunction) {
-      console.log("In getData_rf2() imgIdentification");
-      var xhttp;
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          //console.log("readyState 4 and status 200 : " + this);
-          cFunction(this);
-        }
-      };
-      xhttp.open("GET", url, true);
-      xhttp.send();
-    }
-
-    function processXHTTPResponse_rf2(xhttp) {
-      //console.log("processXHTTPResponse_rf2()");
-      //imgIdentification
-      imageArray_rf2 = (xhttp.responseText.replace(/^\s*$[\n\r]{1,}/gm, '')).split(',');
+    async function processIdnfctn2ResponseText(csvfile) {
+      
+      let textResult = await fetchServerFile(csvfile);
+      imageArray_rf2 = (textResult).split(',');
       imageArray_rf2.splice(0, 1);
       imageArray_rf2[0] = imageArray_rf2[0].replace("Source", "");
       imageArray_rf2[0] = imageArray_rf2[imageArray_rf2.length - 1] + imageArray_rf2[0];
       imageArray_rf2.splice(imageArray_rf2.length - 1, 1);
       console.log("Number of Images : " + imageArray_rf2.length );
-      displayImages_rf2(20,0);
-
+      displayImages(20,0,'spcs_idntfctn_id_rf_2',imageArray_rf2);
+      //displayImages_rf2(20,0);
+    
     }
 
     /**
@@ -76,65 +57,42 @@
      *           - batch number of the image lot
      * @returns void
      *
-    */
+  
     function displayImages_rf2(imgnumb,bat) {
       console.log("In displayImages_rf2() imgIdentification");
         removeImages_rf2();
         startIndex = bat * imgnumb;
         endIndex = startIndex + imgnumb;
         resultsArray_rf2 = imageArray_rf2.slice(startIndex, endIndex);
-        dispImages_rf2(resultsArray_rf2);
-    }
+        imgloop(resultsArray_rf2 ,'spcs_idntfctn_id_rf_2');
+        //dispImages_rf2(resultsArray_rf2);
+    }  */
+    
 
     /************************************************************************/
 
     /************************************************************************/
 
+  
     /**
-     * @description - creates html component to display the images
-     * @param {String} imageArray_rf2 - an array of images
-     * @returns {void} var src = ( ( imageArray_rf2[0].trim()).replace(/['"]+/g, ''));
-    someText = src.replace(/(\r\n|\n|\r)/gm,"");
-
-     */
-    function pasteImages_rf2(imageArray_rf2) {
-
-      console.log("In pasteImages_rf2 imgIdentification");
-      for (i = 0; i < imageArray_rf2.length; i++) {
-        var liId = i;
-        var imageObject = new Image();
-        var ul = document.getElementById('spcs_idntfctn_id_rf_2');
-        //imageObject.onload = function() {
-       imageObject.src = ((imageArray_rf2[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-        console.log("img.src " +imageObject.src);
-        // Triming the double quotes passed on each image src
-       imageObject.alt = "Camera Trap";
-       imageObject.datamarked = 0;
-        ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
-       imageObject.src + '"  marked="' +imageObject.datamarked + '" src="' +
-       imageObject.src + '" alt="' +imageObject.alt + '" /> </li>';
-        // inserting an list of images uinside the ul tag
-      }
-    }
-
-    /**
-     * @description clears inner html components identified by elementId 'spcs_idntfctn_id_rf_2'
+     * @description clears inner html components identified by elementId 'x'
      *
      */
     function removeImages_rf2() {
       console.log("In removeImages_rf2() imgIdentification");
-      //$("#x").html("");
-      $("#spcs_idntfctn_id_rf_2").html("");
+      $("#x").html("");
     }
 
     /**
      *
      * @param {String} arry
-     */
+    
     function dispImages_rf2(arry) {
       console.log("IN dispImages_rf2() imgIdentification");
-      pasteImages_rf2(arry);
-    }
+      imgloop(arry,'spcs_idntfctn_id_rf_2');
+      //pasteImages_rf2(arry);
+    } 
+    */
 
     /**
      * @description - indirect call to the createViewerComponent_rf2() function
@@ -173,3 +131,4 @@
       return highlighted_images_rf2;
     }
 
+    
