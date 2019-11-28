@@ -29,8 +29,7 @@
         });
 
         $("#img_clssfctn_ud_nxt_bttn").on("click", function () {
-         //Shiny.onInputChange("next", next());
-         next();
+        Shiny.onInputChange("next", next());
         });
 
         $("#img_clssfctn_ud_prvs_bttn").on("click", function () {
