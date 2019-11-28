@@ -28,7 +28,7 @@ HTMLWidgets.widget({
           console.log("case classification module ");
           //console.log("case classification module ");
           $("#img_clssfctn_ud_fltr_button").on("click", function () {
-             Shiny.onInputChange("filter",  readServerData(x.message));
+              readServerData(x.message);
           });
            //readServerData(x.message);
         }
