@@ -26,11 +26,11 @@ HTMLWidgets.widget({
         if(x.componentID === "img_clssfctn_ud")
         {
           console.log("case classification module ");
-          //console.log("case classification module ");
           $("#img_clssfctn_ud_fltr_button").on("click", function () {
-              readServerData(x.message);
+            Shiny.onInputChange("next",  readServerData(x.message));
           });
-           //readServerData(x.message);
+
+
         }
         else if (x.componentID === "spcs_idntfctn_id_rf_1")
         {
