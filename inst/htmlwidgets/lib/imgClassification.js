@@ -309,7 +309,7 @@
     for (i = 0; i < ar.length; i++) {
       var liId = i;
       var img = new Image();
-      var ul = document.getElementById('x');
+      var ul = document.getElementById('img_clssfctn_ud');
       img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
       img.alt = "Camera Trap";
       img.datamarked = 0;
@@ -325,7 +325,7 @@
    *
    */
   function clearImages() {
-    $("#x").html("");
+    $("#img_clssfctn_ud").html("");
   }
 
   /**
