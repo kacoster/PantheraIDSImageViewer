@@ -68,6 +68,12 @@
       imgNumb = numb;
     }
 
+    function setColumnNumb(numb)
+    {
+        columnSize = numb;
+        setCol();
+    }
+
    /* Function to read Server Data from Server-Side
    * @parameter msg A message from Shiny indication the csv file
    *
@@ -187,6 +193,7 @@
     return tempRemoved;
   }
 
+  
 
 
   /**
@@ -312,6 +319,13 @@
   {
     return trimSRC(getSelectedImages());
   }
+
+  function setCol(){
+
+    $('.pictures > li').css({
+            'width' : 'calc(100% /' + columnSize +')'
+        });
+  }
 /************************************************************************/
   /**
    * @description - creates html component to display the images
@@ -332,6 +346,7 @@
       ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
       img.src + '"  marked="' + img.datamarked + '" src="' +
       img.src + '" alt="' + img.alt + '" /> </li>';
+      setCol();
       // inserting an list of images uinside the ul tag
     }
   }
