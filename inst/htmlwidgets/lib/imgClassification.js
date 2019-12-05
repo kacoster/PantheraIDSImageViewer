@@ -187,6 +187,8 @@
     return tempRemoved;
   }
 
+
+
   /**
   * Handles all image panel click events
   * @parameter - event click/shiftKey
@@ -304,6 +306,11 @@
       tempArray[i] = newSRC;
     }
     return tempArray;
+  }
+
+  function getTrimedSelectedImages()
+  {
+    return trimSRC(getSelectedImages());
   }
 /************************************************************************/
   /**
