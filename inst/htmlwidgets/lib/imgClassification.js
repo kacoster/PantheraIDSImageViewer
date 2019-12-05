@@ -97,7 +97,7 @@
     ar.splice(ar.length - 1, 1);
 
 
-    console.log("ImageNumber : " + imgNumb);
+    //console.log("ImageNumber : " + imgNumb);
     Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
             1 + " / " + getBatchNumber());
     initial(imgNumb,0);
@@ -164,21 +164,18 @@
       removeHighlight(id);
       if(params.length > 0)
       {
-        getCurrClckdImg("clssfctn_slctd_img",
-        params[params.length -1].substring(
-          src.lastIndexOf("/") + 1, src.length ));
+        //console.log(getTrimedSelectedImages().toString());
+        getCurrClckdImg("clssfctn_slctd_img",getTrimedSelectedImages().toString());
       }else{
         getCurrClckdImg("clssfctn_slctd_img","");
       }
-
-
     }
     else{
       params.push(src);
       $(".pictures > li").css("background-color", "yellow");
       highliter(id);
-       getCurrClckdImg("clssfctn_slctd_img",
-        src.substring(src.lastIndexOf("/") + 1, src.length ));
+      //console.log(getTrimedSelectedImages().toString());
+      getCurrClckdImg("clssfctn_slctd_img",getTrimedSelectedImages().toString());
     }
   }
 
@@ -295,8 +292,20 @@
 
   }
 
-  /************************************************************************/
-
+/************************************************************************/
+  function trimSRC(selctdImgAry)
+  {
+    let i = 0;
+    let tempArray = [];
+    for(i;i < selected_images.length;i++)
+    {
+      let newSRC = selctdImgAry[i].substring(selctdImgAry[i].lastIndexOf("/") + 1,
+      selctdImgAry[i].length );
+      tempArray[i] = newSRC;
+    }
+    return tempArray;
+  }
+/************************************************************************/
   /**
    * @description - creates html component to display the images
    * @param {String} ar - an array of images
@@ -358,10 +367,7 @@
       },
     });
 
-
   }
-
-
 
   /**
    * @function getSelectedImages()
