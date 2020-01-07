@@ -1,0 +1,25 @@
+dependencies:
+- name: viewer_ct_vldt_trggr_tbl
+  version: 1.7.0
+  src: htmlwidgets
+  script: ./lib/viewer_ct_vldt_trggr_tbl.js
+- name: viewerComponent
+  version: 1.7.0
+  src: htmlwidgets
+  script: ./lib/viewerComponent.js
+- name: ct_vldt_img_trggr_tbl_vldtn_9
+  version: 0.0.1
+  src: htmlwidgets
+  script: ./lib/ct_vldt_img_trggr_tbl_vldtn_9.js
+- name: viewerHelpers
+  version: 1.7.0
+  src: htmlwidgets
+  script: ./lib/viewerHelpers.js
+- name: jquery
+  version: 0.4.10
+  src: htmlwidgets
+  script: ./lib/jquery-3.4.1.slim.min.js
+- name: main
+  version: 1.8.3
+  src: htmlwidgets
+  script: ./lib/main.js
