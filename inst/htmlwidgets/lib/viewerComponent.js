@@ -266,24 +266,24 @@ class ViewerComponent {
         else{
          // console.log("Image Not Found");
           count++;
-        } 
+        }
       }
       //console.log("count : " + count);
-      return count; 
-      
+      return count;
+
       //return result;
     }
 
     imgloop(ar) {
-    
-      //console.log("ar.length : " + ar.length);
+
+      console.log("imgloop viewerComponent" );
       if(this.checkImageExistance(ar) == ar.length)
       {
         if(this.moduleId === "img_clssfctn_ud"){
           Shiny.setInputValue('no_srv_imgs', 'no imgs')
           Shiny.setInputValue('mssng_srv_imgs', null);
         }
-         
+
       }
       else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
       {
@@ -291,7 +291,7 @@ class ViewerComponent {
           Shiny.setInputValue('mssng_srv_imgs', 'missing imgs');
           Shiny.setInputValue('no_srv_imgs', null);
         }
-  
+
         let ul = document.getElementById(this.moduleId);
         for (let i = 0; i < ar.length; i++) {
             let liId = i + this.moduleId;
@@ -309,7 +309,7 @@ class ViewerComponent {
           Shiny.setInputValue('no_srv_imgs', null);
           Shiny.setInputValue('mssng_srv_imgs', null);
         }
-            
+
         let ul = document.getElementById(this.moduleId);
         for (let i = 0; i < ar.length; i++) {
             let liId = i + this.moduleId;
