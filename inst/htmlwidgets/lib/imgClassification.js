@@ -82,6 +82,11 @@
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
   }
 
+  function resetMsnImgsInputs(msg)
+  {
+    imgClssfctnObj.resetHandlers(msg);
+  }
+
   function setColumnNumb(numb)
   {
     imgClssfctnObj.columnSize = numb;

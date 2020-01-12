@@ -295,7 +295,7 @@ class ViewerComponent {
 
   imgloop(ar) {
     this. placeHolder();
-    console.log("imageViewer-tester : " );
+    console.log("PantheraIDSImageViewer : " );
     if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
