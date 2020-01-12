@@ -68,7 +68,7 @@ class ViewerComponent {
      //console.log("ul class Name : " + $("ul").attr("class"));
         $('.pictures > li').css({
                 'width' : 'calc(100% /' + this.columnSize +')'
-            });
+        });
     }
 
     getCurrClckdImg(state, imgsrc)
@@ -77,7 +77,7 @@ class ViewerComponent {
     }
 
     /** Not Yet Generic */
-    handleExistance(params,src,id)
+   /* handleExistance(params,src,id)
     {
         if(params.includes(src))
         {
@@ -99,6 +99,42 @@ class ViewerComponent {
             this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
             //console.log("Trimmed Sel : " + this.getTrimedSelectedImages().toString());
         }
+    }*/
+
+    handleExistance(params,src,id)
+    {
+        if(params.includes(src))
+        {
+            this.tempRemoved =  (params.splice(params.indexOf(src),1))[0];
+            this.removeHighlight(id);
+            if(params.length > 0)
+            {
+                //console.log(this.getTrimedSelectedImages().toString());
+                this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+               // console.log("Trimmed Sel : " + this.getTrimedSelectedImages().toString());
+            }else{
+                this.getCurrClckdImg("clssfctn_slctd_img",""); 
+            }
+        }
+        else{
+          if(this.isPlacveHolder(src))
+          {
+            console.log("Cant Process Place Holder Image");
+            selectionFind(true);
+          }
+          else{
+            params.push(src);
+            this.highliter(id);
+            //console.log(this.getTrimedSelectedImages().toString());
+            this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+            //console.log("Trimmed Sel : " + this.getTrimedSelectedImages().toString());
+          }
+        }
+    }
+
+    isPlacveHolder(src)
+    {
+      return (src.split('/').pop() === 'PantheraIDS_image_not_found_2.jpg');
     }
 
     removedRef()
@@ -249,11 +285,23 @@ class ViewerComponent {
       }
     }
 
+    placeHolder(imgURL)
+    {
+      let xmlhttp = new XMLHttpRequest();
+      let url = imgURL;
+        xmlhttp.open("GET", url, false);
+        xmlhttp.send();
+        if (xmlhttp.status==200) {
+          return true;
+      
+        }
+        else{
+         return false;
+        } 
+    }
 
     checkImageExistance(arry) {
       let count = 0;
-      //console.log("checkImageExistance");
-
       for(let i= 0; i< arry.length ; i++)
       {
         let url = ((arry[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
@@ -261,20 +309,15 @@ class ViewerComponent {
         xmlhttp.open("GET", url, false);
         xmlhttp.send();
         if (xmlhttp.status==200) {
-          ///console.log("Image Found");
         }
         else{
-         // console.log("Image Not Found");
           count++;
         }
       }
-      //console.log("count : " + count);
       return count;
-
-      //return result;
     }
 
-    imgloop(ar) {
+    /* imgloop(ar) {
 
       console.log("imgloop viewerComponent" );
       if(this.checkImageExistance(ar) == ar.length)
@@ -320,6 +363,70 @@ class ViewerComponent {
             ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
             this.setCol();
         }
+      }
+    }*/
+    imgloop(ar) {
+      this. placeHolder();
+      //console.log("imageViewer-tester : " );
+      if(this.checkImageExistance(ar) == ar.length)
+      {
+        if(this.moduleId === "img_clssfctn_ud"){
+          //console.log('no_srv_imgs');
+          Shiny.setInputValue('no_srv_imgs', 'no imgs')
+        }
+         
+      }
+      else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
+      {
+        if(this.moduleId === "img_clssfctn_ud"){
+          //console.log('mssng_srv_imgs');
+          Shiny.setInputValue('mssng_srv_imgs', 'missing imgs');
+        }
+  
+        let ul = document.getElementById(this.moduleId);
+        for (let i = 0; i < ar.length; i++) {
+            let liId = i + this.moduleId;
+            let img = new Image();
+            img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+            img.alt = "Camera Trap";
+            img.datamarked = 0;
+            if(this.placeHolder(img.src)){
+              ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+            }
+            else{
+              img.src = '/srv/shiny-server/www/PantheraIDS_image_not_found_2.jpg';
+              ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src +'"  alt="' + img.alt + '" /> </li>';
+
+            }
+            //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+            this.setCol();
+        }
+      }
+     else{
+
+        let ul = document.getElementById(this.moduleId);
+        for (let i = 0; i < ar.length; i++) {
+            let liId = i + this.moduleId;
+            let img = new Image();
+            img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+            img.alt = "Camera Trap";
+            img.datamarked = 0;
+            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+            this.setCol();
+        }
+      }
+    }
+
+    resetHandlers(msg)
+    {
+      //console.log('resetHandlers msg : ' + msg);
+      if(msg === 'noImages'){
+        //console.log("Inside no_srv_imgs_reset");
+        Shiny.setInputValue('no_srv_imgs', null);
+      }
+      else{
+        //console.log("Inside msng_imgs_reset");
+        Shiny.setInputValue('mssng_srv_imgs', null);
       }
     }
 
