@@ -76,9 +76,10 @@
       
   }
 
-  function resetSelectedImages()
+  function resetProps()
   {
     imgClssfctnObj.selected_images.length = 0;
+    imgClssfctnObj.batnum = 0;
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
   }
 
@@ -107,7 +108,7 @@
 
   function saveButtonListerner()
   {
-    console.log("Save Click");
+    //console.log("Save Click");
     imgClssfctnObj.liWhiteBackground();
     imgClssfctnObj.deSelectAll();
     //imgClssfctnObj.selected_images.length = 0;

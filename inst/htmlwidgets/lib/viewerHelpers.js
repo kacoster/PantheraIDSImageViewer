@@ -32,7 +32,6 @@ function loadFile(filename) {
       result = (xmlhttp.responseText).replace(/^\s*$[\n\r]{1,}/gm, '');
       return result;
     }
-    //alert("Error in Reading Images ");
     return result;
   }
 

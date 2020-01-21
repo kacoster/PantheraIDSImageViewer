@@ -2,7 +2,7 @@ var ct_vldt_img_trggr_tbl_vldtn_12 = new ViewerComponent(0,30,5,"ct_vldt_img_trg
 
   function prepArrayvldtn_12(resp)
   {
-    console.log("In prepArray");
+    //console.log("In prepArray");
     ct_vldt_img_trggr_tbl_vldtn_12.readServerData(resp);
   }
 
