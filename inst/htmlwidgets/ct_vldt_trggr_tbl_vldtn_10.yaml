@@ -7,10 +7,10 @@ dependencies:
   version: 1.7.0
   src: htmlwidgets
   script: ./lib/viewerComponent.js
-- name: ct_vldt_img_trggr_tbl_vldtn_10
+- name: validationObjects
   version: 0.0.1
   src: htmlwidgets
-  script: ./lib/ct_vldt_img_trggr_tbl_vldtn_10.js
+  script: ./lib/validationObjects.js
 - name: viewerHelpers
   version: 1.7.0
   src: htmlwidgets
