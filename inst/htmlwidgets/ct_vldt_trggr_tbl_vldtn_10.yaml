@@ -7,10 +7,10 @@ dependencies:
   version: 1.7.0
   src: htmlwidgets
   script: ./lib/viewerComponent.js
-- name: validationObjects
+- name: validationHelper
   version: 0.0.1
   src: htmlwidgets
-  script: ./lib/validationObjects.js
+  script: ./lib/validationHelper.js
 - name: viewerHelpers
   version: 1.7.0
   src: htmlwidgets

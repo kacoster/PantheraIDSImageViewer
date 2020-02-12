@@ -45,6 +45,7 @@ HTMLWidgets.widget({
             Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_srvr_button",
                 function(mesg) {
                   //console.log("Handler img_clssfctn_ud_fltr_button");
+                  nextPrevClicked("1");
                   fetchServerData(x.message,x.componentID);
                   resetProps();
                 }

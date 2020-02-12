@@ -16,8 +16,6 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    //console.log("readServerData");
-    // let response = this.loadFile(this.csvfile);
     if(response === null )
     {
       alert(" Error in reading your images.Please check if all requirements are provided.");
@@ -25,11 +23,9 @@ class ViewerComponent {
     else{
       this.imgArray = response.split(',');
       this.imgArray.splice(0, 1);
-      //console.log(this.imgArray);
       this.imgArray[0] = this.imgArray[0].replace("Source", "");
       this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
       this.imgArray.splice(this.imgArray.length - 1, 1);
-      //console.log(this.imgArray);
       if(this.moduleId === "img_clssfctn_ud")
       {
         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
@@ -46,13 +42,11 @@ class ViewerComponent {
 
   highliter(elementID)
   {
-      //console.log("In Highlighter");
       $('#' + elementID + '').css({
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
       });
       $(".pictures > li").css("background-color", "yellow");
-
   }
 
   removeHighlight(elementID)
@@ -85,9 +79,7 @@ class ViewerComponent {
           this.removeHighlight(id);
           if(params.length > 0)
           {
-              //console.log(this.getTrimedSelectedImages().toString());
               this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
-              console.log("Trimmed Sel : " + this.getTrimedSelectedImages().toString());
           }else{
               this.getCurrClckdImg("clssfctn_slctd_img",""); 
           }
@@ -101,9 +93,7 @@ class ViewerComponent {
         else{
           params.push(src);
           this.highliter(id);
-          //console.log(this.getTrimedSelectedImages().toString());
           this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
-          //console.log("Trimmed Sel : " + this.getTrimedSelectedImages().toString());
         }
       }
   }
@@ -119,14 +109,12 @@ class ViewerComponent {
   }
 
   displayImages(imgnumb,bat) {
-      //console.log("Display Images");
       this.clearImages();
       let start ,end;
       start = bat * imgnumb;
       end = start + imgnumb;
       this.result = this.imgArray.slice(start, end);
       return this.result;
-      //this.imgloop(this.result);
   }
 
   getBatchNumber()
@@ -140,14 +128,12 @@ class ViewerComponent {
   }
   // We need a function that maps to diff modules
   next() {
-     // console.log("Next Clicked");
       nextPrevClicked("1");
 
       if(this.batnum < this.getBatchNumber()-1){
             this.batnum++;
             Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
             (this.batnum+1) + " / " + this.getBatchNumber());
-            //console.log("batch Number : " + this.batnum);
             this.imgloop(this.displayImages(this.imgNumb, this.batnum));
             this.selected_images.length = 0;
             this.getCurrClckdImg("clssfctn_slctd_img","");
@@ -169,7 +155,6 @@ class ViewerComponent {
       if (this.batnum > 0 ) {
          Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
             (this.batnum+1) + " / " + this.getBatchNumber());
-          //console.log("batch Number : " + this.batnum);
         this.imgloop(this.displayImages(this.imgNumb ,this.batnum));
         this.selected_images.length = 0;
         this.getCurrClckdImg("clssfctn_slctd_img","");
@@ -197,13 +182,11 @@ class ViewerComponent {
   }
 
   clearImages() {
-      //console.log("In clearImages() " + this.moduleId);
       $('#' + this.moduleId + '').html("");
   }
 
   // See if this indeed should var
   vjs(elementID) {
-      //console.log("vjs : " + elementID);
       var elementID = new Viewer(document.getElementById(elementID), {
           url: 'data-original',
           title: function (image) {
@@ -214,14 +197,11 @@ class ViewerComponent {
 
   getSelectedImages()
   {
-      // src.substring(src.lastIndexOf("/") + 1, src.length )
-      //console.log("getSelectedImages : " +  this.selected_images);
       return this.selected_images;
   }
 
   getTrimedSelectedImages()
   {
-      //console.log("getTrimedSelectedImages S I : " + this.getSelectedImages());
       return this.trimSRC(this.getSelectedImages());
   }
 
@@ -269,7 +249,6 @@ class ViewerComponent {
       xmlhttp.send();
       if (xmlhttp.status==200) {
         return true;
-    
       }
       else{
        return false;
@@ -347,13 +326,10 @@ class ViewerComponent {
 
   resetHandlers(msg)
   {
-    console.log('resetHandlers msg : ' + msg);
     if(msg === 'noImages'){
-      console.log("Inside no_srv_imgs_reset");
       Shiny.setInputValue('no_srv_imgs', null);
     }
     else{
-      console.log("Inside msng_imgs_reset");
       Shiny.setInputValue('mssng_srv_imgs', null);
     }
   }
@@ -395,11 +371,9 @@ class ViewerComponent {
  * @returns image view myFunction
  */
  callvjs(elementId) {
-   //console.log("callvjs : " + elementId);
   this.vjs(elementId);
   return;
 }
-
 
 /*isKeyPressed(event) {
   console.log(" isKeyPressed(event)");

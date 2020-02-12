@@ -54,26 +54,19 @@
   */
   function isKeyPressed(event,id) {
 
-        //console.log("isKeyPressed(event)");
-        //console.log("event.target.src : " + event.target.src);
-
         arrayClone(imgClssfctnObj.selected_images);
-
         if (event.shiftKey) {
           
-          //console.log(" isKeyPressed : event.shiftKey");
           if(imgClssfctnObj.selected_images.includes(event.target.src))
           {
             selectionFind(true);
           }
-          //console.log("isKeyPressed : " + imgClssfctnObj.selected_images);
           imgClssfctnObj.handleExistance(imgClssfctnObj.selected_images, event.target.src, event.target.id);
+
         } else {
-          //console.log(" isKeyPressed : " + event.click);
           objectOf("imgClassification");
           imgClssfctnObj.callvjs(imgClssfctnObj.moduleId+"_divId");
         }
-      
   }
 
   function resetProps()
@@ -92,9 +85,6 @@
   {
     imgClssfctnObj.columnSize = numb;
     imgClssfctnObj.setCol();
-    //this.columnSize = numb;
-    //alert("Adjusted Columns " + imgClssfctnObj.columnSize);
-      
   }
   function setImagesNumber(numb)
   {
@@ -108,10 +98,8 @@
 
   function saveButtonListerner()
   {
-    //console.log("Save Click");
     imgClssfctnObj.liWhiteBackground();
     imgClssfctnObj.deSelectAll();
-    //imgClssfctnObj.selected_images.length = 0;
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
     imgClssfctnObj.getCurrClckdImg("clssfctn_vw_curr_img","");
   }
