@@ -214,7 +214,9 @@ class ViewerComponent {
         'filter': 'alpha(opacity=40)'
       });
       obj.selected_images.push(this.attr('src'));
+      
     });
+    console.log("Selected images : " + (obj.selected_images).length);
     return this.selected_images;
 
   }
