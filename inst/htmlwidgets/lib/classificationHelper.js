@@ -27,6 +27,10 @@
 
         });
 
+        $("#img_clssfctn_ud_slct_all_button").on("click", function () {
+          Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
+        });
+
         $("#deSelectAll").on("click", function () {
           imgClssfctnObj.deSelectAll();
         });
