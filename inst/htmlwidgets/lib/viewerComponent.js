@@ -215,6 +215,7 @@ class ViewerComponent {
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
+      $(".pictures > li").css("background-color", "yellow");
       //obj.selected_images.push(this.attr('src'));
       
     });
