@@ -213,7 +213,7 @@ class ViewerComponent {
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
-      this.selected_images.push($(this).attr('src'));
+      this.selected_images.push(this.attr('src'));
     });
     return this.selected_images;
 
