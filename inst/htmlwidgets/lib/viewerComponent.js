@@ -207,6 +207,7 @@ class ViewerComponent {
 
   // This is specific to tag #
   selectAll() {
+    console.log("In selctAll()");
     $("img").each(function (index) {
       $('#' + $(this).attr('id') + '').css({
         'opacity': '0.1',
