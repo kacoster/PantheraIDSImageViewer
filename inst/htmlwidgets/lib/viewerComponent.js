@@ -206,14 +206,14 @@ class ViewerComponent {
   }
 
   // This is specific to tag #
-  selectAll() {
+  selectAll(obj) {
     console.log("In selctAll()");
     $("img").each(function (index) {
       $('#' + $(this).attr('id') + '').css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
-      this.selected_images.push(this.attr('src'));
+      obj.selected_images.push(this.attr('src'));
     });
     return this.selected_images;
 

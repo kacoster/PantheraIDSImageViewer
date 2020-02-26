@@ -29,7 +29,7 @@
 
         $("#img_clssfctn_ud_slct_all_button").on("click", function () {
           console.log("clicked selectAll");
-          Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
+          Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
         });
 
         $("#deSelectAll").on("click", function () {
