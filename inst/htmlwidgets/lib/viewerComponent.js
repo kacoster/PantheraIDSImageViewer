@@ -215,7 +215,7 @@ class ViewerComponent {
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
-      obj.selected_images.push(this.attr('src'));
+      //obj.selected_images.push(this.attr('src'));
       
     });
     console.log("Selected images : " + (obj.selected_images).length);
