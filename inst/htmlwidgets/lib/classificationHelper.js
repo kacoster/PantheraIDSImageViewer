@@ -131,11 +131,11 @@
     ).get();*/
 
     $('#img_clssfctn_ud img').each(function(){
-      this.css({
+      /*this.css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
-      $(".pictures > li").css("background-color", "yellow");
+      $(".pictures > li").css("background-color", "yellow");*/
       arry.push(this.src);
     });
 
