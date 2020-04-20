@@ -1,6 +1,6 @@
 
     /***************************************************************************
-    @version Viewer.js v1.3.5
+    @version Viewer.js v1.3.6
     @author Valentine Tawira
     @description PantheraImageViewer Script for handling the processing of the
             file data and rendering of the viewer panel
@@ -23,17 +23,9 @@
           Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
         });
 
-        /*$("#selectAll").on("click", function () {
-          console.log("classificationHelper.js line 27");
-          Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
-
-        });*/
-
         $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click", function () {
-          //console.log("classificationHelper.js line 33");
-          //console.log("clicked selectAll");
+   
           imgClssfctnObj.selectAll();
-          //Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj)); 
         });
 
         $("#img_clssfctn_ud_dslct_all_imgs_bttn").on("click", function () {
