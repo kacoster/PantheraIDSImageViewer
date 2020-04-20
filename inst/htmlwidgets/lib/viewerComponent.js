@@ -215,9 +215,9 @@ class ViewerComponent {
     this.selected_images = 0;
     let slctdimgs = [];
     $('#img_clssfctn_ud img').each(function(){
-      console.log("imgs loop");
-      console.log($(this).attr('src'));
-      console.log(this.id);
+      //console.log("imgs loop");
+      //console.log($(this).attr('src'));
+      //console.log(this.id);
 
       $('#' + this.id + '').css({
         'opacity': '0.4',

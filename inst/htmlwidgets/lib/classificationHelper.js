@@ -30,13 +30,13 @@
         });*/
 
         $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click", function () {
-          console.log("classificationHelper.js line 33");
-          console.log("clicked selectAll");
+          //console.log("classificationHelper.js line 33");
+          //console.log("clicked selectAll");
           imgClssfctnObj.selectAll();
-          //Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
+          //Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj)); 
         });
 
-        $("#deSelectAll").on("click", function () {
+        $("#img_clssfctn_ud_dslct_all_imgs_bttn").on("click", function () {
           imgClssfctnObj.deSelectAll();
         });
 
