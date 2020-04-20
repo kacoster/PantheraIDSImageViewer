@@ -120,7 +120,7 @@
 
 
   function highlightAll(){
-    console.log("In highlightAll");
+    console.log("In highlightAll()");
     let arry = [];
 
     /*var images = $('#img_clssfctn_ud').find('img').map(
