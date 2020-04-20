@@ -206,8 +206,26 @@ class ViewerComponent {
   }
 
   // This is specific to tag #
-  selectAll(obj) {
+  selectAll() {
     this.selected_images = 0;
+    let slctdimgs = [];
+    $('#img_clssfctn_ud img').each(function(){
+      console.log("imgs loop");
+      console.log($(this).attr('src'));
+      console.log(this.id);
+
+      $('#' + this.id + '').css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $(".pictures > li").css("background-color", "yellow");
+      slctdimgs.push($(this).attr('src'));
+    });
+    this.selected_images = [...slctdimgs];
+    console.log("selected img :  " + (this.selected_images).toString());
+    return this.selected_images;
+
+
     /*$("img").each(function (index) {
       console.log("In selctAll()");
       console.log("index : " + index);
@@ -222,7 +240,7 @@ class ViewerComponent {
     });
     console.log("Selected images : " + (obj.selected_images).length);*/
     //return this.selected_images;
-    return highlightAll();
+    //return highlightAll();
 
   }
 

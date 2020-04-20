@@ -23,16 +23,16 @@
           Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
         });
 
-        $("#selectAll").on("click", function () {
+        /*$("#selectAll").on("click", function () {
           console.log("classificationHelper.js line 27");
           Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
 
-        });
+        });*/
 
         $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click", function () {
           console.log("classificationHelper.js line 33");
           console.log("clicked selectAll");
-          imgClssfctnObj.selectAll(imgClssfctnObj);
+          imgClssfctnObj.selectAll();
           //Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
         });
 
@@ -140,11 +140,6 @@
         'filter': 'alpha(opacity=40)'
       });
       $(".pictures > li").css("background-color", "yellow");
-      /*this.css({
-        'opacity': '0.1',
-        'filter': 'alpha(opacity=40)'
-      });
-      $(".pictures > li").css("background-color", "yellow");*/
       arry.push($(this).attr('src'));
     });
 
@@ -152,24 +147,6 @@
     console.log("arry : " + arry.length);
 
     return arry;
-
- 
-    
-
-    /*$("img").each(function (index) {
-      //console.log("In selctAll()");
-      //console.log("index : " + index);
-      console.log("img id : " + $(this).attr('id'));
-      $('#' + $(this).attr('id') + '').css({
-        'opacity': '0.1',
-        'filter': 'alpha(opacity=40)'
-      });
-      $(".pictures > li").css("background-color", "yellow");
-      arry.push(this.attr('src'));
-      
-    });*/
-    //console.log("Selected images : " + images);
-    //console.log("Selected images : " + (obj.selected_images).length);
   }
 
 
