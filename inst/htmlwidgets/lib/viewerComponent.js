@@ -210,7 +210,7 @@ class ViewerComponent {
     this.selected_images = 0;
     $("img").each(function (index) {
       console.log("In selctAll()");
-      console.log("img id : " + $(this).attr('id'));
+      console.log("img id : " + $(_this).attr('id'));
       $('#' + $(this).attr('id') + '').css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
