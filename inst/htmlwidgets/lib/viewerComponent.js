@@ -70,6 +70,11 @@ class ViewerComponent {
       Shiny.onInputChange(state,imgsrc);
   }
 
+  sendAllImages(){
+    console.log("sendAllImages");
+    this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+  }
+
   /** Not Yet Generic */
   handleExistance(params,src,id)
   {
@@ -223,7 +228,8 @@ class ViewerComponent {
     });
     this.selected_images = [...slctdimgs];
     console.log("selected img :  " + (this.selected_images).toString());
-    return this.selected_images;
+    this.sendAllImages();
+    //return this.selected_images;
 
 
     /*$("img").each(function (index) {
@@ -243,17 +249,6 @@ class ViewerComponent {
     //return highlightAll();
 
   }
-
-  /*$("ul#img_clssfctn_ud_divId").each(function() {
-    $(this).find('li').each(function(){
-        let img = $(this).find('img');
-        console.log();
-        /*img.attr("src", $('img.attachment-shop_thumbnail').attr('data-src'));
-        img.removeAttr('data-src');
-        img.removeAttr('data-lazy-type');
-        img.removeClass('lazy-hidden');
-    });  
-});*/
 
   deSelectAll() {
     $("img").each(function (index) {
@@ -310,7 +305,7 @@ class ViewerComponent {
   }
 
   imgloop(ar) {
-    this. placeHolder();
+    //this. placeHolder();
     console.log("PantheraIDSImageViewer : " );
     if(this.checkImageExistance(ar) == ar.length)
     {

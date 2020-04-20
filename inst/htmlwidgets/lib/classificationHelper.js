@@ -107,6 +107,7 @@
 
   function saveButtonListerner()
   {
+    console.log('classificationHelper.js saveButtonListerner()');
     imgClssfctnObj.liWhiteBackground();
     imgClssfctnObj.deSelectAll();
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
@@ -122,14 +123,6 @@
   function highlightAll(){
     console.log("In highlightAll()");
     let arry = [];
-
-    /*var images = $('#img_clssfctn_ud').find('img').map(
-      function() 
-      { 
-        return this.src; 
-      }
-    ).get();*/
-
     $('#img_clssfctn_ud img').each(function(){
       console.log("imgs loop");
       console.log($(this).attr('src'));
