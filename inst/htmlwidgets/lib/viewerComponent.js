@@ -207,7 +207,7 @@ class ViewerComponent {
 
   // This is specific to tag #
   selectAll(obj) {
-   
+    this.selected_images = 0;
     $("img").each(function (index) {
       console.log("In selctAll()");
       console.log("img id : " + $(this).attr('id'));
@@ -216,11 +216,11 @@ class ViewerComponent {
         'filter': 'alpha(opacity=40)'
       });
       $(".pictures > li").css("background-color", "yellow");
-      //obj.selected_images.push(this.attr('src'));
+      obj.selected_images.push(this.attr('src'));
       
     });
     console.log("Selected images : " + (obj.selected_images).length);
-    return this.selected_images;
+    //return this.selected_images;
 
   }
 

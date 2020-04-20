@@ -19,17 +19,20 @@
     
         $("#apply").on("click", function () {
           // send message to Shiny
+          console.log("classificationHelper.js line 22");
           Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
         });
 
         $("#selectAll").on("click", function () {
+          console.log("classificationHelper.js line 27");
           Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
 
         });
 
-        $("#img_clssfctn_ud_slct_all_button").on("click", function () {
+        $("#img_clssfctn_ud_slct_all_img_bttn").on("click", function () {
+          console.log("classificationHelper.js line 33");
           console.log("clicked selectAll");
-          Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
+          //Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
         });
 
         $("#deSelectAll").on("click", function () {
@@ -109,39 +112,7 @@
     imgClssfctnObj.getCurrClckdImg("clssfctn_vw_curr_img","");
   }
 
-  /************************************************************************/
-  /*
-  *
-   * @description - creates html component to display the images
-   * @param {String} ar - an array of images
-   * @returns {void} var src = ( ( ar[0].trim()).replace(/['"]+/g, ''));
-   * someText = src.replace(/(\r\n|\n|\r)/gm,"");
-   
-  function imgloop(ar) {
 
-    $(".pictures > li").css("background-color", "white");
-    //$(".pictures > li").css("width", "calc(100% / " + columnSize + ")");
-    //width: calc(100% / columnSize  )
-    for (i = 0; i < ar.length; i++) {
-      var liId = i;
-      var img = new Image();
-      var ul = document.getElementById(this.mo);
-      img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-      img.alt = "Camera Trap";
-      img.datamarked = 0;
-      //setCol();
-      ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
-      img.src + '"  marked="' + img.datamarked + '" src="' +
-      img.src + '" alt="' + img.alt + '" /> </li>';
-      imgClssfctnObj.setCol();
-      // inserting an list of images uinside the ul tag
-    }  
-  } */
-
-  /**
-   * @description clears inner html components identified by elementId 'x'
-   *
-   */
   function clearImages() {
     $("#img_clssfctn_ud").html("");
   }
