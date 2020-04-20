@@ -210,7 +210,8 @@ class ViewerComponent {
     this.selected_images = 0;
     $("img").each(function (index) {
       console.log("In selctAll()");
-      console.log("img id : " + $(_this).attr('id'));
+      console.log("index : " + index);
+      console.log("img id : " + $(this).attr('id'));
       $('#' + $(this).attr('id') + '').css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
@@ -223,6 +224,17 @@ class ViewerComponent {
     //return this.selected_images;
 
   }
+
+  /*$("ul#img_clssfctn_ud_divId").each(function() {
+    $(this).find('li').each(function(){
+        let img = $(this).find('img');
+        console.log();
+        /*img.attr("src", $('img.attachment-shop_thumbnail').attr('data-src'));
+        img.removeAttr('data-src');
+        img.removeAttr('data-lazy-type');
+        img.removeClass('lazy-hidden');
+    });  
+});*/
 
   deSelectAll() {
     $("img").each(function (index) {
