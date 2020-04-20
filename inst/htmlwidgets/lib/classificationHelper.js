@@ -131,6 +131,10 @@
     ).get();*/
 
     $('#img_clssfctn_ud img').each(function(){
+      console.log("img loop");
+      console.log($(this).attr('src'));
+      console.log(this.id);
+
       /*this.css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
