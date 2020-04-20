@@ -1,6 +1,6 @@
 
     /***************************************************************************
-    @version Viewer.js v1.3.5
+    @version Viewer.js v1.3.6
     @author Valentine Tawira
     @description PantheraImageViewer Script for handling the processing of the
             file data and rendering of the viewer panel
@@ -19,20 +19,16 @@
     
         $("#apply").on("click", function () {
           // send message to Shiny
+          console.log("classificationHelper.js line 22");
           Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
         });
 
-        $("#selectAll").on("click", function () {
-          Shiny.onInputChange("sources", imgClssfctnObj.selectAll());
-
+        $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click", function () {
+   
+          imgClssfctnObj.selectAll();
         });
 
-        $("#img_clssfctn_ud_slct_all_button").on("click", function () {
-          console.log("clicked selectAll");
-          Shiny.onInputChange("sources", imgClssfctnObj.selectAll(imgClssfctnObj));
-        });
-
-        $("#deSelectAll").on("click", function () {
+        $("#img_clssfctn_ud_dslct_all_imgs_bttn").on("click", function () {
           imgClssfctnObj.deSelectAll();
         });
 
@@ -103,47 +99,39 @@
 
   function saveButtonListerner()
   {
+    console.log('classificationHelper.js saveButtonListerner()');
     imgClssfctnObj.liWhiteBackground();
     imgClssfctnObj.deSelectAll();
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
     imgClssfctnObj.getCurrClckdImg("clssfctn_vw_curr_img","");
   }
 
-  /************************************************************************/
-  /*
-  *
-   * @description - creates html component to display the images
-   * @param {String} ar - an array of images
-   * @returns {void} var src = ( ( ar[0].trim()).replace(/['"]+/g, ''));
-   * someText = src.replace(/(\r\n|\n|\r)/gm,"");
-   
-  function imgloop(ar) {
 
-    $(".pictures > li").css("background-color", "white");
-    //$(".pictures > li").css("width", "calc(100% / " + columnSize + ")");
-    //width: calc(100% / columnSize  )
-    for (i = 0; i < ar.length; i++) {
-      var liId = i;
-      var img = new Image();
-      var ul = document.getElementById(this.mo);
-      img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-      img.alt = "Camera Trap";
-      img.datamarked = 0;
-      //setCol();
-      ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' +
-      img.src + '"  marked="' + img.datamarked + '" src="' +
-      img.src + '" alt="' + img.alt + '" /> </li>';
-      imgClssfctnObj.setCol();
-      // inserting an list of images uinside the ul tag
-    }  
-  } */
-
-  /**
-   * @description clears inner html components identified by elementId 'x'
-   *
-   */
   function clearImages() {
     $("#img_clssfctn_ud").html("");
+  }
+
+
+  function highlightAll(){
+    console.log("In highlightAll()");
+    let arry = [];
+    $('#img_clssfctn_ud img').each(function(){
+      console.log("imgs loop");
+      console.log($(this).attr('src'));
+      console.log(this.id);
+
+      $('#' + this.id + '').css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $(".pictures > li").css("background-color", "yellow");
+      arry.push($(this).attr('src'));
+    });
+
+    console.log("SRC : " + arry.toString());
+    console.log("arry : " + arry.length);
+
+    return arry;
   }
 
 

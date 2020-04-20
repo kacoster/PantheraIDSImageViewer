@@ -1,3 +1,9 @@
+   /***************************************************************************
+      @version ViewerComponent v1.3.6
+      @author Valentine Tawira
+      @Copyright (C) 2019 | Panthera Corporation
+     ***************************************************************************/
+
 class ViewerComponent {
 
   constructor(batnum,imgNumb,columnSize,moduleId,csvfile)
@@ -68,6 +74,11 @@ class ViewerComponent {
   getCurrClckdImg(state, imgsrc)
   {
       Shiny.onInputChange(state,imgsrc);
+  }
+
+  sendAllImages(){
+    console.log("sendAllImages");
+    this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
   }
 
   /** Not Yet Generic */
@@ -205,22 +216,20 @@ class ViewerComponent {
       return this.trimSRC(this.getSelectedImages());
   }
 
-  // This is specific to tag #
-  selectAll(obj) {
-   
-    $("img").each(function (index) {
-      console.log("In selctAll()");
-      console.log("img id : " + $(this).attr('id'));
-      $('#' + $(this).attr('id') + '').css({
-        'opacity': '0.1',
+  selectAll() {
+    this.selected_images = 0;
+    let slctdimgs = [];
+    $('#img_clssfctn_ud img').each(function(){
+
+      $('#' + this.id + '').css({
+        'opacity': '0.4',
         'filter': 'alpha(opacity=40)'
       });
       $(".pictures > li").css("background-color", "yellow");
-      //obj.selected_images.push(this.attr('src'));
-      
+      slctdimgs.push($(this).attr('src'));
     });
-    console.log("Selected images : " + (obj.selected_images).length);
-    return this.selected_images;
+    this.selected_images = [...slctdimgs];
+    this.sendAllImages();
 
   }
 
@@ -279,7 +288,7 @@ class ViewerComponent {
   }
 
   imgloop(ar) {
-    this. placeHolder();
+    //this. placeHolder();
     console.log("PantheraIDSImageViewer : " );
     if(this.checkImageExistance(ar) == ar.length)
     {
@@ -381,18 +390,5 @@ class ViewerComponent {
   return;
 }
 
-/*isKeyPressed(event) {
-  console.log(" isKeyPressed(event)");
-  console.log("event.target.src : " + event.target.src);
-   //arrayClone(this.selected_images);
-  if (event.shiftKey) {
-    console.log(" isKeyPressed : event.shiftKey");
-    this.handleExistance(this.selected_images, event.target.src, event.target.id);
-  } else {
-    console.log(" isKeyPressed : " + event.click);
-    objectOf("imgClassification");
-    this.callvjs();
-  }
-}*/
 }
 

@@ -1,5 +1,5 @@
    /***************************************************************************
-      @version Viewer.js v1.3.5
+      @version Viewer.js v1.3.6
       @author Valentine Tawira
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
