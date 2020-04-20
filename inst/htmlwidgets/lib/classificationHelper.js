@@ -120,9 +120,12 @@
 
 
   function highlightAll(){
-    console.log("In highlightAll");
-    let arry = [];
-    $("img").each(function (index) {
+    console.log("In highlight All");
+    //let arry = [];
+
+    var images = $('#img_clssfctn_ud').find('img').map(function() { return this.src; }).get();
+
+    /*$("img").each(function (index) {
       //console.log("In selctAll()");
       //console.log("index : " + index);
       console.log("img id : " + $(this).attr('id'));
@@ -133,8 +136,9 @@
       $(".pictures > li").css("background-color", "yellow");
       arry.push(this.attr('src'));
       
-    });
-    console.log("Selected images : " + (obj.selected_images).length);
+    });*/
+    console.log("Selected images : " + images);
+    //console.log("Selected images : " + (obj.selected_images).length);
   }
 
 
