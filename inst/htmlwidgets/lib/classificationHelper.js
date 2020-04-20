@@ -131,20 +131,29 @@
     ).get();*/
 
     $('#img_clssfctn_ud img').each(function(){
-      console.log("img loop");
+      console.log("imgs loop");
       console.log($(this).attr('src'));
       console.log(this.id);
 
+      $('#' + this.id + '').css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $(".pictures > li").css("background-color", "yellow");
       /*this.css({
         'opacity': '0.1',
         'filter': 'alpha(opacity=40)'
       });
       $(".pictures > li").css("background-color", "yellow");*/
-      arry.push(this.src);
+      arry.push($(this).attr('src'));
     });
 
-    console.log("SRC : " + arry);
+    console.log("SRC : " + arry.toString());
     console.log("arry : " + arry.length);
+
+    return arry;
+
+ 
     
 
     /*$("img").each(function (index) {
