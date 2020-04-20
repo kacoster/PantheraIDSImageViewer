@@ -119,6 +119,25 @@
   }
 
 
+  function highlightAll(){
+    console.log("In highlightAll");
+    let arry = [];
+    $("img").each(function (index) {
+      //console.log("In selctAll()");
+      //console.log("index : " + index);
+      console.log("img id : " + $(this).attr('id'));
+      $('#' + $(this).attr('id') + '').css({
+        'opacity': '0.1',
+        'filter': 'alpha(opacity=40)'
+      });
+      $(".pictures > li").css("background-color", "yellow");
+      arry.push(this.attr('src'));
+      
+    });
+    console.log("Selected images : " + (obj.selected_images).length);
+  }
+
+
   
 
 

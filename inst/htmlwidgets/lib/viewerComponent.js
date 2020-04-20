@@ -208,7 +208,7 @@ class ViewerComponent {
   // This is specific to tag #
   selectAll(obj) {
     this.selected_images = 0;
-    $("img").each(function (index) {
+    /*$("img").each(function (index) {
       console.log("In selctAll()");
       console.log("index : " + index);
       console.log("img id : " + $(this).attr('id'));
@@ -220,8 +220,9 @@ class ViewerComponent {
       obj.selected_images.push(this.attr('src'));
       
     });
-    console.log("Selected images : " + (obj.selected_images).length);
+    console.log("Selected images : " + (obj.selected_images).length);*/
     //return this.selected_images;
+    return highlightAll();
 
   }
 
