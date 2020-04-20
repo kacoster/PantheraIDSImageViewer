@@ -120,10 +120,28 @@
 
 
   function highlightAll(){
-    console.log("In highlight All");
-    //let arry = [];
+    console.log("In highlightAll");
+    let arry = [];
 
-    var images = $('#img_clssfctn_ud').find('img').map(function() { return this.src; }).get();
+    /*var images = $('#img_clssfctn_ud').find('img').map(
+      function() 
+      { 
+        return this.src; 
+      }
+    ).get();*/
+
+    $('#img_clssfctn_ud img').each(function(){
+      $('#' + $(this).attr('id')).css({
+        'opacity': '0.1',
+        'filter': 'alpha(opacity=40)'
+      });
+      $(".pictures > li").css("background-color", "yellow");
+      arry.push(this.attr('src'));
+    });
+
+    console.log("SRC : " + arry);
+    console.log("arry : " + arry.length);
+    
 
     /*$("img").each(function (index) {
       //console.log("In selctAll()");
@@ -137,7 +155,7 @@
       arry.push(this.attr('src'));
       
     });*/
-    console.log("Selected images : " + images);
+    //console.log("Selected images : " + images);
     //console.log("Selected images : " + (obj.selected_images).length);
   }
 
