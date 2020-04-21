@@ -1,4 +1,4 @@
-
+console.log("viewerHelpers.js  panimgvwr");
     function fetchServerData(csvfile,moduleId)
     { 
         if(moduleId === "img_clssfctn_ud"){setImageArray(loadFile(csvfile))}

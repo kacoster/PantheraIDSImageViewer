@@ -14,7 +14,7 @@
 
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
-     
+     console.log("classificationHelper.js  panimgvwr");
      $(document).ready(function () {
     
         $("#apply").on("click", function () {

@@ -3,7 +3,7 @@
       @author Valentine Tawira
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
-
+    console.log("ViewerComponent.js  panimgvwr");
 class ViewerComponent {
 
   constructor(batnum,imgNumb,columnSize,moduleId,csvfile)
