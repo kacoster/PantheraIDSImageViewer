@@ -3,7 +3,7 @@
       @author Valentine Tawira
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
-    console.log("ViewerComponent.js  panimgvwr");
+    console.log("ViewerComponent.js  panimgvwr-new");
 class ViewerComponent {
 
   constructor(batnum,imgNumb,columnSize,moduleId,csvfile)
@@ -27,6 +27,8 @@ class ViewerComponent {
       alert(" Error in reading your images.Please check if all requirements are provided.");
     }
     else{
+      console.log("response : " + response);
+      console.log("response.split() : " + response.split(','));
       this.imgArray = response.split(',');
       this.imgArray.splice(0, 1);
       this.imgArray[0] = this.imgArray[0].replace("Source", "");
