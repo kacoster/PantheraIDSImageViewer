@@ -26,8 +26,8 @@ class ViewerComponent {
       alert(" Error in reading your images.Please check if all requirements are provided.");
     }
     else{
-      console.log("response : " + response);
-      console.log("response.split() : " + response.split(','));
+      //console.log("response : " + response);
+      //console.log("response.split() : " + response.split(','));
       this.imgArray = response.split(',');
       this.imgArray.splice(0, 1);
       this.imgArray[0] = this.imgArray[0].replace("Source", "");
