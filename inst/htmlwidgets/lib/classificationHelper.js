@@ -72,7 +72,8 @@
 
   function resetProps()
   {
-    imgClssfctnObj.selected_images.length = 0;
+    console.log('new resetProps()');
+    (imgClssfctnObj.selected_images).length = 0;
     imgClssfctnObj.batnum = 0;
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
   }
