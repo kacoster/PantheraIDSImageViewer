@@ -14,7 +14,6 @@
 
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
-     
      $(document).ready(function () {
     
         $("#apply").on("click", function () {
@@ -72,7 +71,8 @@
 
   function resetProps()
   {
-    imgClssfctnObj.selected_images.length = 0;
+    console.log('new resetProps()');
+    (imgClssfctnObj.selected_images).length = 0;
     imgClssfctnObj.batnum = 0;
     imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img","");
   }

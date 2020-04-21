@@ -14,8 +14,9 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-       console.log("case classification module ");
-       console.log("PantheraIDSImageViewer v 1.2.1");
+       //console.log("case classification module ");
+       //console.log("PantheraIDSImageViewer v 1.2.1");
+       console.log("viewerimgclssfctnud  21-04-20");
 
            //readServerData(x.message);
            Shiny.addCustomMessageHandler("img_clssfctn_ud_batch_image_size",
