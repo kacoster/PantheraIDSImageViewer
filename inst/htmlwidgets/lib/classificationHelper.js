@@ -69,6 +69,10 @@
         }
   }
 
+  /*function setDirImgs(){
+
+  }*/
+
   function resetProps()
   {
     console.log('new resetProps()');

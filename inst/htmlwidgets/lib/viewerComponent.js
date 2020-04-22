@@ -282,6 +282,7 @@ class ViewerComponent {
       if (xmlhttp.status==200) {
       }
       else{
+        
         count++;
       } 
     }
