@@ -71,7 +71,7 @@
 
   Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
     function(msg) {
-      let dirimgs = JSON.parse(msg);
+      let dirimgs = (msg).split(',');
       console.log("img_clssfctn_ud_dir_imgs");
       console.log("dir imgs : " + msg);
       console.log("dir arry : " + dirimgs.length);
