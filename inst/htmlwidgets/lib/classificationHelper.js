@@ -69,6 +69,16 @@
         }
   }
 
+  Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
+    function(msg) {
+      console.log("img_clssfctn_ud_dir_imgs");
+      imgClssfctnObj.dirImgs = msg.split(",");
+      console.log(imgClssfctnObj.dirImgs );
+      //console.log("dir imgs : " + msg);
+    }
+  );
+
+
   /*function setDirImgs(){
 
   }*/

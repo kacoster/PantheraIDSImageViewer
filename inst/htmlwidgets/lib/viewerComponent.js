@@ -17,6 +17,7 @@ class ViewerComponent {
       this.nextPrev = "0";
       this.result = [];
       this.tempRemoved ="";
+      this.dirImgs = [];
   }
 
 
@@ -259,7 +260,11 @@ class ViewerComponent {
 
   placeHolder(imgURL)
   {
-    let xmlhttp = new XMLHttpRequest();
+    if((this.dirImgs).includes(imgURL)){
+      return true;
+    }
+    return false;
+    /*let xmlhttp = new XMLHttpRequest();
     let url = imgURL;
       xmlhttp.open("GET", url, false);
       xmlhttp.send();
@@ -268,10 +273,22 @@ class ViewerComponent {
       }
       else{
        return false;
-      } 
+      } */
   }
 
   checkImageExistance(arry) {
+      let msgimgs = 0;
+      arry.forEach(element => {
+        console.log("element :  " + element);
+        element = ((element.trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"")
+        if(!(this.dirImgs).includes(element)){
+          msgimgs++;
+        }
+      });
+
+      return msgimgs;
+      //return arry.every(i => (this.dirImgs).includes(i));
+    /*
     let count = 0;
     for(let i= 0; i< arry.length ; i++)
     {
@@ -282,11 +299,11 @@ class ViewerComponent {
       if (xmlhttp.status==200) {
       }
       else{
-        
+
         count++;
       } 
     }
-    return count; 
+    return count; */
   }
 
   imgloop(ar) {

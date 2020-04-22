@@ -53,18 +53,6 @@ HTMLWidgets.widget({
                 }
             );
 
-            Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
-                function(msg) {
-
-                  
-
-                  console.log("dir imgs : " + msg);
-                  /*nextPrevClicked("1");
-                  fetchServerData(x.message,x.componentID);
-                  resetProps();*/
-                }
-            );
-
             Shiny.addCustomMessageHandler("img_clssfctn_ud_sv_edt_button",
                 function(msg) {
                   console.log("In Handler img_clssfctn_ud_sv_edt_button");
