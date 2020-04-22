@@ -54,9 +54,9 @@ HTMLWidgets.widget({
             );
 
             Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
-                function(images) {
+                function(msg) {
 
-                  let images = JSON.parse(images);
+                  let images = JSON.parse(msg);
 
                   console.log("dir imgs : " + images);
                   /*nextPrevClicked("1");
