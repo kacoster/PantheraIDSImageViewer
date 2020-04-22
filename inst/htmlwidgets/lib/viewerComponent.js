@@ -279,8 +279,9 @@ class ViewerComponent {
   checkImageExistance(arry) {
       let msgimgs = 0;
       arry.forEach(element => {
+        
+        element = ((element.trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
         console.log("element :  " + element);
-        element = ((element.trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"")
         if(!(this.dirImgs).includes(element)){
           msgimgs++;
         }
