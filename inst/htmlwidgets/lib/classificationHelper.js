@@ -72,11 +72,12 @@
   Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
     function(msg) {
       console.log("img_clssfctn_ud_dir_imgs");
-      let array = msg.split(',');
+      console.log("dir imgs : " + msg);
+      /*let array = msg.toString   .split(',');
       console.log("Array : " + array);
       imgClssfctnObj.dirImgs = [...array]
-      console.log(imgClssfctnObj.dirImgs );
-      //console.log("dir imgs : " + msg);
+      console.log(imgClssfctnObj.dirImgs );*/
+      
     }
   );
 
