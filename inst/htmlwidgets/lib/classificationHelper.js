@@ -73,14 +73,14 @@
     function(msg) {
 
       console.log("Type of : " + typeof(msg));
-      let dirimgs = (msg).split(',');
+      //let dirimgs = msg;
       console.log("img_clssfctn_ud_dir_imgs");
       console.log("dir imgs : " + msg);
-      console.log("dir arry : " + dirimgs.length);
+      console.log("dir arry : " + msg.length);
       /*let array = msg.toString   .split(',');
-      console.log("Array : " + array);
-      imgClssfctnObj.dirImgs = [...array]
-      console.log(imgClssfctnObj.dirImgs );*/
+      console.log("Array : " + array);*/
+      imgClssfctnObj.dirImgs = [...msg]
+      console.log(imgClssfctnObj.dirImgs );
 
       
     }
