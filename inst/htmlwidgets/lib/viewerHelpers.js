@@ -1,7 +1,7 @@
 
     function fetchServerData(csvfile,moduleId)
     { 
-        loadFile(file).then(data => this.setImageArray(data));
+        //loadFile(file).then(data => this.setImageArray(data));
         /*if(moduleId === "img_clssfctn_ud"){setImageArray(loadFile(csvfile))}
         if(moduleId === "ct_vldt_img_trggr_tbl_vldtn_9") {setValidationArray(loadFile(csvfile),9)}
         if(moduleId === "ct_vldt_img_trggr_tbl_vldtn_10"){setValidationArray(loadFile(csvfile),10)}
