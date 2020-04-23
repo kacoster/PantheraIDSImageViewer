@@ -40,6 +40,7 @@ class ViewerComponent {
         1 + " / " + this.getBatchNumber());
       }
     }
+
     this.imgloop(this.displayImages(this.imgNumb,0));
   }
 
@@ -276,6 +277,11 @@ class ViewerComponent {
       } */
   }
 
+  /**
+   * To be fixed
+   * @param {*} arry 
+   */
+
   checkImageExistance(arry) {
     console.log('checkImageExistance');
       let msgimgs = 0;
@@ -283,12 +289,15 @@ class ViewerComponent {
         
         element = ((element.trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
         let imgname = element.substring((element.lastIndexOf("/")+1),element.length);
-        console.log("element :  " + imgname);
-        if(!(this.dirImgs).includes(imgname)){
+        //console.log("element :  " + imgname);
+        if((this.dirImgs).includes(imgname)){
+        }else{
           msgimgs++;
         }
-      });
 
+
+      });
+      console.log(msgimgs);
       return msgimgs;
       //return arry.every(i => (this.dirImgs).includes(i));
     /*
