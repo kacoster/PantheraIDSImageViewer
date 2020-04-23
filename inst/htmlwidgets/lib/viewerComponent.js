@@ -320,21 +320,21 @@ class ViewerComponent {
 
   imgloop(ar) {
     //this. placeHolder();
-    console.log("PantheraIDSImageViewer : " );
-    if(this.checkImageExistance(ar) == ar.length)
+    console.log("imgloop new : " );
+    /*if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
         console.log('no_srv_imgs');
         Shiny.setInputValue('no_srv_imgs', 'no imgs')
       }
        
-    }
-    else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
-    {
-      if(this.moduleId === "img_clssfctn_ud"){
+    }*/
+    //else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
+    //{
+      /*if(this.moduleId === "img_clssfctn_ud"){
         console.log('mssng_srv_imgs');
         Shiny.setInputValue('mssng_srv_imgs', 'missing imgs');
-      }
+      }*/
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
@@ -354,8 +354,8 @@ class ViewerComponent {
           //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    }
-   else{
+    //}
+   /*else{
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
@@ -367,7 +367,7 @@ class ViewerComponent {
           ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    }
+    }*/
   }
 
   resetHandlers(msg)
