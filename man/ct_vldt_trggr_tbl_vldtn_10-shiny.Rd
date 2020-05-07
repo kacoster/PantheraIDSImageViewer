@@ -6,11 +6,9 @@
 \alias{renderCt_vldt_trggr_tbl_vldtn_10}
 \title{Shiny bindings for ct_vldt_trggr_tbl_vldtn_10}
 \usage{
-ct_vldt_trggr_tbl_vldtn_10Output(outputId, width = "100\%",
-  height = "400px")
+ct_vldt_trggr_tbl_vldtn_10Output(outputId, width = "100\%", height = "400px")
 
-renderCt_vldt_trggr_tbl_vldtn_10(expr, env = parent.frame(),
-  quoted = FALSE)
+renderCt_vldt_trggr_tbl_vldtn_10(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

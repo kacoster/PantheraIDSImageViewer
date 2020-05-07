@@ -10,11 +10,11 @@ Authors@R:
            email = "vtawira@panthera.org")
 Description: Image viewer widget for displaying images as tile/thumbnail. 
 Usage: imageViewer('filePath',width,height,elementId)
-License:  MIT + file LICENSE
+License: MIT + file LICENSE
 Imports: htmlwidgets
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 NeedsCompilation: no
 Packaged: 2020-02-12 13:51:45 UTC; 
 Maintainer: Valentine Tawira  <vtawira@panthera.org>
@@ -29,5 +29,3 @@ RemoteRef: master
 GithubRepo: PantheraIDSImageViewer 
 GithubUsername: kacoster
 GithubRef: master
-
-

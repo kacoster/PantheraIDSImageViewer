@@ -4,8 +4,12 @@
 \alias{ct_vldt_trggr_tbl_vldtn_11}
 \title{<Add Title>}
 \usage{
-ct_vldt_trggr_tbl_vldtn_11(filePath, width = NULL, height = NULL,
-  elementId = NULL)
+ct_vldt_trggr_tbl_vldtn_11(
+  filePath,
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
 }
 \description{
 <Add Description>
