@@ -5,24 +5,24 @@
      ***************************************************************************/
 
 
-    var find_flag = false;
-    var selected_images_clone = [];
-    var whichViewer ;
+    var findflag = false;
+    var slctd_imgs_clone = [];
+    var whichviewer ;
     
-    function objectOf(viewerType)
+    function objectof(viewerType)
     {
       console.log("in objectOf()");
-      whichViewer = viewerType;
+      whichviewer = viewerType;
     }
 
-    function resetwhichViewer()
+    function resetwhichviewer()
     {
-      whichViewer = "";
+      whichviewer = "";
     }
 
-    function selectionFind(flag)
+    function selectionfind(flag)
     {
-      find_flag = flag;
+      findflag = flag;
    }
 
 
@@ -52,8 +52,8 @@
       clickStatus = status;
     }*/
 
-    function arrayClone(param){
-       selected_images_clone = [...param];
+    function arrayclone(param){
+       slctd_imgs_clone = [...param];
     }
 
     (function (global, factory) {
@@ -1841,10 +1841,10 @@
               nextPrev = "0";
               return;
             }*/
-            if(find_flag === true)
+            if(findflag === true)
             {
               console.log("I am hidding the image");
-              find_flag = false;
+              findflag = false;
               return this.hide();
             }
 
@@ -1876,12 +1876,12 @@
           console.log("Image URL : " + image.src);
 
 
-          if( whichViewer === "pttrn_rcgntn_vwr")
+          if( whichviewer === "pttrn_rcgntn_vwr")
           {
-            console.log("In whichViewer : pttrn_rcgntn_vwr");
+            console.log("In whichviewer : pttrn_rcgntn_vwr");
             if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || pttrn_rcgntn_obj.removedRef() === url)
             {
-                if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || selected_images_clone.includes(url))
+                if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || slctd_imgs_clone.includes(url))
                 {
                   this.image = image;
                   console.log("Um hidding the clicked image");
@@ -1893,21 +1893,21 @@
           }
 
 
-          if( whichViewer === "pttrn_rcgntn_vwr")
+          if( whichviewer === "pttrn_rcgntn_vwr")
           {
             console.log(" Which Viewer : pttrn_rcgntn_vwr");
             // getCurrClckdImg("clssfctn_vw_curr_img",
             //     url.substring(url.lastIndexOf("/") + 1, url.length ));
                 //resetwhichViewer();
           }
-          /*else if(whichViewer === "imgIdentification")
+          /*else if(whichviewer === "imgIdentification")
           {
             console.log(" Which Viewer : imgIdentification");
             getCurrClckdImg("spcs_idntfctn_id_rf_1_vw_curr_img",
                url.substring(url.lastIndexOf("/") + 1, url.length ));
                //resetwhichViewer();
           }
-          else if (whichViewer === "imgIdentification_rf2")
+          else if (whichviewer === "imgIdentification_rf2")
           {
              console.log(" Which Viewer : imgIdentification_rf2");
              getCurrClckdImg("spcs_idntfctn_id_rf_2_vw_curr_img",
