@@ -39,7 +39,13 @@ class ViewerComponent {
         1 + " / " + this.getBatchNumber());
       }
     }
-    this.imgloop(this.displayImages(this.imgNumb,0));
+    if(this.moduleId === "img_clssfctn_ud"){
+      this.imgloop(this.displayImages(this.imgNumb,0));
+    }
+    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+      this.imgloop(this.imgArray);
+    }
+    
   }
 
   initializeImgArray(array)
