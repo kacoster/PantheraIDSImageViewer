@@ -55,6 +55,7 @@ class ViewerComponent {
 
   highliter(elementID)
   {
+    console.log("highliter : " + elementID);
       $('#' + elementID + '').css({
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
@@ -77,7 +78,7 @@ class ViewerComponent {
               'width' : 'calc(100% /' + this.columnSize +')'
           });
   }
-
+// clssfctn_slctd_img
   getCurrClckdImg(state, imgsrc)
   {
       Shiny.onInputChange(state,imgsrc);
@@ -85,21 +86,32 @@ class ViewerComponent {
 
   sendAllImages(){
     console.log("sendAllImages");
-    this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+    this.getCurrClckdImg(this.selectedImgShinyRef(),this.getTrimedSelectedImages().toString());
+  }
+
+  selectedImgShinyRef(){
+    if(this.moduleId === "img_clssfctn_ud"){
+      return "clssfctn_slctd_img";
+    }
+    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+      return "pttrn_rcgntn_mn_pnl_slctd_img";
+    }
   }
 
   /** Not Yet Generic */
   handleExistance(params,src,id)
   {
+    let ref = this.selectedImgShinyRef();
+
       if(params.includes(src))
       {
           this.tempRemoved =  (params.splice(params.indexOf(src),1))[0];
           this.removeHighlight(id);
           if(params.length > 0)
           {
-              this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+              this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
           }else{
-              this.getCurrClckdImg("clssfctn_slctd_img",""); 
+              this.getCurrClckdImg(ref,""); 
           }
       }
       else{
@@ -111,7 +123,7 @@ class ViewerComponent {
         else{
           params.push(src);
           this.highliter(id);
-          this.getCurrClckdImg("clssfctn_slctd_img",this.getTrimedSelectedImages().toString());
+          this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
         }
       }
   }
