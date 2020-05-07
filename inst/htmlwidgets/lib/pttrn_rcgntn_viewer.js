@@ -17,17 +17,22 @@
       whichViewer = "";
     }
 
-    /*
-    var nextPrev = "0";
-    var clickStatus = "0";
-    var selected_images_clone = [];
-    var find_flag = false;
-
-
     function selectionFind(flag)
     {
       find_flag = flag;
    }
+
+   var find_flag = false;
+   var selected_images_clone = [];
+
+    /*
+    var nextPrev = "0";
+    var clickStatus = "0";
+    
+    
+
+
+    
 
     
     function nextPrevClicked(status)
@@ -1830,11 +1835,11 @@
 
           if (!this.isShown) {
 
-            if(nextPrev === "1"){
+            /*if(nextPrev === "1"){
               console.log("Line 1824 returns");
               nextPrev = "0";
               return;
-            }
+            }*/
             if(find_flag === true)
             {
               console.log("I am hidding the image");
