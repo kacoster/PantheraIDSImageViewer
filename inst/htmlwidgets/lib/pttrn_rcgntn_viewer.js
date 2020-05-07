@@ -5,7 +5,10 @@
      ***************************************************************************/
 
 
+    var find_flag = false;
+    var selected_images_clone = [];
     var whichViewer ;
+    
     function objectOf(viewerType)
     {
       console.log("in objectOf()");
@@ -22,8 +25,6 @@
       find_flag = flag;
    }
 
-   var find_flag = false;
-   var selected_images_clone = [];
 
     /*
     var nextPrev = "0";

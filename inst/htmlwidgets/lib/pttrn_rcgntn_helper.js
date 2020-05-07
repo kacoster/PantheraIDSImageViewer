@@ -46,8 +46,12 @@
   */
   function isKeyPressed(event,id) {
 
+        let flag = pttrn_rcgntn_obj.selected_images.includes(event.target.src)
+        console.log('Already Selected : ' + flag );
+
         arrayClone(pttrn_rcgntn_obj.selected_images);
         if (event.shiftKey) {
+          console.log("Shift Key");
           
           if(pttrn_rcgntn_obj.selected_images.includes(event.target.src))
           {
@@ -57,6 +61,7 @@
                                             event.target.src, event.target.id);
 
         } else {
+          console.log("clicked")
           objectOf("pttrn_rcgntn_vwr");
           pttrn_rcgntn_obj.callvjs(pttrn_rcgntn_obj.moduleId+"_divId");
         }
