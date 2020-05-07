@@ -130,7 +130,7 @@
          * Show the toolbar.
          * @type {boolean | number | Object}
          */
-        toolbar: true,
+        toolbar: false, // true
 
         /**
          * Custom class name(s) to add to the viewer's root element.
@@ -154,7 +154,7 @@
          * Enable to request fullscreen when play.
          * @type {boolean}
          */
-        fullscreen: true,
+        fullscreen: false, // true
 
         /**
          * Define the initial index of image for viewing.
@@ -166,7 +166,7 @@
          * Enable inline mode.
          * @type {boolean}
          */
-        inline: false,
+        inline: true, // false
 
         /**
          * The amount of time to delay between automatically cycling an image when playing.
