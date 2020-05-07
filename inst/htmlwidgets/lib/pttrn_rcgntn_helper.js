@@ -44,7 +44,7 @@
   * Execute appropriate instructions based on event
   * @return void
   */
-  function isKeyPressed(event,id) {
+  function clickEvent(event,id) {
 
         let flag = pttrn_rcgntn_obj.selected_images.includes(event.target.src)
         console.log('Already Selected : ' + flag );
