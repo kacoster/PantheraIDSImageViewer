@@ -4,7 +4,7 @@
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
 
-
+    console.log("new version");
     var findflag = false;
     var slctd_imgs_clone = [];
     var whichviewer ;
@@ -130,7 +130,7 @@
          * Show the toolbar.
          * @type {boolean | number | Object}
          */
-        toolbar: false,
+        toolbar: true,
 
         /**
          * Custom class name(s) to add to the viewer's root element.
