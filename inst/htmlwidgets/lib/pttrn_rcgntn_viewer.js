@@ -118,7 +118,7 @@
          * Show the navbar.
          * @type {boolean | number}
          */
-        navbar: false,
+        navbar: true,
 
         /**
          * Specify the visibility and the content of the title.
@@ -130,7 +130,7 @@
          * Show the toolbar.
          * @type {boolean | number | Object}
          */
-        toolbar: true, // true
+        toolbar: false,
 
         /**
          * Custom class name(s) to add to the viewer's root element.
@@ -154,7 +154,7 @@
          * Enable to request fullscreen when play.
          * @type {boolean}
          */
-        fullscreen: true, // true
+        fullscreen: true,
 
         /**
          * Define the initial index of image for viewing.
@@ -166,7 +166,7 @@
          * Enable inline mode.
          * @type {boolean}
          */
-        inline: true, // false
+        inline: false,
 
         /**
          * The amount of time to delay between automatically cycling an image when playing.
