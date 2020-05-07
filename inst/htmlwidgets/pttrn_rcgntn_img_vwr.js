@@ -17,7 +17,7 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
                 function(mesg) {
-                  //console.log("Handler img_clssfctn_ud_fltr_button");
+                  console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
                   //nextPrevClicked("1");
                   fetchServerData(x.filePath,x.componentID);
                   //resetProps();
