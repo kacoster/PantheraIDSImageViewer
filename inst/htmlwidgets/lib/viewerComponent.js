@@ -17,7 +17,6 @@ class ViewerComponent {
       this.nextPrev = "0";
       this.result = [];
       this.tempRemoved ="";
-      this.dirImgs = [];
   }
 
 
@@ -40,7 +39,6 @@ class ViewerComponent {
         1 + " / " + this.getBatchNumber());
       }
     }
-
     this.imgloop(this.displayImages(this.imgNumb,0));
   }
 
@@ -261,11 +259,7 @@ class ViewerComponent {
 
   placeHolder(imgURL)
   {
-    if((this.dirImgs).includes(imgURL)){
-      return true;
-    }
-    return false;
-    /*let xmlhttp = new XMLHttpRequest();
+    let xmlhttp = new XMLHttpRequest();
     let url = imgURL;
       xmlhttp.open("GET", url, false);
       xmlhttp.send();
@@ -274,33 +268,10 @@ class ViewerComponent {
       }
       else{
        return false;
-      } */
+      } 
   }
 
-  /**
-   * To be fixed
-   * @param {*} arry 
-   */
-
   checkImageExistance(arry) {
-    console.log('checkImageExistance');
-      let msgimgs = 0;
-      arry.forEach(element => {
-        
-        element = ((element.trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-        let imgname = element.substring((element.lastIndexOf("/")+1),element.length);
-        //console.log("element :  " + imgname);
-        if((this.dirImgs).includes(imgname)){
-        }else{
-          msgimgs++;
-        }
-
-
-      });
-      console.log(msgimgs);
-      return msgimgs;
-      //return arry.every(i => (this.dirImgs).includes(i));
-    /*
     let count = 0;
     for(let i= 0; i< arry.length ; i++)
     {
@@ -311,30 +282,29 @@ class ViewerComponent {
       if (xmlhttp.status==200) {
       }
       else{
-
         count++;
       } 
     }
-    return count; */
+    return count; 
   }
 
   imgloop(ar) {
     //this. placeHolder();
-    console.log("imgloop new : " );
-    /*if(this.checkImageExistance(ar) == ar.length)
+    console.log("PantheraIDSImageViewer : " );
+    if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
         console.log('no_srv_imgs');
         Shiny.setInputValue('no_srv_imgs', 'no imgs')
       }
        
-    }*/
-    //else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
-    //{
-      /*if(this.moduleId === "img_clssfctn_ud"){
+    }
+    else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
+    {
+      if(this.moduleId === "img_clssfctn_ud"){
         console.log('mssng_srv_imgs');
         Shiny.setInputValue('mssng_srv_imgs', 'missing imgs');
-      }*/
+      }
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
@@ -354,8 +324,8 @@ class ViewerComponent {
           //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    //}
-   /*else{
+    }
+   else{
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
@@ -367,7 +337,7 @@ class ViewerComponent {
           ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    }*/
+    }
   }
 
   resetHandlers(msg)

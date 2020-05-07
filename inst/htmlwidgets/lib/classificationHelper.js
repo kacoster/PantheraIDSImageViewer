@@ -42,8 +42,7 @@
   });
 
   var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud","img_clssfctn_ud.csv");
-  var  pttrn_rcgntn_obj = new ViewerComponent(0,50,5,"spcs_idntfctn_pttrn_rcgntn_mn_pnl",
-                                              "spcs_idntfctn_pttrn_rcgntn_mn_pnl.csv");
+  //var ct_vldt_img_trggr_tbl_vldtn_9 = new ViewerComponent(0,50,5,"img_clssfctn_ud","img_clssfctn_ud.csv");
 
   /**
   * Handles all image panel click events
@@ -53,9 +52,7 @@
   * Execute appropriate instructions based on event
   * @return void
   */
-  function isKeyPressed(event) {
-
-        console.log("clicked ID : " + event.target.id);
+  function isKeyPressed(event,id) {
 
         arrayClone(imgClssfctnObj.selected_images);
         if (event.shiftKey) {
@@ -71,28 +68,6 @@
           imgClssfctnObj.callvjs(imgClssfctnObj.moduleId+"_divId");
         }
   }
-
-  Shiny.addCustomMessageHandler("img_clssfctn_ud_dir_imgs",
-    function(msg) {
-
-      console.log("Type of : " + typeof(msg));
-      //let dirimgs = msg;
-      console.log("img_clssfctn_ud_dir_imgs");
-      console.log("dir imgs : " + msg);
-      console.log("dir arry : " + msg.length);
-      /*let array = msg.toString   .split(',');
-      console.log("Array : " + array);*/
-      imgClssfctnObj.dirImgs = [...msg]
-      console.log(imgClssfctnObj.dirImgs );
-
-      
-    }
-  );
-
-
-  /*function setDirImgs(){
-
-  }*/
 
   function resetProps()
   {
