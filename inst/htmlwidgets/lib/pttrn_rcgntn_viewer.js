@@ -4,18 +4,8 @@
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
 
-    /*var whichViewer ;
-    var nextPrev = "0";
-    var clickStatus = "0";
-    var selected_images_clone = [];
-    var find_flag = false;
 
-
-    function selectionFind(flag)
-    {
-      find_flag = flag;
-   }
-
+    var whichViewer ;
     function objectOf(viewerType)
     {
       console.log("in objectOf()");
@@ -27,6 +17,19 @@
       whichViewer = "";
     }
 
+    /*
+    var nextPrev = "0";
+    var clickStatus = "0";
+    var selected_images_clone = [];
+    var find_flag = false;
+
+
+    function selectionFind(flag)
+    {
+      find_flag = flag;
+   }
+
+    
     function nextPrevClicked(status)
     {
         nextPrev = status;
@@ -1867,12 +1870,12 @@
           console.log("Image URL : " + image.src);
 
 
-          if( whichViewer === "imgClassification")
+          if( whichViewer === "pttrn_rcgntn_vwr")
           {
-            console.log("In whichViewer : imgClassification");
-            if(imgClssfctnObj.getSelectedImages().includes(url) || imgClssfctnObj.removedRef() === url)
+            console.log("In whichViewer : pttrn_rcgntn_vwr");
+            if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || pttrn_rcgntn_obj.removedRef() === url)
             {
-                if(imgClssfctnObj.getSelectedImages().includes(url) || selected_images_clone.includes(url))
+                if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || selected_images_clone.includes(url))
                 {
                   this.image = image;
                   console.log("Um hidding the clicked image");
@@ -1884,14 +1887,14 @@
           }
 
 
-          if( whichViewer === "imgClassification")
+          if( whichViewer === "pttrn_rcgntn_vwr")
           {
-            console.log(" Which Viewer : imgClassification");
-            getCurrClckdImg("clssfctn_vw_curr_img",
-                url.substring(url.lastIndexOf("/") + 1, url.length ));
+            console.log(" Which Viewer : pttrn_rcgntn_vwr");
+            // getCurrClckdImg("clssfctn_vw_curr_img",
+            //     url.substring(url.lastIndexOf("/") + 1, url.length ));
                 //resetwhichViewer();
           }
-          else if(whichViewer === "imgIdentification")
+          /*else if(whichViewer === "imgIdentification")
           {
             console.log(" Which Viewer : imgIdentification");
             getCurrClckdImg("spcs_idntfctn_id_rf_1_vw_curr_img",
@@ -1904,7 +1907,7 @@
              getCurrClckdImg("spcs_idntfctn_id_rf_2_vw_curr_img",
              url.substring(url.lastIndexOf("/") + 1,url.length ));
 
-          }
+          }*/
 
           if (isFunction(options.view)) {
             addListener(element, EVENT_VIEW, options.view, {

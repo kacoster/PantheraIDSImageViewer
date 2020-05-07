@@ -57,7 +57,7 @@
                                             event.target.src, event.target.id);
 
         } else {
-          objectOf("imgClassification");
+          objectOf("pttrn_rcgntn_vwr");
           pttrn_rcgntn_obj.callvjs(pttrn_rcgntn_obj.moduleId+"_divId");
         }
   }
@@ -69,7 +69,7 @@
     console.log('new resetProps()');
     (pttrn_rcgntn_obj.selected_images).length = 0;
     pttrn_rcgntn_obj.batnum = 0;
-    pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_slctd_img","");
+    //pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_slctd_img","");
   }
 
   function resetMsnImgsInputs(msg)

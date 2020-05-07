@@ -20,7 +20,7 @@ HTMLWidgets.widget({
                   console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
                   //nextPrevClicked("1");
                   fetchServerData(x.filePath,x.componentID);
-                  //resetProps();
+                  resetProps();
                 }
             );
 
