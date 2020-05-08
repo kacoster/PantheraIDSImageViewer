@@ -279,7 +279,7 @@ class ViewerComponent {
 
   invertSelection(){
     console.log("invertSelection")
-    Console.log("selected_img : " + this.selected_images);
+    console.log("selected_img : " + this.selected_images);
 
     let notSelected = (this.currentDisplayedImgs).filter( 
       function( el ) {
