@@ -75,6 +75,7 @@
     pttrn_rcgntn_obj.deSelectAll();
     (pttrn_rcgntn_obj.selected_images).length = 0;
     pttrn_rcgntn_obj.batnum = 0;
+    (this.imgArray).length = 0;
     //pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_slctd_img","");
   }
 
