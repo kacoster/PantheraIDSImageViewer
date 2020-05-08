@@ -281,10 +281,11 @@ class ViewerComponent {
     console.log("invertSelection")
     console.log("selected_img : " + this.selected_images);
 
-    let notSelected = (this.currentDisplayedImgs).filter( 
+    let notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images)
+    /*let notSelected = (this.currentDisplayedImgs).filter( 
       function( el ) {
       return (this.selected_images).indexOf( el ) < 0;
-    });
+    });*/
     this.deSelectAll();
     this.highlightInverse(notSelected);
 
@@ -292,6 +293,12 @@ class ViewerComponent {
     console.log("Not selected : " + notSelected);
 
   }
+
+  arryCompliment(ar1,ar2) { 
+    console.log("arryCompliment");
+    var elmts = ar1.filter(f => !ar2.includes(f)); 
+    return elmts;
+} 
 
   highlightInverse(ar){
     console.log("highlightInverse")
