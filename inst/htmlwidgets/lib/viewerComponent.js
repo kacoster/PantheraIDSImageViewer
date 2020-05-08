@@ -53,14 +53,25 @@ class ViewerComponent {
     this.imgArray = [...arr];
   }
 
+  ulClassName(){
+
+    if(this.moduleId === "img_clssfctn_ud"){
+      return 'pictures';
+    }
+    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+      return 'rcgntn_pictures';
+    }   
+  }
+
   highliter(elementID)
   {
+    let ulclassname = this.ulClassName();
     console.log("highliter : " + elementID);
       $('#' + elementID + '').css({
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
       });
-      $(".pictures > li").css("background-color", "yellow");
+      $('.'+ulclassname+'> li').css("background-color", "yellow");
   }
 
   removeHighlight(elementID)
@@ -118,7 +129,7 @@ class ViewerComponent {
         if(this.isPlacveHolder(src))
         {
           console.log("Cant Process Place Holder Image orig");
-          selectionFind(true);
+          this.callSelectionFind(true);
         }
         else{
           params.push(src);
@@ -126,6 +137,16 @@ class ViewerComponent {
           this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
         }
       }
+  }
+
+  callSelectionFind(value){
+    if(this.moduleId === "img_clssfctn_ud"){
+      selectionFind(value);
+    }
+    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+      selectionfind(value);
+    }
+
   }
 
   isPlacveHolder(src)
@@ -238,6 +259,7 @@ class ViewerComponent {
   selectAll() {
     this.selected_images = 0;
     let slctdimgs = [];
+    //let ulclassname = this.ulClassName();
     $('#img_clssfctn_ud img').each(function(){
 
       $('#' + this.id + '').css({
@@ -277,6 +299,7 @@ class ViewerComponent {
 
   placeHolder(imgURL)
   {
+    console.log("placeHolder request");
     let xmlhttp = new XMLHttpRequest();
     let url = imgURL;
       xmlhttp.open("GET", url, false);
@@ -290,6 +313,7 @@ class ViewerComponent {
   }
 
   checkImageExistance(arry) {
+    console.log("image existance request");
     let count = 0;
     for(let i= 0; i< arry.length ; i++)
     {
