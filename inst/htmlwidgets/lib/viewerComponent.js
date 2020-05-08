@@ -279,7 +279,7 @@ class ViewerComponent {
 
   invertSelection(){
     console.log("invertSelection")
-    console.log("selected_img : " + this.selected_images);
+    //console.log("selected_img : " + this.selected_images);
 
     let notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images)
     /*let notSelected = (this.currentDisplayedImgs).filter( 
@@ -289,8 +289,8 @@ class ViewerComponent {
     this.deSelectAll();
     this.highlightInverse(notSelected);
 
-    console.log("Selected : " + this.selected_images);
-    console.log("Not selected : " + notSelected);
+    //console.log("Selected : " + this.selected_images);
+    //console.log("Not selected : " + notSelected);
 
   }
 
@@ -305,13 +305,15 @@ class ViewerComponent {
 
   highlightInverse(ar){
     console.log("highlightInverse")
-    let i = 0;
+    //let i = 0;
     this.selected_images = 0;
     let slctdimgs = [];
     let ulclassname = this.ulClassName();
 
     $('#' + this.moduleId + ' img').each(function(){
-
+      console.log('From Array : ' + ar[0]);
+      console.log('From SRC : ' + $(this).attr('src'));
+      console.log(ar.includes($(this).attr('src')));
       if(ar.includes($(this).attr('src'))){
 
         $('#' + this.id + '').css({
@@ -462,7 +464,7 @@ class ViewerComponent {
           let liId = i + this.moduleId;
           let img = new Image();
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-          this.currentDisplayedImgs.push('http://localhost/'+img.src);
+          this.currentDisplayedImgs.push(img.src);
           img.alt = "Camera Trap";
           img.datamarked = 0;
           if(this.placeHolder(img.src)){
