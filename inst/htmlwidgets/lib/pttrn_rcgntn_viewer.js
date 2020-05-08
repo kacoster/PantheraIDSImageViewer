@@ -118,7 +118,7 @@
          * Show the navbar.
          * @type {boolean | number}
          */
-        navbar: true,
+        navbar: false, // true
 
         /**
          * Specify the visibility and the content of the title.
