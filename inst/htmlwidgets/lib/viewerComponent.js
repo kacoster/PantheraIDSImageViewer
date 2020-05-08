@@ -18,6 +18,7 @@ class ViewerComponent {
       this.result = [];
       this.tempRemoved ="";
       this.currentDisplayedImgs = [];
+      this.prevSelectedImgs = [];
   }
 
 
@@ -282,14 +283,21 @@ class ViewerComponent {
 
   invertSelection(){
     console.log("invertSelection")
+    let notSelected;
     //console.log("selected_img : " + this.selected_images);
-
-    let notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images)
+    if((this.selected_images).length > 0){
+      notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images);
+      this.deSelectAll();
+    }
+    else{
+      notSelected = this.arryCompliment(this.currentDisplayedImgs,this.prevSelectedImgs)
+    }
+    
     /*let notSelected = (this.currentDisplayedImgs).filter( 
       function( el ) {
       return (this.selected_images).indexOf( el ) < 0;
     });*/
-    this.deSelectAll();
+    
     this.highlightInverse(notSelected);
 
     //console.log("Selected : " + this.selected_images);
@@ -298,13 +306,16 @@ class ViewerComponent {
   }
 
   arryCompliment(ar1,ar2) { 
+    if(ar1.length == 0 || ar2.length ==0){
+      return
+    }
     console.log("arryCompliment");
     console.log(ar1[0])
     console.log(ar2[0])
     console.log("end");
     var elmts = ar1.filter(f => !ar2.includes(f)); 
     return elmts;
-} 
+  } 
 
   highlightInverse(ar){
     console.log("highlightInverse")
@@ -323,9 +334,10 @@ class ViewerComponent {
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
         });
+        slctdimgs.push($(this).attr('src'));
       }
       $('.'+ulclassname+'> li').css("background-color", "yellow");
-      slctdimgs.push($(this).attr('src'));
+      
 
     });
     this.selected_images = [...slctdimgs];
@@ -360,6 +372,8 @@ class ViewerComponent {
       });
       // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
     });
+    (this.prevSelectedImgs).length = 0;
+    this.prevSelectedImgs = [...this.selected_images];
     this.selected_images.length = 0;
   }
 
@@ -425,6 +439,7 @@ class ViewerComponent {
     //this. placeHolder();
     console.log("PantheraIDSImageViewer : 08/05/2020 " );
     (this.currentDisplayedImgs).length = 0;
+    (this.prevSelectedImgs).length = 0;
     
     /*if(this.checkImageExistance(ar) == ar.length)
     {
