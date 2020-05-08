@@ -332,8 +332,8 @@ class ViewerComponent {
 
   imgloop(ar) {
     //this. placeHolder();
-    console.log("PantheraIDSImageViewer : " );
-    if(this.checkImageExistance(ar) == ar.length)
+    console.log("PantheraIDSImageViewer : 08/05/2020 " );
+    /*if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
         console.log('no_srv_imgs');
@@ -366,8 +366,8 @@ class ViewerComponent {
           //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    }
-   else{
+    }*/
+   //else{
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
@@ -376,10 +376,18 @@ class ViewerComponent {
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
           img.alt = "Camera Trap";
           img.datamarked = 0;
-          ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+          if(this.placeHolder(img.src)){
+            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+          }
+          else{
+            img.src = '/srv/shiny-server/www/PantheraIDS_image_not_found_2.jpg';
+            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src +'"  alt="' + img.alt + '" /> </li>';
+
+          }
+          //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
           this.setCol();
       }
-    }
+    //}
   }
 
   resetHandlers(msg)
