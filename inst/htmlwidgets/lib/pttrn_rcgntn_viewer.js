@@ -4,7 +4,7 @@
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
 
-    console.log("version - 1");
+    console.log("version - 2");
     var findflag = false;
     var slctd_imgs_clone = [];
     var whichviewer ;

@@ -305,6 +305,7 @@ class ViewerComponent {
     let i = 0;
     this.selected_images = 0;
     let slctdimgs = [];
+    let ulclassname = this.ulClassName();
 
     $('#' + this.moduleId + ' img').each(function(){
 
