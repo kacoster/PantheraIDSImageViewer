@@ -18,13 +18,13 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
                 function(mesg) {
                   console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
-                  //nextPrevClicked("1");
+                  nextprevclicked("1");
                   //clearimages();
                   fetchServerData(x.filePath,x.componentID);
                   reset_props();
                   
                 }
-            );
+        );
 
       Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
             function(mesg) {

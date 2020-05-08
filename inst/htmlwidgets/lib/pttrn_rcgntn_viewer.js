@@ -8,6 +8,7 @@
     var findflag = false;
     var slctd_imgs_clone = [];
     var whichviewer ;
+    var nextprev = "0";
     
     function objectof(viewerType)
     {
@@ -25,22 +26,16 @@
       findflag = flag;
    }
 
+   function nextprevclicked(status)
+   {
+       nextprev = status;
+   }
+
+
 
     /*
-    var nextPrev = "0";
+    
     var clickStatus = "0";
-    
-    
-
-
-    
-
-    
-    function nextPrevClicked(status)
-    {
-        nextPrev = status;
-    }
-
     function getCurrClckdImg(state, imgsrc)
     {
       console.log("In getCurrClckdImg");
@@ -1836,11 +1831,11 @@
 
           if (!this.isShown) {
 
-            /*if(nextPrev === "1"){
+            if(nextprev === "1"){
               console.log("Line 1824 returns");
-              nextPrev = "0";
+              nextprev = "0";
               return;
-            }*/
+            }
             if(findflag === true)
             {
               console.log("I am hidding the image");

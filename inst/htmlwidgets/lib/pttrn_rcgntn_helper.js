@@ -5,21 +5,25 @@
 
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"spcs_idntfctn_pttrn_rcgntn_mn_pnl");
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"spcs_idntfctn_pttrn_rcgntn_mn_pnl");
-     /*$(document).ready(function () {
+     $(document).ready(function () {
+
+        $("#pttrn_rcgntn_slct_all_button").on("click", function () {
+          pttrn_rcgntn_obj.selectAll();
+        });
+
+        $("#pttrn_rcgntn_dslct_all_button").on("click", function () {
+          pttrn_rcgntn_obj.deSelectAll();
+        });
+
+        $("#pttrn_rcgntn_invrt_button").on("click", function () {
+          pttrn_rcgntn_obj.invertSelection();
+        });
+
     
-        $("#apply").on("click", function () {
+        /*$("#apply").on("click", function () {
           // send message to Shiny
           console.log("classificationHelper.js line 22");
           Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
-        });
-
-        $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl_slct_all_imgs_bttn").on("click", function () {
-   
-          imgClssfctnObj.selectAll();
-        });
-
-        $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl_dslct_all_imgs_bttn").on("click", function () {
-          imgClssfctnObj.deSelectAll();
         });
 
         $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl_nxt_bttn").on("click", function () {
@@ -28,9 +32,9 @@
 
         $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl_prvs_bttn").on("click", function () {
           Shiny.onInputChange("prev", imgClssfctnObj.prev());
-        });
+        });*/
 
-  });*/
+  });
 
   var pttrn_rcgntn_obj = new ViewerComponent(0,50,5,
                                             'spcs_idntfctn_pttrn_rcgntn_mn_pnl',

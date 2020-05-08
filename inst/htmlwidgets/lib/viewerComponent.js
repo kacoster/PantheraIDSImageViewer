@@ -17,6 +17,7 @@ class ViewerComponent {
       this.nextPrev = "0";
       this.result = [];
       this.tempRemoved ="";
+      this.currentDisplayedImgs = [];
   }
 
 
@@ -258,7 +259,7 @@ class ViewerComponent {
       return this.trimSRC(this.getSelectedImages());
   }
 
-  selectAll() {
+  /*selectAll() {
     this.selected_images = 0;
     let slctdimgs = [];
     //let ulclassname = this.ulClassName();
@@ -274,9 +275,76 @@ class ViewerComponent {
     this.selected_images = [...slctdimgs];
     this.sendAllImages();
 
+  }*/
+
+  invertSelection(){
+    
+    notSelected = (this.currentDisplayedImgs).filter( function( el ) {
+      return (this.selected_images).indexOf( el ) < 0;
+    });
+    this.deSelectAll();
+    this.highlightInverse(notSelected);
+
+    console.log("Selected : " + this.selected_images);
+    console.log("Not selected : " + notSelected);
+
   }
 
+  highlightInverse(ar){
+    let i = 0;
+    this.selected_images = 0;
+    let slctdimgs = [];
+
+    $('#' + this.moduleId + ' img').each(function(){
+
+      if(arr.includes($(this).attr('src'))){
+
+        $('#' + this.id + '').css({
+          'opacity': '0.4',
+          'filter': 'alpha(opacity=40)'
+        });
+      }
+      $('.'+ulclassname+'> li').css("background-color", "yellow");
+      slctdimgs.push($(this).attr('src'));
+      
+    });
+    this.selected_images = [...slctdimgs];
+    this.sendAllImages();
+
+  }
+
+  selectAll() {
+    this.selected_images = 0;
+    let slctdimgs = [];
+    let ulclassname = this.ulClassName();
+    $('#' + this.moduleId + ' img').each(function(){
+
+      $('#' + this.id + '').css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $('.'+ulclassname+'> li').css("background-color", "yellow");
+      slctdimgs.push($(this).attr('src'));
+    });
+    this.selected_images = [...slctdimgs];
+    this.sendAllImages();
+
+  }
+
+
   deSelectAll() {
+    $('#' + this.moduleId + ' img').each(function(){
+      $('#' + this.id + '').css({
+        'opacity': '',
+        'filter': ''
+      });
+      // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
+    });
+    this.selected_images.length = 0;
+  }
+
+
+  /*deSelectAll() {
     $("img").each(function (index) {
       $('#' + $(this).attr('id') + '').css({
         'opacity': '',
@@ -285,7 +353,7 @@ class ViewerComponent {
       // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
     });
     this.selected_images.length = 0;
-  }
+  }*/
 
   sendDataToShinny(){
     if (this.selected_images === undefined || this.selected_images.length === 0) {
@@ -336,6 +404,8 @@ class ViewerComponent {
     console.log(ar.length + 'images');
     //this. placeHolder();
     console.log("PantheraIDSImageViewer : 08/05/2020 " );
+    (this.currentDisplayedImgs).length = 0;
+    this.currentDisplayedImgs = [...ar];
     /*if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
