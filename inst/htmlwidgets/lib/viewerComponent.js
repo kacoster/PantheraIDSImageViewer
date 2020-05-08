@@ -256,7 +256,10 @@ class ViewerComponent {
 
   getTrimedSelectedImages()
   {
+      console.log('sent imgs : ' + (this.getSelectedImages()).length);
+      console.log('sent img : ' + this.getSelectedImages());
       return this.trimSRC(this.getSelectedImages());
+
   }
 
   /*selectAll() {
