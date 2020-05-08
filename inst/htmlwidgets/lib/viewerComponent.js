@@ -278,8 +278,11 @@ class ViewerComponent {
   }*/
 
   invertSelection(){
-    
-    notSelected = (this.currentDisplayedImgs).filter( function( el ) {
+    console.log("invertSelection")
+    Console.log("selected_img : " + this.selected_images);
+
+    let notSelected = (this.currentDisplayedImgs).filter( 
+      function( el ) {
       return (this.selected_images).indexOf( el ) < 0;
     });
     this.deSelectAll();
@@ -291,6 +294,7 @@ class ViewerComponent {
   }
 
   highlightInverse(ar){
+    console.log("highlightInverse")
     let i = 0;
     this.selected_images = 0;
     let slctdimgs = [];
@@ -306,7 +310,7 @@ class ViewerComponent {
       }
       $('.'+ulclassname+'> li').css("background-color", "yellow");
       slctdimgs.push($(this).attr('src'));
-      
+
     });
     this.selected_images = [...slctdimgs];
     this.sendAllImages();
