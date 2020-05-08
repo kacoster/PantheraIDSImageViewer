@@ -43,6 +43,7 @@ class ViewerComponent {
       this.imgloop(this.displayImages(this.imgNumb,0));
     }
     if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+      this.clearImages();
       this.imgloop(this.imgArray);
     }
     
@@ -332,7 +333,7 @@ class ViewerComponent {
   }
 
   imgloop(ar) {
-    alert(ar.length + 'images');
+    console.log(ar.length + 'images');
     //this. placeHolder();
     console.log("PantheraIDSImageViewer : 08/05/2020 " );
     /*if(this.checkImageExistance(ar) == ar.length)
