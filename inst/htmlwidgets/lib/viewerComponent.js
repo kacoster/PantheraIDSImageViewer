@@ -233,6 +233,7 @@ class ViewerComponent {
   }
 
   clearImages() {
+    console.log("clearImages");
       $('#' + this.moduleId + '').html("");
   }
 

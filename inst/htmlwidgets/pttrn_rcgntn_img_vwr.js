@@ -19,7 +19,7 @@ HTMLWidgets.widget({
                 function(mesg) {
                   console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
                   //nextPrevClicked("1");
-                  
+                  clearimages();
                   fetchServerData(x.filePath,x.componentID);
                   reset_props();
                   

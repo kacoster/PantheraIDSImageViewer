@@ -109,7 +109,8 @@
   }
 
 
-  function clearImages() {
+  function clearimages() {
+    console.log('clearimages helper');
     $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl").html("");
   }
 
