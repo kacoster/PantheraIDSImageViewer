@@ -332,6 +332,7 @@ class ViewerComponent {
   }
 
   imgloop(ar) {
+    alert(ar.length + 'images');
     //this. placeHolder();
     console.log("PantheraIDSImageViewer : 08/05/2020 " );
     /*if(this.checkImageExistance(ar) == ar.length)
