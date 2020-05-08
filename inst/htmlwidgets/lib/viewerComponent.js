@@ -296,6 +296,9 @@ class ViewerComponent {
 
   arryCompliment(ar1,ar2) { 
     console.log("arryCompliment");
+    console.log(ar1[0])
+    console.log(ar2[0])
+    console.log("end");
     var elmts = ar1.filter(f => !ar2.includes(f)); 
     return elmts;
 } 
@@ -417,7 +420,7 @@ class ViewerComponent {
     //this. placeHolder();
     console.log("PantheraIDSImageViewer : 08/05/2020 " );
     (this.currentDisplayedImgs).length = 0;
-    this.currentDisplayedImgs = [...ar];
+    
     /*if(this.checkImageExistance(ar) == ar.length)
     {
       if(this.moduleId === "img_clssfctn_ud"){
@@ -459,6 +462,7 @@ class ViewerComponent {
           let liId = i + this.moduleId;
           let img = new Image();
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+          this.currentDisplayedImgs.push('http://localhost/'+img.src);
           img.alt = "Camera Trap";
           img.datamarked = 0;
           if(this.placeHolder(img.src)){
