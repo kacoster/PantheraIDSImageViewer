@@ -308,7 +308,7 @@ class ViewerComponent {
 
     $('#' + this.moduleId + ' img').each(function(){
 
-      if(arr.includes($(this).attr('src'))){
+      if(ar.includes($(this).attr('src'))){
 
         $('#' + this.id + '').css({
           'opacity': '0.4',
