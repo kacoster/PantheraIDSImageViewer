@@ -299,7 +299,7 @@ class ViewerComponent {
 
   placeHolder(imgURL)
   {
-    console.log("placeHolder request");
+    //console.log("placeHolder request");
     let xmlhttp = new XMLHttpRequest();
     let url = imgURL;
       xmlhttp.open("GET", url, false);
@@ -313,7 +313,7 @@ class ViewerComponent {
   }
 
   checkImageExistance(arry) {
-    console.log("image existance request");
+    //console.log("image existance request");
     let count = 0;
     for(let i= 0; i< arry.length ; i++)
     {
@@ -421,7 +421,8 @@ class ViewerComponent {
 
   liWhiteBackground()
   {
-    $(".pictures > li").css("background-color", "white");
+    let ulclassname = this.ulClassName();
+    $('.'+ulclassname+' > li').css("background-color", "white");
   }
 
   /**

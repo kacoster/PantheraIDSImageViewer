@@ -25,6 +25,28 @@ HTMLWidgets.widget({
                 }
             );
 
+      Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
+            function(mesg) {
+              console.log("Handler pttrn_rcgntn_no_mtch_all_button");
+              saveRejectButtonListerner();
+              //nextPrevClicked("1");
+              //reset_props();
+              //fetchServerData(x.filePath,x.componentID);
+              
+            }
+        );
+
+        Shiny.addCustomMessageHandler("pttrn_rcgntn_mtch_all_button",
+            function(mesg) {
+              console.log("Handler pttrn_rcgntn_mtch_all_button");
+              saveRejectButtonListerner();
+              //nextPrevClicked("1");
+              //reset_props();
+              //fetchServerData(x.filePath,x.componentID);
+              
+            }
+        );
+
 
         // TODO: code to render the widget, e.g.
         // el.innerText = x.message;

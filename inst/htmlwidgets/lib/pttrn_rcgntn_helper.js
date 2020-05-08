@@ -97,14 +97,14 @@
     pttrn_rcgntn_obj.readServerData(resp);
   }
 
-  /*function saveButtonListerner()
+ function saveRejectButtonListerner()
   {
-    //console.log('classificationHelper.js saveButtonListerner()');
+    console.log('saveRejectButtonListerner()');
     pttrn_rcgntn_obj.liWhiteBackground();
     pttrn_rcgntn_obj.deSelectAll();
-    pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_slctd_img","");
-    pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_vw_curr_img","");
-  }*/
+    pttrn_rcgntn_obj.getCurrClckdImg("pttrn_rcgntn_mn_pnl_slctd_img","");
+    //pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_vw_curr_img","");
+  }
 
 
   function clearImages() {
