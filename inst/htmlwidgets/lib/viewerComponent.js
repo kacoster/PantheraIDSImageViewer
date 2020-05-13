@@ -23,7 +23,7 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    console.log('readServerData 13-05-20');
+    console.log('readServerData 13-05-20 11:53');
     let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
