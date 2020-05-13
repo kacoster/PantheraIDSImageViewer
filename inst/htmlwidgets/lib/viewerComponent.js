@@ -23,6 +23,8 @@ class ViewerComponent {
 
 
   readServerData(response) {
+    console.log('readServerData 13-05-20');
+    let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
       alert(" Error in reading your images.Please check if all requirements are provided.");
@@ -46,6 +48,10 @@ class ViewerComponent {
     }
     if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
       this.clearImages();
+      this.imgloop(this.imgArray);
+    }
+    if(mdid === 'ct_vldt_img_trggr_tbl_vldtn'){
+      console.log('ct_vldt_img_trggr_tbl_vldtn');
       this.imgloop(this.imgArray);
     }
     
