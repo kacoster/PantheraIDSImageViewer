@@ -44,6 +44,7 @@ class ViewerComponent {
       }
     }
     if(this.moduleId === "img_clssfctn_ud"){
+      this.clearImages();
       this.imgloop(this.displayImages(this.imgNumb,0));
     }
     if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
@@ -51,6 +52,7 @@ class ViewerComponent {
       this.imgloop(this.imgArray);
     }
     if(mdid === 'ct_vldt_img_trggr_tbl_vldtn'){
+      this.clearImages();
       console.log('ct_vldt_img_trggr_tbl_vldtn');
       this.imgloop(this.imgArray);
     }
