@@ -83,22 +83,22 @@
     //pttrn_rcgntn_obj.getCurrClckdImg("clssfctn_slctd_img","");
   }
 
-  function resetMsnImgsInputs(msg)
+  /*function resetMsnImgsInputs(msg)
   {
     pttrn_rcgntn_obj.resetHandlers(msg);
-  }
+  }*/
 
-  function setColumnNumb(numb)
+  /*function setColumnNumb(numb)
   {
     pttrn_rcgntn_obj.columnSize = numb;
     pttrn_rcgntn_obj.setCol();
-  }
+  }*/
   function setImagesNumber(numb)
   {
     pttrn_rcgntn_obj.imgNumb = numb;
   } 
 
-  function setImageArray(resp)
+  function setimgarry(resp)
   {
     pttrn_rcgntn_obj.readServerData(resp);
   }
