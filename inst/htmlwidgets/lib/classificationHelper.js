@@ -55,8 +55,8 @@
   function isKeyPressed(event,id) {
 
         arrayClone(imgClssfctnObj.selected_images);
-        if(event.shiftKey && event.keyCode === '65' ){
-            console.log('shift+a');
+        if(event.keyCode == '65' ){
+            console.log('a');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
 
@@ -64,8 +64,9 @@
               imgClssfctnObj.keySelection();
             }else{
               (imgClssfctnObj.hotKeysIndx).push(indx);
+              imgClssfctnObj.highliter(id);
             }
-            return;
+            //return;
         }
         else if (event.shiftKey) {
           
