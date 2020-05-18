@@ -53,6 +53,7 @@
   * @return void
   */
   function isKeyPressed(event,id) {
+    alert(event.keyCode);
     let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
         if(event.ctrlKey && event.altKey){
