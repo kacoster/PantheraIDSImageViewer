@@ -53,8 +53,8 @@
   * @return void
   */
   function isKeyPressed(event,id) {
-    alert(event.keyCode);
-    let keycode = (event.keyCode ? event.keyCode : event.which);
+    //alert(event.keyCode);
+    //let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
         if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
             console.log('shift+cmd');
@@ -64,6 +64,7 @@
               (imgClssfctnObj.hotKeysIndx).push(indx);
               if((imgClssfctnObj.hotKeysIndx).length == 2){
                 imgClssfctnObj.keySelection();
+                imgClssfctnObj.highliter(id);
               }
             }
             return;
