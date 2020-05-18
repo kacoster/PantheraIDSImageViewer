@@ -14,7 +14,7 @@
 
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
      //var imgClssfctnObj = new ViewerComponent(0,50,5,"img_clssfctn_ud");
-     $(document).ready(function () {
+  $(document).ready(function () {
     
         $("#apply").on("click", function () {
           // send message to Shiny
@@ -55,15 +55,15 @@
   function isKeyPressed(event,id) {
 
         arrayClone(imgClssfctnObj.selected_images);
-        if(event.ctrlKey && event.shiftKey){
-            console.log('ctrl+shift');
+        if(event.shiftKey && event.keyCode === '65' ){
+            console.log('shift+a');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
-            if((imgClssfctnObj.hotKeysIndx).length < 3){
+
+            if((imgClssfctnObj.hotKeysIndx).length == 2){
+              imgClssfctnObj.keySelection();
+            }else{
               (imgClssfctnObj.hotKeysIndx).push(indx);
-              if((imgClssfctnObj.hotKeysIndx).length == 2){
-                imgClssfctnObj.keySelection();
-              }
             }
             return;
         }

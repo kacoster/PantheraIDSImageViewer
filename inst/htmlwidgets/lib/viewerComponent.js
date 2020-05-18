@@ -24,7 +24,7 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    console.log('readServerData 18-05-20 17:37');
+    console.log('readServerData 18-05-20 19:15');
     let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
@@ -104,15 +104,18 @@ class ViewerComponent {
 // clssfctn_slctd_img
   getCurrClckdImg(state, imgsrc)
   {
+      console.log('getCurrClckdImg');
       Shiny.onInputChange(state,imgsrc);
   }
 
   sendAllImages(){
     console.log("sendAllImages");
+    console.log(this.getTrimedSelectedImages().toString());
     this.getCurrClckdImg(this.selectedImgShinyRef(),this.getTrimedSelectedImages().toString());
   }
 
   selectedImgShinyRef(){
+    console.log('selectedImgShinyRef');
     if(this.moduleId === "img_clssfctn_ud"){
       return "clssfctn_slctd_img";
     }
@@ -570,14 +573,14 @@ class ViewerComponent {
 keySelection(){
 
     console.log('keySelection');
-    this.selected_images = 0;
+    //this.selected_images = 0;
     let slctdimgs = [];
     let ulclassname = this.ulClassName();
     let imgs = $('#' + this.moduleId + ' img');
     let start = Math.min.apply(Math,this.hotKeysIndx),
         end = Math.max.apply(Math,this.hotKeysIndx);
 
-    for(let i = start ; i < end ; i++ ){
+    for(let i = start ; i <= end ; i++ ){
       console.log('id : ' + imgs[i].id);
       console.log('src : ' + imgs[i].src);
       $('#' + imgs[i].id + '').css({
@@ -589,6 +592,7 @@ keySelection(){
     }
     (this.selected_images).push(...slctdimgs); //= [...slctdimgs];
     this.selected_images = [...new Set(this.selected_images)]; // remove duplicates
+    console.log(this.selected_images.length);
     this.sendAllImages();
     (this.hotKeysIndx).length = 0;
 }
