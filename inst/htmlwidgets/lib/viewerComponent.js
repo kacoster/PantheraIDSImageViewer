@@ -24,7 +24,7 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    console.log('readServerData 18-05-20 16:11');
+    console.log('readServerData 18-05-20 17:37');
     let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
@@ -410,6 +410,7 @@ class ViewerComponent {
     }
   }
 
+  // Checks if the an image exist on the server
   placeHolder(imgURL)
   {
     //console.log("placeHolder request");
@@ -425,6 +426,7 @@ class ViewerComponent {
       } 
   }
 
+  // Depreciated
   checkImageExistance(arry) {
     //console.log("image existance request");
     let count = 0;
@@ -443,6 +445,7 @@ class ViewerComponent {
     return count; 
   }
 
+  // Creates bilds the images in the panel 
   imgloop(ar) {
     console.log(ar.length + 'images');
     //this. placeHolder();
@@ -508,6 +511,7 @@ class ViewerComponent {
     //}
   }
 
+  // reset missing images handler (Depreciated)
   resetHandlers(msg)
   {
     if(msg === 'noImages'){
@@ -518,6 +522,7 @@ class ViewerComponent {
     }
   }
 
+  // 
   changeCSS(element)
   {
     $('.'+ element ).css("list-style", none);
@@ -545,6 +550,7 @@ class ViewerComponent {
     });
   }
 
+  // revert to white panel background
   liWhiteBackground()
   {
     let ulclassname = this.ulClassName();
@@ -560,6 +566,7 @@ class ViewerComponent {
   return;
 }
 
+// HokKey selection 
 keySelection(){
 
     console.log('keySelection');
@@ -580,7 +587,7 @@ keySelection(){
       $('.'+ulclassname+'> li').css("background-color", "yellow");
       slctdimgs.push(imgs[i].src);
     }
-    this.selected_images = [...slctdimgs];
+    (this.selected_images).push(...slctdimgs); //= [...slctdimgs];
     this.selected_images = [...new Set(this.selected_images)]; // remove duplicates
     this.sendAllImages();
     (this.hotKeysIndx).length = 0;
