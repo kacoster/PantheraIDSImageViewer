@@ -56,6 +56,7 @@
 
         arrayClone(imgClssfctnObj.selected_images);
         if(event.ctrlKey && event.shiftKey){
+            console.log('ctrl+shift');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
             if((imgClssfctnObj.hotKeysIndx).length < 3){
