@@ -57,7 +57,7 @@
     //let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
         if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
-            selectionFind(true);
+            
             console.log('shift+cmd');
             let id = event.target.id;
             console.log('id : ' + id);
@@ -69,6 +69,7 @@
               (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.highliter(id);
             }
+            selectionFind(true);
             return;
         }
         else if (event.shiftKey) {
