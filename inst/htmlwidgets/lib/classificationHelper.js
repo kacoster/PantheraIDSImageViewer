@@ -55,8 +55,8 @@
   function isKeyPressed(event,id) {
     let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
-        if(keycode == '65'){
-            console.log('a');
+        if(event.shiftKey && event.altKey){
+            console.log('shift+alt');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
             if((imgClssfctnObj.hotKeysIndx).length < 3){
