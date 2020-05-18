@@ -24,7 +24,7 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    console.log('readServerData 13-05-20 11:30');
+    console.log('readServerData 18-05-20 15:57');
     let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
@@ -384,6 +384,7 @@ class ViewerComponent {
     (this.prevSelectedImgs).length = 0;
     this.prevSelectedImgs = [...this.selected_images];
     this.selected_images.length = 0;
+    this.sendDataToShinny();
   }
 
 
@@ -400,8 +401,9 @@ class ViewerComponent {
 
   sendDataToShinny(){
     if (this.selected_images === undefined || this.selected_images.length === 0) {
-      alert("No Images Selected !!");
-      return ;
+
+      //alert("No Images Selected !!");
+      return this.selected_images;
     }
     else{
       const copy_selected_images = [...this.selected_images];
