@@ -56,8 +56,8 @@
     alert(event.keyCode);
     let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
-        if(event.ctrlKey && event.altKey){
-            console.log('ctrl+alt');
+        if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
+            console.log('shift+cmd');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
             if((imgClssfctnObj.hotKeysIndx).length < 3){
