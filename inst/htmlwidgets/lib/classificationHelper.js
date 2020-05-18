@@ -57,15 +57,16 @@
     //let keycode = (event.keyCode ? event.keyCode : event.which);
         arrayClone(imgClssfctnObj.selected_images);
         if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
+            selectionFind(true);
             console.log('shift+cmd');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
-            if((imgClssfctnObj.hotKeysIndx).length < 3){
+            if((imgClssfctnObj.hotKeysIndx).length == 2){
+              imgClssfctnObj.keySelection();
+            }
+            else{
               (imgClssfctnObj.hotKeysIndx).push(indx);
-              if((imgClssfctnObj.hotKeysIndx).length == 2){
-                imgClssfctnObj.keySelection();
-                imgClssfctnObj.highliter(id);
-              }
+              imgClssfctnObj.highliter(id);
             }
             return;
         }
