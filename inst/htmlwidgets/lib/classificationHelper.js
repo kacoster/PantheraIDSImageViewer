@@ -60,6 +60,7 @@
             selectionFind(true);
             console.log('shift+cmd');
             let id = event.target.id;
+            console.log('id : ' + id);
             let indx = parseInt(id.substring(0,id.indexOf('_')));
             if((imgClssfctnObj.hotKeysIndx).length == 2){
               imgClssfctnObj.keySelection();

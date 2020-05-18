@@ -54,7 +54,21 @@
         console.log('Already Selected : ' + flag );
 
         arrayclone(pttrn_rcgntn_obj.selected_images);
-        if (event.shiftKey) {
+        if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
+          selectionFind(true);
+          console.log('shift+cmd');
+          let id = event.target.id;
+          let indx = parseInt(id.substring(0,id.indexOf('_')));
+          if((pttrn_rcgntn_obj.hotKeysIndx).length == 2){
+            pttrn_rcgntn_obj.keySelection();
+          }
+          else{
+            (pttrn_rcgntn_obj.hotKeysIndx).push(indx);
+            pttrn_rcgntn_obj.highliter(id);
+          }
+          return;
+        }
+        else if (event.shiftKey) {
           console.log("Shift Key");
           
           if(pttrn_rcgntn_obj.selected_images.includes(event.target.src))
