@@ -54,9 +54,10 @@
   */
   function isKeyPressed(event,id) {
 
+        console.log(event.keyCode);
         arrayClone(imgClssfctnObj.selected_images);
-        if(event.keyCode == '65' ){
-            console.log('a');
+        if(event.keyCode == '18' ){
+            console.log('alt / option');
             let id = event.target.id;
             let indx = parseInt(id.substring(0,id.indexOf('_')));
 
