@@ -55,7 +55,18 @@
   function isKeyPressed(event,id) {
 
         arrayClone(imgClssfctnObj.selected_images);
-        if (event.shiftKey) {
+        if(event.ctrlKey && event.shiftKey){
+            let id = event.target.id;
+            let indx = parseInt(id.substring(0,id.indexOf('_')));
+            if((imgClssfctnObj.hotKeysIndx).length < 3){
+              (imgClssfctnObj.hotKeysIndx).push(indx);
+              if((imgClssfctnObj.hotKeysIndx).length == 2){
+                imgClssfctnObj.keySelection();
+              }
+            }
+            return;
+        }
+        else if (event.shiftKey) {
           
           if(imgClssfctnObj.selected_images.includes(event.target.src))
           {
@@ -63,7 +74,7 @@
           }
           imgClssfctnObj.handleExistance(imgClssfctnObj.selected_images, event.target.src, event.target.id);
 
-        } else {
+        }else {
           objectOf("imgClassification");
           imgClssfctnObj.callvjs(imgClssfctnObj.moduleId+"_divId");
         }

@@ -19,11 +19,12 @@ class ViewerComponent {
       this.tempRemoved ="";
       this.currentDisplayedImgs = [];
       this.prevSelectedImgs = [];
+      this.hotKeysIndx = [];
   }
 
 
   readServerData(response) {
-    console.log('readServerData 13-05-20 10:34');
+    console.log('readServerData 13-05-20 11:30');
     let mdid = (this.moduleId).substring(0,27);
     if(response === null )
     {
@@ -445,7 +446,7 @@ class ViewerComponent {
   imgloop(ar) {
     console.log(ar.length + 'images');
     //this. placeHolder();
-    console.log("PantheraIDSImageViewer : 08/05/2020 " );
+    console.log("PantheraIDSImageViewer : 18/05/2020 " );
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
     
@@ -487,7 +488,7 @@ class ViewerComponent {
 
       let ul = document.getElementById(this.moduleId);
       for (let i = 0; i < ar.length; i++) {
-          let liId = i + this.moduleId;
+          let liId = i+'_' + this.moduleId;
           let img = new Image();
           img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
           this.currentDisplayedImgs.push(img.src);
@@ -557,6 +558,32 @@ class ViewerComponent {
  callvjs(elementId) {
   this.vjs(elementId);
   return;
+}
+
+keySelection(){
+
+    console.log('keySelection');
+    this.selected_images = 0;
+    let slctdimgs = [];
+    let ulclassname = this.ulClassName();
+    let imgs = $('#' + this.moduleId + ' img');
+    let start = Math.min.apply(Math,this.hotKeysIndx),
+        end = Math.max.apply(Math,this.hotKeysIndx);
+
+    for(let i = start ; i < end ; i++ ){
+      console.log('id : ' + imgs[i].id);
+      console.log('src : ' + imgs[i].src);
+      $('#' + imgs[i].id + '').css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $('.'+ulclassname+'> li').css("background-color", "yellow");
+      slctdimgs.push(imgs[i].src);
+    }
+    this.selected_images = [...slctdimgs];
+    this.selected_images = [...new Set(this.selected_images)]; // remove duplicates
+    this.sendAllImages();
+    (this.hotKeysIndx).length = 0;
 }
 
 }
