@@ -19,7 +19,6 @@ HTMLWidgets.widget({
                 function(mesg) {
                   console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
                   nextprevclicked("1");
-                  //clearimages();
                   fetchServerData(x.filePath,x.componentID);
                   reset_props();
                   
@@ -30,7 +29,6 @@ HTMLWidgets.widget({
                 function(mesg) {
                   console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
                   nextprevclicked("1");
-                  //clearimages();
                   fetchServerData(x.filePath,x.componentID);
                   reset_props();
                   
@@ -41,9 +39,6 @@ HTMLWidgets.widget({
             function(mesg) {
               console.log("Handler pttrn_rcgntn_no_mtch_all_button");
               saveRejectButtonListerner();
-              //nextPrevClicked("1");
-              //reset_props();
-              //fetchServerData(x.filePath,x.componentID);
               
             }
         );
@@ -52,10 +47,6 @@ HTMLWidgets.widget({
             function(mesg) {
               console.log("Handler pttrn_rcgntn_mtch_all_button");
               saveRejectButtonListerner();
-              //nextPrevClicked("1");
-              //reset_props();
-              //fetchServerData(x.filePath,x.componentID);
-              
             }
         );
 

@@ -1,601 +1,494 @@
-   /***************************************************************************
+/***************************************************************************
       @version ViewerComponent v1.3.6
       @author Valentine Tawira
       @Copyright (C) 2019 | Panthera Corporation
-     ***************************************************************************/
-class ViewerComponent {
+***************************************************************************/
+    class ViewerComponent {
 
-  constructor(batnum,imgNumb,columnSize,moduleId,csvfile)
-  {
-      this.columnSize = columnSize;
-      this.batnum = batnum;
-      this.imgNumb = imgNumb;
-      this.moduleId =moduleId;
-      this.csvfile = csvfile;
-      this.imgArray = [];
-      this.selected_images = [];
-      this.nextPrev = "0";
-      this.result = [];
-      this.tempRemoved ="";
-      this.currentDisplayedImgs = [];
-      this.prevSelectedImgs = [];
-      this.hotKeysIndx = [];
-  }
-
-
-  readServerData(response) {
-    console.log('readServerData 18-05-20 05:33');
-    let mdid = (this.moduleId).substring(0,27);
-    if(response === null )
-    {
-      alert(" Error in reading your images.Please check if all requirements are provided.");
-    }
-    else{
-      //console.log("response : " + response);
-      //console.log("response.split() : " + response.split(','));
-      this.imgArray = response.split(',');
-      this.imgArray.splice(0, 1);
-      this.imgArray[0] = this.imgArray[0].replace("Source", "");
-      this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
-      this.imgArray.splice(this.imgArray.length - 1, 1);
-      if(this.moduleId === "img_clssfctn_ud")
+      constructor(batnum,imgNumb,columnSize,moduleId,csvfile)
       {
-        Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-        1 + " / " + this.getBatchNumber());
+          this.columnSize = columnSize;
+          this.batnum = batnum;
+          this.imgNumb = imgNumb;
+          this.moduleId =moduleId;
+          this.csvfile = csvfile;
+          this.imgArray = [];
+          this.selected_images = [];
+          this.nextPrev = "0";
+          this.result = [];
+          this.tempRemoved ="";
+          this.currentDisplayedImgs = [];
+          this.prevSelectedImgs = [];
+          this.hotKeysIndx = [];
       }
-    }
-    if(this.moduleId === "img_clssfctn_ud"){
-      this.clearImages();
-      this.imgloop(this.displayImages(this.imgNumb,0));
-    }
-    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
-      this.clearImages();
-      this.imgloop(this.imgArray);
-    }
-    if(mdid === 'ct_vldt_img_trggr_tbl_vldtn'){
-      this.clearImages();
-      console.log('ct_vldt_img_trggr_tbl_vldtn');
-      this.imgloop(this.imgArray);
-    }
-    
-  }
 
-  initializeImgArray(array)
-  {
-    this.imgArray = [...arr];
-  }
 
-  ulClassName(){
-
-    if(this.moduleId === "img_clssfctn_ud"){
-      return 'pictures';
-    }
-    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
-      return 'rcgntn_pictures';
-    }   
-  }
-
-  highliter(elementID)
-  {
-    let ulclassname = this.ulClassName();
-    console.log("highliter : " + elementID);
-      $('#' + elementID + '').css({
-          'opacity': '0.4',
-          'filter': 'alpha(opacity=40)'
-      });
-      $('.'+ulclassname+'> li').css("background-color", "yellow");
-  }
-
-  removeHighlight(elementID)
-  {
-      $('#' + elementID + '').css({
-          'opacity': '',
-          'filter': ''
-          });
-  }
-  /** Not Yet Generic */
-  setCol(){
-
-   //console.log("ul class Name : " + $("ul").attr("class"));
-      $('.pictures > li').css({
-              'width' : 'calc(100% /' + this.columnSize +')'
-          });
-  }
-// clssfctn_slctd_img
-  getCurrClckdImg(state, imgsrc)
-  {
-      console.log('getCurrClckdImg');
-      Shiny.onInputChange(state,imgsrc);
-  }
-
-  sendAllImages(){
-    console.log("sendAllImages");
-    console.log(this.getTrimedSelectedImages().toString());
-    this.getCurrClckdImg(this.selectedImgShinyRef(),this.getTrimedSelectedImages().toString());
-  }
-
-  selectedImgShinyRef(){
-    console.log('selectedImgShinyRef');
-    if(this.moduleId === "img_clssfctn_ud"){
-      return "clssfctn_slctd_img";
-    }
-    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
-      return "pttrn_rcgntn_mn_pnl_slctd_img";
-    }
-  }
-
-  /** Not Yet Generic */
-  handleExistance(params,src,id)
-  {
-    let ref = this.selectedImgShinyRef();
-
-      if(params.includes(src))
-      {
-          this.tempRemoved =  (params.splice(params.indexOf(src),1))[0];
-          this.removeHighlight(id);
-          if(params.length > 0)
-          {
-              this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
-          }else{
-              this.getCurrClckdImg(ref,""); 
-          }
-      }
-      else{
-        if(this.isPlacveHolder(src))
+      readServerData(response) {
+        console.log('readServerData 19-05-20 06:31');
+        let mdid = (this.moduleId).substring(0,27);
+        if(response === null )
         {
-          console.log("Cant Process Place Holder Image orig");
-          this.callSelectionFind(true);
+          alert(" Error in reading your images.Please check if all requirements are provided.");
         }
         else{
-          params.push(src);
-          this.highliter(id);
-          this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
+          this.imgArray = response.split(',');
+          this.imgArray.splice(0, 1);
+          this.imgArray[0] = this.imgArray[0].replace("Source", "");
+          this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
+          this.imgArray.splice(this.imgArray.length - 1, 1);
+          if(this.moduleId === "img_clssfctn_ud")
+          {
+            Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+            1 + " / " + this.getBatchNumber());
+          }
+        }
+        if(this.moduleId === "img_clssfctn_ud"){
+          this.clearImages();
+          this.imgloop(this.displayImages(this.imgNumb,0));
+        }
+        if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+          this.clearImages();
+          this.imgloop(this.imgArray);
+        }
+        if(mdid === 'ct_vldt_img_trggr_tbl_vldtn'){
+          this.clearImages();
+          console.log('ct_vldt_img_trggr_tbl_vldtn');
+          this.imgloop(this.imgArray);
+        }
+        
+      }
+
+      ulClassName(){
+
+        if(this.moduleId === "img_clssfctn_ud"){
+          return 'pictures';
+        }
+        if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+          return 'rcgntn_pictures';
+        }   
+      }
+
+      highliter(elementID)
+      {
+        let ulclassname = this.ulClassName();
+          $('#' + elementID + '').css({
+              'opacity': '0.4',
+              'filter': 'alpha(opacity=40)'
+          });
+          $('.'+ulclassname+'> li').css("background-color", "yellow");
+      }
+
+      removeHighlight(elementID)
+      {
+          $('#' + elementID + '').css({
+              'opacity': '',
+              'filter': ''
+              });
+      }
+
+      /** Not Yet Generic */
+      setCol(){
+
+          $('.pictures > li').css({
+                  'width' : 'calc(100% /' + this.columnSize +')'
+              });
+      }
+
+      // clssfctn_slctd_img
+      getCurrClckdImg(state, imgsrc)
+      {
+          Shiny.onInputChange(state,imgsrc);
+      }
+
+      sendAllImages(){
+        this.getCurrClckdImg(this.selectedImgShinyRef(),this.getTrimedSelectedImages().toString());
+      }
+
+      selectedImgShinyRef(){
+        //console.log('selectedImgShinyRef');
+        if(this.moduleId === "img_clssfctn_ud"){
+          return "clssfctn_slctd_img";
+        }
+        if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+          return "pttrn_rcgntn_mn_pnl_slctd_img";
         }
       }
-  }
 
-  callSelectionFind(value){
-    if(this.moduleId === "img_clssfctn_ud"){
-      selectionFind(value);
-    }
-    if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
-      selectionfind(value);
-    }
+      /** Not Yet Generic */
+      handleExistance(params,src,id)
+      {
+        let ref = this.selectedImgShinyRef();
 
-  }
-
-  isPlacveHolder(src)
-  {
-    return (src.split('/').pop() === 'PantheraIDS_image_not_found_2.jpg');
-  }
-
-  removedRef()
-  {
-      return this.tempRemoved;
-  }
-
-  displayImages(imgnumb,bat) {
-      this.clearImages();
-      let start ,end;
-      start = bat * imgnumb;
-      end = start + imgnumb;
-      this.result = this.imgArray.slice(start, end);
-      return this.result;
-  }
-
-  getBatchNumber()
-  {
-      if((this.imgArray.length %  this.imgNumb)===0){
-          return (this.imgArray.length / this.imgNumb);
+          if(params.includes(src))
+          {
+              this.tempRemoved =  (params.splice(params.indexOf(src),1))[0];
+              this.removeHighlight(id);
+              if(params.length > 0)
+              {
+                  this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
+              }else{
+                  this.getCurrClckdImg(ref,""); 
+              }
+          }
+          else{
+            if(this.isPlacveHolder(src))
+            {
+              console.log("Cant Process Place Holder Image orig");
+              this.callSelectionFind(true);
+            }
+            else{
+              params.push(src);
+              this.highliter(id);
+              this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
+            }
+          }
       }
-      else{
-      return ((Math.floor(this.imgArray.length / this.imgNumb)) + 1);
-      }
-  }
-  // We need a function that maps to diff modules
-  next() {
-      nextPrevClicked("1");
 
-      if(this.batnum < this.getBatchNumber()-1){
-            this.batnum++;
+      callSelectionFind(value){
+        if(this.moduleId === "img_clssfctn_ud"){
+          selectionFind(value);
+        }
+        if(this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl"){
+          selectionfind(value);
+        }
+
+      }
+
+      isPlacveHolder(src)
+      {
+        return (src.split('/').pop() === 'PantheraIDS_image_not_found_2.jpg');
+      }
+
+      removedRef()
+      {
+          return this.tempRemoved;
+      }
+
+      displayImages(imgnumb,bat) {
+          this.clearImages();
+          let start ,end;
+          start = bat * imgnumb;
+          end = start + imgnumb;
+          this.result = this.imgArray.slice(start, end);
+          return this.result;
+      }
+
+      getBatchNumber()
+      {
+          if((this.imgArray.length %  this.imgNumb)===0){
+              return (this.imgArray.length / this.imgNumb);
+          }
+          else{
+          return ((Math.floor(this.imgArray.length / this.imgNumb)) + 1);
+          }
+      }
+      // We need a function that maps to diff modules
+      next() {
+          nextPrevClicked("1");
+
+          if(this.batnum < this.getBatchNumber()-1){
+                this.batnum++;
+                Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+                (this.batnum+1) + " / " + this.getBatchNumber());
+                this.imgloop(this.displayImages(this.imgNumb, this.batnum));
+                this.selected_images.length = 0;
+                this.getCurrClckdImg("clssfctn_slctd_img","");
+
+            }else{
+              Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+              this.getBatchNumber() + " / " + this.getBatchNumber());
+              this.imgNumb(this.displayImages(this.imgNumb, this.getBatchNumber()-1));
+              this.batnum = this.getBatchNumber()-1;
+              this.selected_images.length = 0;
+              this.getCurrClckdImg("clssfctn_slctd_img","");
+            }
+      }
+
+      prev() {
+          console.log("Prev Clicked");
+            nextPrevClicked("1");
+            this.batnum--;
+          if (this.batnum > 0 ) {
             Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-            (this.batnum+1) + " / " + this.getBatchNumber());
-            this.imgloop(this.displayImages(this.imgNumb, this.batnum));
+                (this.batnum+1) + " / " + this.getBatchNumber());
+            this.imgloop(this.displayImages(this.imgNumb ,this.batnum));
             this.selected_images.length = 0;
             this.getCurrClckdImg("clssfctn_slctd_img","");
-
-        }else{
-          Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-            this.getBatchNumber() + " / " + this.getBatchNumber());
-          this.imgNumb(this.displayImages(this.imgNumb, this.getBatchNumber()-1));
-          this.batnum = this.getBatchNumber()-1;
-          this.selected_images.length = 0;
-          this.getCurrClckdImg("clssfctn_slctd_img","");
-        }
-  }
-
-  prev() {
-      console.log("Prev Clicked");
-         nextPrevClicked("1");
-         this.batnum--;
-      if (this.batnum > 0 ) {
-         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-            (this.batnum+1) + " / " + this.getBatchNumber());
-        this.imgloop(this.displayImages(this.imgNumb ,this.batnum));
-        this.selected_images.length = 0;
-        this.getCurrClckdImg("clssfctn_slctd_img","");
-      }else{
-         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-           1 + " / " + this.getBatchNumber());
-        this.imgloop(this.displayImages(this.imgNumb, 0));
-        this.selected_images.length = 0;
-         this.getCurrClckdImg("clssfctn_slctd_img","");
-        this.batnum = 0;
+          }else{
+            Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+              1 + " / " + this.getBatchNumber());
+            this.imgloop(this.displayImages(this.imgNumb, 0));
+            this.selected_images.length = 0;
+            this.getCurrClckdImg("clssfctn_slctd_img","");
+            this.batnum = 0;
+          }
       }
-  }
 
-  trimSRC(selctdImgAry)
-  {
-      let i = 0;
-      let tempArray = [];
-      for(i;i < this.selected_images.length;i++)
+      trimSRC(selctdImgAry)
       {
-          let newSRC = selctdImgAry[i].substring(selctdImgAry[i].lastIndexOf("/") + 1,
-              selctdImgAry[i].length );
-          tempArray[i] = newSRC;
+          let i = 0;
+          let tempArray = [];
+          for(i;i < this.selected_images.length;i++)
+          {
+              let newSRC = selctdImgAry[i].substring(selctdImgAry[i].lastIndexOf("/") + 1,
+                  selctdImgAry[i].length );
+              tempArray[i] = newSRC;
+          }
+          return tempArray;
       }
-      return tempArray;
-  }
 
-  clearImages() {
-    console.log("clearImages");
-      $('#' + this.moduleId + '').html("");
-  }
-
-  // See if this indeed should var
-  vjs(elementID) {
-      var elementID = new Viewer(document.getElementById(elementID), {
-          url: 'data-original',
-          title: function (image) {
-          return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
-          },
-      });
-  }
-
-  getSelectedImages()
-  {
-      return this.selected_images;
-  }
-
-  getTrimedSelectedImages()
-  {
-      console.log('sent imgs : ' + (this.getSelectedImages()).length);
-      console.log('sent img : ' + this.getSelectedImages());
-      return this.trimSRC(this.getSelectedImages());
-
-  }
-
-  /*selectAll() {
-    this.selected_images = 0;
-    let slctdimgs = [];
-    //let ulclassname = this.ulClassName();
-    $('#img_clssfctn_ud img').each(function(){
-
-      $('#' + this.id + '').css({
-        'opacity': '0.4',
-        'filter': 'alpha(opacity=40)'
-      });
-      $(".pictures > li").css("background-color", "yellow");
-      slctdimgs.push($(this).attr('src'));
-    });
-    this.selected_images = [...slctdimgs];
-    this.sendAllImages();
-
-  }*/
-
-  invertSelection(){
-    console.log("invertSelection")
-    let notSelected;
-    //console.log("selected_img : " + this.selected_images);
-    if((this.selected_images).length > 0){
-      notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images);
-      this.deSelectAll();
-    }
-    else{
-      notSelected = this.arryCompliment(this.currentDisplayedImgs,this.prevSelectedImgs)
-    }
-    
-    /*let notSelected = (this.currentDisplayedImgs).filter( 
-      function( el ) {
-      return (this.selected_images).indexOf( el ) < 0;
-    });*/
-    
-    this.highlightInverse(notSelected);
-
-    //console.log("Selected : " + this.selected_images);
-    //console.log("Not selected : " + notSelected);
-
-  }
-
-  arryCompliment(ar1,ar2) { 
-    if(ar1.length == 0 || ar2.length ==0){
-      return
-    }
-    console.log("arryCompliment");
-    console.log(ar1[0])
-    console.log(ar2[0])
-    console.log("end");
-    var elmts = ar1.filter(f => !ar2.includes(f)); 
-    return elmts;
-  } 
-
-  highlightInverse(ar){
-    console.log("highlightInverse")
-    //let i = 0;
-    this.selected_images = 0;
-    let slctdimgs = [];
-    let ulclassname = this.ulClassName();
-
-    $('#' + this.moduleId + ' img').each(function(){
-      console.log('From Array : ' + ar[0]);
-      console.log('From SRC : ' + $(this).attr('src'));
-      console.log(ar.includes($(this).attr('src')));
-      if(ar.includes($(this).attr('src'))){
-
-        $('#' + this.id + '').css({
-          'opacity': '0.4',
-          'filter': 'alpha(opacity=40)'
-        });
-        slctdimgs.push($(this).attr('src'));
+      clearImages() {
+          $('#' + this.moduleId + '').html("");
       }
-      $('.'+ulclassname+'> li').css("background-color", "yellow");
+
+      // See if this indeed should var
+      vjs(elementID) {
+          var elementID = new Viewer(document.getElementById(elementID), {
+              url: 'data-original',
+              title: function (image) {
+              return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
+              },
+          });
+      }
+
+      getSelectedImages()
+      {
+          return this.selected_images;
+      }
+
+      getTrimedSelectedImages()
+      {
+          return this.trimSRC(this.getSelectedImages());
+      }
+
+      invertSelection(){
+        console.log("invertSelection")
+        let notSelected;
       
+        if((this.selected_images).length > 0){
+          notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images);
+          this.deSelectAll();
+        }
+        else{
+          notSelected = this.arryCompliment(this.currentDisplayedImgs,this.prevSelectedImgs)
+        }
+        
+        this.highlightInverse(notSelected);
 
-    });
-    this.selected_images = [...slctdimgs];
-    this.sendAllImages();
-
-  }
-
-  selectAll() {
-    this.selected_images = 0;
-    let slctdimgs = [];
-    let ulclassname = this.ulClassName();
-    $('#' + this.moduleId + ' img').each(function(){
-
-      $('#' + this.id + '').css({
-        'opacity': '0.4',
-        'filter': 'alpha(opacity=40)'
-      });
-      $('.'+ulclassname+'> li').css("background-color", "yellow");
-      slctdimgs.push($(this).attr('src'));
-    });
-    this.selected_images = [...slctdimgs];
-    this.sendAllImages();
-
-  }
-
-
-  deSelectAll() {
-    $('#' + this.moduleId + ' img').each(function(){
-      $('#' + this.id + '').css({
-        'opacity': '',
-        'filter': ''
-      });
-      // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
-    });
-    (this.prevSelectedImgs).length = 0;
-    this.prevSelectedImgs = [...this.selected_images];
-    this.selected_images.length = 0;
-  }
-
-
-  /*deSelectAll() {
-    $("img").each(function (index) {
-      $('#' + $(this).attr('id') + '').css({
-        'opacity': '',
-        'filter': ''
-      });
-      // selected_images.splice(selected_images.indexOf($( this ).attr('src')), 1);
-    });
-    this.selected_images.length = 0;
-  }*/
-
-  sendDataToShinny(){
-    if (this.selected_images === undefined || this.selected_images.length === 0) {
-      alert("No Images Selected !!");
-      return ;
-    }
-    else{
-      const copy_selected_images = [...this.selected_images];
-      this.deSelectAll();
-      return copy_selected_images;
-    }
-  }
-
-  // Checks if the an image exist on the server
-  placeHolder(imgURL)
-  {
-    //console.log("placeHolder request");
-    let xmlhttp = new XMLHttpRequest();
-    let url = imgURL;
-      xmlhttp.open("GET", url, false);
-      xmlhttp.send();
-      if (xmlhttp.status==200) {
-        return true;
       }
-      else{
-       return false;
+
+      arryCompliment(ar1,ar2) { 
+        if(ar1.length == 0 || ar2.length ==0){
+          return
+        }
+        var elmts = ar1.filter(f => !ar2.includes(f)); 
+        return elmts;
       } 
-  }
 
-  // Depreciated
-  checkImageExistance(arry) {
-    //console.log("image existance request");
-    let count = 0;
-    for(let i= 0; i< arry.length ; i++)
-    {
-      let url = ((arry[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-      let xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET", url, false);
-      xmlhttp.send();
-      if (xmlhttp.status==200) {
-      }
-      else{
-        count++;
-      } 
-    }
-    return count; 
-  }
+      highlightInverse(ar){
+        this.selected_images = 0;
+        let slctdimgs = [];
+        let ulclassname = this.ulClassName();
 
-  // Creates bilds the images in the panel 
-  imgloop(ar) {
-    console.log(ar.length + 'images');
-    //this. placeHolder();
-    console.log("PantheraIDSImageViewer : 18/05/2020 " );
-    (this.currentDisplayedImgs).length = 0;
-    (this.prevSelectedImgs).length = 0;
-    
-    /*if(this.checkImageExistance(ar) == ar.length)
-    {
-      if(this.moduleId === "img_clssfctn_ud"){
-        console.log('no_srv_imgs');
-        Shiny.setInputValue('no_srv_imgs', 'no imgs')
-      }
-       
-    }
-    else if(this.checkImageExistance(ar) > 0 && this.checkImageExistance(ar) < ar.length)
-    {
-      if(this.moduleId === "img_clssfctn_ud"){
-        console.log('mssng_srv_imgs');
-        Shiny.setInputValue('mssng_srv_imgs', 'missing imgs');
+        $('#' + this.moduleId + ' img').each(function(){
+          if(ar.includes($(this).attr('src'))){
+
+            $('#' + this.id + '').css({
+              'opacity': '0.4',
+              'filter': 'alpha(opacity=40)'
+            });
+            slctdimgs.push($(this).attr('src'));
+          }
+          $('.'+ulclassname+'> li').css("background-color", "yellow");
+          
+
+        });
+        this.selected_images = [...slctdimgs];
+        this.sendAllImages();
+
       }
 
-      let ul = document.getElementById(this.moduleId);
-      for (let i = 0; i < ar.length; i++) {
-          let liId = i + this.moduleId;
-          let img = new Image();
-          img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-          img.alt = "Camera Trap";
-          img.datamarked = 0;
-          if(this.placeHolder(img.src)){
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+      selectAll() {
+        this.selected_images = 0;
+        let slctdimgs = [];
+        let ulclassname = this.ulClassName();
+        $('#' + this.moduleId + ' img').each(function(){
+
+          $('#' + this.id + '').css({
+            'opacity': '0.4',
+            'filter': 'alpha(opacity=40)'
+          });
+          $('.'+ulclassname+'> li').css("background-color", "yellow");
+          slctdimgs.push($(this).attr('src'));
+        });
+        this.selected_images = [...slctdimgs];
+        this.sendAllImages();
+
+      }
+
+
+      deSelectAll() {
+        $('#' + this.moduleId + ' img').each(function(){
+          $('#' + this.id + '').css({
+            'opacity': '',
+            'filter': ''
+          });
+      
+        });
+        (this.prevSelectedImgs).length = 0;
+        this.prevSelectedImgs = [...this.selected_images];
+        this.selected_images.length = 0;
+      }
+
+      sendDataToShinny(){
+        if (this.selected_images === undefined || this.selected_images.length === 0) {
+          alert("No Images Selected !!");
+          return ;
+        }
+        else{
+          const copy_selected_images = [...this.selected_images];
+          this.deSelectAll();
+          return copy_selected_images;
+        }
+      }
+
+      // Checks if the an image exist on the server
+      placeHolder(imgURL)
+      {
+        let xmlhttp = new XMLHttpRequest();
+        let url = imgURL;
+          xmlhttp.open("GET", url, false);
+          xmlhttp.send();
+          if (xmlhttp.status==200) {
+            return true;
           }
           else{
-            img.src = '/srv/shiny-server/www/PantheraIDS_image_not_found_2.jpg';
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src +'"  alt="' + img.alt + '" /> </li>';
-
-          }
-          //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
-          this.setCol();
+          return false;
+          } 
       }
-    }*/
-   //else{
 
-      let ul = document.getElementById(this.moduleId);
-      for (let i = 0; i < ar.length; i++) {
-          let liId = i+'_' + this.moduleId;
-          let img = new Image();
-          img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
-          this.currentDisplayedImgs.push(img.src);
-          img.alt = "Camera Trap";
-          img.datamarked = 0;
-          if(this.placeHolder(img.src)){
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+      // Depreciated
+      checkImageExistance(arry) {
+        let count = 0;
+        for(let i= 0; i< arry.length ; i++)
+        {
+          let url = ((arry[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+          let xmlhttp = new XMLHttpRequest();
+          xmlhttp.open("GET", url, false);
+          xmlhttp.send();
+          if (xmlhttp.status==200) {
           }
           else{
-            img.src = '/srv/shiny-server/www/PantheraIDS_image_not_found_2.jpg';
-            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src +'"  alt="' + img.alt + '" /> </li>';
-
-          }
-          //ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
-          this.setCol();
+            count++;
+          } 
+        }
+        return count; 
       }
-    //}
-  }
 
-  // reset missing images handler (Depreciated)
-  resetHandlers(msg)
-  {
-    if(msg === 'noImages'){
-      Shiny.setInputValue('no_srv_imgs', null);
-    }
-    else{
-      Shiny.setInputValue('mssng_srv_imgs', null);
-    }
-  }
+      // Creates bilds the images in the panel 
+      imgloop(ar) {
 
-  // 
-  changeCSS(element)
-  {
-    $('.'+ element ).css("list-style", none);
-    $('.'+ element ).css("margin", 0);
-    $('.'+ element ).css("max-width", "500rem");
-    $('.'+ element ).css("padding", 0);
+        (this.currentDisplayedImgs).length = 0;
+        (this.prevSelectedImgs).length = 0;
+        
+          let ul = document.getElementById(this.moduleId);
+          for (let i = 0; i < ar.length; i++) {
+              let liId = i+'_' + this.moduleId;
+              let img = new Image();
+              img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm,"");
+              this.currentDisplayedImgs.push(img.src);
+              img.alt = "Camera Trap";
+              img.datamarked = 0;
+              if(this.placeHolder(img.src)){
+                ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="'+ "this.style.display='none'" +'"  alt="' + img.alt + '" /> </li>';
+              }
+              else{
+                img.src = '/srv/shiny-server/www/PantheraIDS_image_not_found_2.jpg';
+                ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src +'"  alt="' + img.alt + '" /> </li>';
 
-    $('.'+ element + '> li').css("border", "2px solid white");
-    $('.'+ element + '> li').css("float", "left");
-    $('.'+ element + '> li').css("float", "left");
+              }
+            
+              this.setCol();
+          }
+      }
 
-    $('.'+ element + '> li').css({
-      'border' : '2px solid white',
-      'float' : 'left',
-      'width' : 'calc(100% /' + this.columnSize +')',
-      'height' : 'calc(100% /' + this.columnSize +')',
-      'margin' : '0 -1px -1px 0',
-      'overflow' : 'hidden',
-    });
+      // reset missing images handler (Depreciated)
+      resetHandlers(msg)
+      {
+        if(msg === 'noImages'){
+          Shiny.setInputValue('no_srv_imgs', null);
+        }
+        else{
+          Shiny.setInputValue('mssng_srv_imgs', null);
+        }
+      }
 
-    $('.'+ element + '> li > img').css({
-      'cursor' : 'pointer',
-      'width' : '100%',
-      'overflow' : 'hidden'
-    });
-  }
+      changeCSS(element)
+      {
+        $('.'+ element ).css("list-style", none);
+        $('.'+ element ).css("margin", 0);
+        $('.'+ element ).css("max-width", "500rem");
+        $('.'+ element ).css("padding", 0);
 
-  // revert to white panel background
-  liWhiteBackground()
-  {
-    let ulclassname = this.ulClassName();
-    $('.'+ulclassname+' > li').css("background-color", "white");
-  }
+        $('.'+ element + '> li').css("border", "2px solid white");
+        $('.'+ element + '> li').css("float", "left");
+        $('.'+ element + '> li').css("float", "left");
 
-  /**
- * @description - indirect call to the vjs() function
- * @returns image view myFunction
- */
- callvjs(elementId) {
-  this.vjs(elementId);
-  return;
-}
+        $('.'+ element + '> li').css({
+          'border' : '2px solid white',
+          'float' : 'left',
+          'width' : 'calc(100% /' + this.columnSize +')',
+          'height' : 'calc(100% /' + this.columnSize +')',
+          'margin' : '0 -1px -1px 0',
+          'overflow' : 'hidden',
+        });
 
-// HokKey selection 
-keySelection(){
+        $('.'+ element + '> li > img').css({
+          'cursor' : 'pointer',
+          'width' : '100%',
+          'overflow' : 'hidden'
+        });
+      }
 
-    console.log('keySelection');
-    //this.selected_images = 0;
-    let slctdimgs = [];
-    let ulclassname = this.ulClassName();
-    let imgs = $('#' + this.moduleId + ' img');
-    let start = Math.min.apply(Math,this.hotKeysIndx),
-        end = Math.max.apply(Math,this.hotKeysIndx);
+      // revert to white panel background
+      liWhiteBackground()
+      {
+        let ulclassname = this.ulClassName();
+        $('.'+ulclassname+' > li').css("background-color", "white");
+      }
 
-    for(let i = start ; i <= end ; i++ ){
-      console.log('id : ' + imgs[i].id);
-      console.log('src : ' + imgs[i].src);
-      $('#' + imgs[i].id + '').css({
-        'opacity': '0.4',
-        'filter': 'alpha(opacity=40)'
-      });
-      $('.'+ulclassname+'> li').css("background-color", "yellow");
-      slctdimgs.push(imgs[i].src);
-    }
-    (this.selected_images).push(...slctdimgs); //= [...slctdimgs];
-    this.selected_images = [...new Set(this.selected_images)]; // remove duplicates
-    console.log(this.selected_images.length);
-    this.sendAllImages();
-    (this.hotKeysIndx).length = 0;
-}
+      /**
+       * @description - indirect call to the vjs() function
+       * @returns image view myFunction
+       */
+      callvjs(elementId) {
+        this.vjs(elementId);
+        return;
+      }
+
+      // HokKey selection 
+      keySelection(){
+
+          console.log('keySelection');
+          let slctdimgs = [];
+          let ulclassname = this.ulClassName();
+          let imgs = $('#' + this.moduleId + ' img');
+          let start = Math.min.apply(Math,this.hotKeysIndx),
+              end = Math.max.apply(Math,this.hotKeysIndx);
+
+          for(let i = start ; i <= end ; i++ ){
+            $('#' + imgs[i].id + '').css({
+              'opacity': '0.4',
+              'filter': 'alpha(opacity=40)'
+            });
+            $('.'+ulclassname+'> li').css("background-color", "yellow");
+            slctdimgs.push(imgs[i].src);
+          }
+          (this.selected_images).push(...slctdimgs);
+          this.selected_images = [...new Set(this.selected_images)]; // remove duplicates
+          this.sendAllImages();
+          (this.hotKeysIndx).length = 0;
+      }
 
 }
 
