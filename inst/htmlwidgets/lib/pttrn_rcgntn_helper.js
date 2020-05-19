@@ -55,17 +55,19 @@
 
         arrayclone(pttrn_rcgntn_obj.selected_images);
         if(event.metaKey && event.shiftKey ){ //event.ctrlKey && event.altKey
-          selectionFind(true);
+          
           console.log('shift+cmd');
           let id = event.target.id;
           let indx = parseInt(id.substring(0,id.indexOf('_')));
-          if((pttrn_rcgntn_obj.hotKeysIndx).length == 2){
+          if((pttrn_rcgntn_obj.hotKeysIndx).length == 1){
+            (pttrn_rcgntn_obj.hotKeysIndx).push(indx);
             pttrn_rcgntn_obj.keySelection();
           }
           else{
             (pttrn_rcgntn_obj.hotKeysIndx).push(indx);
             pttrn_rcgntn_obj.highliter(id);
           }
+          selectionFind(true);
           return;
         }
         else if (event.shiftKey) {

@@ -62,7 +62,8 @@
             let id = event.target.id;
             console.log('id : ' + id);
             let indx = parseInt(id.substring(0,id.indexOf('_')));
-            if((imgClssfctnObj.hotKeysIndx).length == 2){
+            if((imgClssfctnObj.hotKeysIndx).length == 1){
+              (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.keySelection();
             }
             else{
