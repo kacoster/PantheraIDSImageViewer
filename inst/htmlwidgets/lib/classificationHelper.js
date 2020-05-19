@@ -65,13 +65,15 @@
             if((imgClssfctnObj.hotKeysIndx).length == 1){
               (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.keySelection();
+              return;
             }
             else{
               (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.highliter(id);
+              return;
             }
-            selectionFind(true);
-            return;
+            //selectionFind(true);
+            
         }
         else if (event.shiftKey) {
           console.log('shift key');
