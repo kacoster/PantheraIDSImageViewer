@@ -2,7 +2,7 @@
      code included inside $(document).ready() will only run once the page is
       ready for JavaScript code to execute
     ***************************************************************************/
-        $(document).ready(function () {
+        /*$(document).ready(function () {
 
             $("#pttrn_rcgntn_slct_all_button").on("click", function () {
               pttrn_rcgntn_obj.selectAll();
@@ -15,7 +15,7 @@
             $("#pttrn_rcgntn_invrt_button").on("click", function () {
               pttrn_rcgntn_obj.invertSelection();
             });
-        });
+        });*/
 
       // pattern recognition viewer object 
       var pttrn_rcgntn_obj = new ViewerComponent(0,50,5,
@@ -104,6 +104,18 @@
       function clearimages() {
         console.log('clearimages helper');
         $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl").html("");
+      }
+
+      function pttrn_rcgntn_dslct_all(){
+        pttrn_rcgntn_obj.deSelectAll();
+      }
+
+      function pttrn_rcgntn_slct_all(){
+        pttrn_rcgntn_obj.selectAll();
+      }
+
+      function pttrn_rcgntn_invrt(){
+        pttrn_rcgntn_obj.invertSelection();
       }
 
   

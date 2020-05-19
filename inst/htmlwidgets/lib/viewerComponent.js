@@ -24,7 +24,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 19-05-20 06:31');
+        console.log('readServerData 19-05-20 07:48');
         let mdid = (this.moduleId).substring(0,27);
         if(response === null )
         {
