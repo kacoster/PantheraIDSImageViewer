@@ -63,17 +63,15 @@
             console.log('id : ' + id);
             let indx = parseInt(id.substring(0,id.indexOf('_')));
             if((imgClssfctnObj.hotKeysIndx).length == 1){
-              (imgClssfctnObj.hotKeysIndx).push(indx);
+               (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.keySelection();
-              return;
             }
             else{
               (imgClssfctnObj.hotKeysIndx).push(indx);
               imgClssfctnObj.highliter(id);
-              return;
             }
-            //selectionFind(true);
-            
+            selectionFind(true);
+            return;
         }
         else if (event.shiftKey) {
           console.log('shift key');

@@ -62,13 +62,15 @@
           if((pttrn_rcgntn_obj.hotKeysIndx).length == 1){
             (pttrn_rcgntn_obj.hotKeysIndx).push(indx);
             pttrn_rcgntn_obj.keySelection();
+            return;
           }
           else{
             (pttrn_rcgntn_obj.hotKeysIndx).push(indx);
             pttrn_rcgntn_obj.highliter(id);
+            return;
           }
-          selectionFind(true);
-          return;
+          //selectionFind(true);
+          
         }
         else if (event.shiftKey) {
           console.log("Shift Key");
