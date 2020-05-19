@@ -73,7 +73,7 @@
             return;
         }
         else if (event.shiftKey) {
-          
+          console.log('shift key');
           if(imgClssfctnObj.selected_images.includes(event.target.src))
           {
             selectionFind(true);
@@ -81,6 +81,7 @@
           imgClssfctnObj.handleExistance(imgClssfctnObj.selected_images, event.target.src, event.target.id);
 
         }else {
+          console.log('view key');
           objectOf("imgClassification");
           imgClssfctnObj.callvjs(imgClssfctnObj.moduleId+"_divId");
         }
