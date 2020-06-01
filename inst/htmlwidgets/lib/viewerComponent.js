@@ -1,5 +1,5 @@
 /***************************************************************************
-      @version ViewerComponent v1.3.6
+      @version ViewerComponent v1.3.7
       @author Valentine Tawira
       @Copyright (C) 2019 | Panthera Corporation
 ***************************************************************************/
@@ -24,7 +24,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 19-05-20 07:48');
+        console.log('readServerData 01-06-20 07:02');
         let mdid = (this.moduleId).substring(0,27);
         if(response === null )
         {
@@ -127,7 +127,7 @@
               {
                   this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
               }else{
-                  this.getCurrClckdImg(ref,""); 
+                  this.getCurrClckdImg(ref,null); //""
               }
           }
           else{
