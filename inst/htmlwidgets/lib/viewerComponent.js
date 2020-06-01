@@ -24,7 +24,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 01-06-20 07:02');
+        console.log('readServerData 01-06-20 07:27');
         let mdid = (this.moduleId).substring(0,27);
         if(response === null )
         {
@@ -127,7 +127,7 @@
               {
                   this.getCurrClckdImg(ref,this.getTrimedSelectedImages().toString());
               }else{
-                  this.getCurrClckdImg(ref,null); //""
+                  this.getCurrClckdImg(ref,""); //""
               }
           }
           else{
@@ -338,7 +338,7 @@
         (this.prevSelectedImgs).length = 0;
         this.prevSelectedImgs = [...this.selected_images];
         this.selected_images.length = 0;
-        this.getCurrClckdImg(this.selectedImgShinyRef(),null);
+        this.getCurrClckdImg(this.selectedImgShinyRef(),"");
     
       }
 
