@@ -338,11 +338,13 @@
         (this.prevSelectedImgs).length = 0;
         this.prevSelectedImgs = [...this.selected_images];
         this.selected_images.length = 0;
+        this.getCurrClckdImg(this.selectedImgShinyRef(),null);
+    
       }
 
       sendDataToShinny(){
         if (this.selected_images === undefined || this.selected_images.length === 0) {
-          alert("No Images Selected !!");
+          console.log("No Images Selected !!");
           return ;
         }
         else{

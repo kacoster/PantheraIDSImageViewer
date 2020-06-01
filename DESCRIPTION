@@ -2,7 +2,7 @@ Package: PantheraIDSImageViewer
 Title: Creates and Displays interactive images thumbnail tiles using the
       'viewer.js' JavaScript library and the 'htmlwidgets' package. 
       The package is ideally developed to be used within Shiny Apps
-Version: 1.3.6
+Version: 1.3.7
 Authors@R: 
     person(given = "Valentine",
            family = "Tawira",
@@ -16,7 +16,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2020-02-12 13:51:45 UTC; 
+Packaged: 2020-06-01 06:48:45 UTC; 
 Maintainer: Valentine Tawira  <vtawira@panthera.org>
 URL: https://github.com/kacoster/PantheraIDSImageViewer
 BugReports: https://github.com/kacoster/PantheraIDSImageViewer/issues
