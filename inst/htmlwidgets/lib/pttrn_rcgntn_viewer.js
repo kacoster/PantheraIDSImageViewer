@@ -4,34 +4,38 @@
       @Copyright (C) 2019 | Panthera Corporation
      ***************************************************************************/
 
-    var whichViewer ;
-    var nextPrev = "0";
-    var clickStatus = "0";
-    var selected_images_clone = [];
-    var find_flag = false;
-
-
-    function selectionFind(flag)
-    {
-      find_flag = flag;
-   }
-
-    function objectOf(viewerType)
+    console.log("version - 3");
+    var findflag = false;
+    var slctd_imgs_clone = [];
+    var whichviewer ;
+    var nextprev = "0";
+    
+    function objectof(viewerType)
     {
       console.log("in objectOf()");
-      whichViewer = viewerType;
+      whichviewer = viewerType;
     }
 
-    function resetwhichViewer()
+    function resetwhichviewer()
     {
-      whichViewer = "";
+      whichviewer = "";
     }
 
-    function nextPrevClicked(status)
+    function selectionfind(flag)
     {
-        nextPrev = status;
-    }
+      findflag = flag;
+   }
 
+   function nextprevclicked(status)
+   {
+       nextprev = status;
+   }
+
+
+
+    /*
+    
+    var clickStatus = "0";
     function getCurrClckdImg(state, imgsrc)
     {
       console.log("In getCurrClckdImg");
@@ -41,10 +45,10 @@
     function clickEventStatus(status)
     {
       clickStatus = status;
-    }
+    }*/
 
-    function arrayClone(param){
-       selected_images_clone = [...param];
+    function arrayclone(param){
+       slctd_imgs_clone = [...param];
     }
 
     (function (global, factory) {
@@ -1827,15 +1831,15 @@
 
           if (!this.isShown) {
 
-            if(nextPrev === "1"){
+            if(nextprev === "1"){
               console.log("Line 1824 returns");
-              nextPrev = "0";
+              nextprev = "0";
               return;
             }
-            if(find_flag === true)
+            if(findflag === true)
             {
               console.log("I am hidding the image");
-              find_flag = false;
+              findflag = false;
               return this.hide();
             }
 
@@ -1867,12 +1871,12 @@
           console.log("Image URL : " + image.src);
 
 
-          if( whichViewer === "imgClassification")
+          if( whichviewer === "pttrn_rcgntn_vwr")
           {
-            console.log("In whichViewer : imgClassification");
-            if(imgClssfctnObj.getSelectedImages().includes(url) || imgClssfctnObj.removedRef() === url)
+            console.log("In whichviewer : pttrn_rcgntn_vwr");
+            if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || pttrn_rcgntn_obj.removedRef() === url)
             {
-                if(imgClssfctnObj.getSelectedImages().includes(url) || selected_images_clone.includes(url))
+                if(pttrn_rcgntn_obj.getSelectedImages().includes(url) || slctd_imgs_clone.includes(url))
                 {
                   this.image = image;
                   console.log("Um hidding the clicked image");
@@ -1884,27 +1888,27 @@
           }
 
 
-          if( whichViewer === "imgClassification")
+          if( whichviewer === "pttrn_rcgntn_vwr")
           {
-            console.log(" Which Viewer : imgClassification");
-            getCurrClckdImg("clssfctn_vw_curr_img",
-                url.substring(url.lastIndexOf("/") + 1, url.length ));
+            console.log(" Which Viewer : pttrn_rcgntn_vwr");
+            // getCurrClckdImg("clssfctn_vw_curr_img",
+            //     url.substring(url.lastIndexOf("/") + 1, url.length ));
                 //resetwhichViewer();
           }
-          else if(whichViewer === "imgIdentification")
+          /*else if(whichviewer === "imgIdentification")
           {
             console.log(" Which Viewer : imgIdentification");
             getCurrClckdImg("spcs_idntfctn_id_rf_1_vw_curr_img",
                url.substring(url.lastIndexOf("/") + 1, url.length ));
                //resetwhichViewer();
           }
-          else if (whichViewer === "imgIdentification_rf2")
+          else if (whichviewer === "imgIdentification_rf2")
           {
              console.log(" Which Viewer : imgIdentification_rf2");
              getCurrClckdImg("spcs_idntfctn_id_rf_2_vw_curr_img",
              url.substring(url.lastIndexOf("/") + 1,url.length ));
 
-          }
+          }*/
 
           if (isFunction(options.view)) {
             addListener(element, EVENT_VIEW, options.view, {
