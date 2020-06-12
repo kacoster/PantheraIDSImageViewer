@@ -24,18 +24,39 @@
 
 
       readServerData(response) {
-        console.log('readServerData 01-06-20 07:27');
+        console.log('readServerData 12-06-20 16:54');
         let mdid = (this.moduleId).substring(0,27);
+
+        let respArray = [];
         if(response === null )
         {
           alert(" Error in reading your images.Please check if all requirements are provided.");
         }
         else{
-          this.imgArray = response.split(',');
-          this.imgArray.splice(0, 1);
-          this.imgArray[0] = this.imgArray[0].replace("Source", "");
-          this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
-          this.imgArray.splice(this.imgArray.length - 1, 1);
+          // this.imgArray = response.split(',');
+          // this.imgArray.splice(0, 1);
+          // this.imgArray[0] = this.imgArray[0].replace("Source", "");
+          // this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
+          // this.imgArray.splice(this.imgArray.length - 1, 1);
+          respArray = response.split("\n");
+
+          respArray.shift();
+          console.log("Resp Array : " + respArray);
+          //respArray[0] = respArray[0].replace("Source", "");
+
+          if(respArray[respArray.length-1]==""){
+            //console.log('pop');
+            respArray.pop();
+          }
+
+          for(let i = 0 ; i < respArray.length; i++ ){
+            let src = respArray[i].substring(respArray[i].indexOf('/'),respArray[i].lastIndexOf('/'))+'/'+respArray[i].substring(0,respArray[i].indexOf('/'));
+            this.imgArray.push(src.replace(',',''));
+           }
+  
+          console.log(this.moduleId + 'Total Imgs : ' + (this.imgArray.length));
+          console.log("first : " + this.imgArray[0] + " last : " +  this.imgArray[this.imgArray.length-1] );
+
           if(this.moduleId === "img_clssfctn_ud")
           {
             Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
