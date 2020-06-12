@@ -41,11 +41,9 @@
           respArray = response.split("\n");
 
           respArray.shift();
-          console.log("Resp Array : " + respArray);
-          //respArray[0] = respArray[0].replace("Source", "");
-
+      
           if(respArray[respArray.length-1]==""){
-            //console.log('pop');
+       
             respArray.pop();
           }
 
