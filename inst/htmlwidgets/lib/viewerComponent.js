@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 20-06-20 23:22');
+        console.log('readServerData 20-06-20 23:42');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -536,7 +536,12 @@
         for(let i = 0 ; i < this.selectedImageID.length ; i++){
           $('#'+this.selectedImageID[i]+'').closest('li').css("background-color", "#90EE90");
         }
+
+        this.prevSelectedImgs.length = 0;
+        this.prevSelectedImgs = [...this.selected_images];
+        this.selected_images.length = 0;
         this.selectedImageID.length = 0;
+        this.getCurrClckdImg("pttrn_rcgntn_mn_pnl_slctd_img","");
       }
 
 }

@@ -95,8 +95,13 @@
       {
           console.log('saveRejectButtonListerner()');
           pttrn_rcgntn_obj.liWhiteBackground();
-          pttrn_rcgntn_obj.deSelectAll();
-          pttrn_rcgntn_obj.getCurrClckdImg("pttrn_rcgntn_mn_pnl_slctd_img","");
+          pttrn_rcgntn_obj.matchRejectHighlighter();
+          // pttrn_rcgntn_obj.prevSelectedImgs.length = 0;
+          // pttrn_rcgntn_obj.prevSelectedImgs = [...pttrn_rcgntn_obj.selected_images];
+          // pttrn_rcgntn_obj.selected_images.length = 0;
+          // pttrn_rcgntn_obj.selectedImageID.length = 0;
+          // //pttrn_rcgntn_obj.deSelectAll();
+          // pttrn_rcgntn_obj.getCurrClckdImg("pttrn_rcgntn_mn_pnl_slctd_img","");
 
       }
 
