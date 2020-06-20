@@ -94,7 +94,7 @@
       function saveRejectButtonListerner()
       {
           console.log('saveRejectButtonListerner()');
-          pttrn_rcgntn_obj.liWhiteBackground();
+          //pttrn_rcgntn_obj.liWhiteBackground();
           pttrn_rcgntn_obj.matchRejectHighlighter();
           // pttrn_rcgntn_obj.prevSelectedImgs.length = 0;
           // pttrn_rcgntn_obj.prevSelectedImgs = [...pttrn_rcgntn_obj.selected_images];
