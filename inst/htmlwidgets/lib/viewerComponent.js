@@ -94,7 +94,8 @@
               'opacity': '0.4',
               'filter': 'alpha(opacity=40)'
           });
-          $('.'+ulclassname+'> li').css("background-color", "yellow");
+          $('#' + elementID + '').closest("li").css("background-color", "yellow");
+         
       }
 
       removeHighlight(elementID)
@@ -102,7 +103,9 @@
           $('#' + elementID + '').css({
               'opacity': '',
               'filter': ''
-              });
+          });
+          $('#' + elementID + '').closest("li").css("background-color", "white");
+
       }
 
       /** Not Yet Generic */
@@ -305,7 +308,7 @@
       } 
 
       highlightInverse(ar){
-        this.selected_images = 0;
+        this.selected_images.length = 0;
         let slctdimgs = [];
         let ulclassname = this.ulClassName();
 
