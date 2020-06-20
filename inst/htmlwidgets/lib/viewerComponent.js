@@ -24,9 +24,9 @@
 
 
       readServerData(response) {
-        console.log('readServerData 12-06-20 16:54');
+        console.log('readServerData 19-06-20 15:10');
         let mdid = (this.moduleId).substring(0,27);
-
+        this.imgArray.length = 0;
         let respArray = [];
         if(response === null )
         {
