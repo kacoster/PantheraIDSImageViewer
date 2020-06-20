@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 20-06-20 23:42');
+        console.log('readServerData 20-06-20 23:51');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -91,7 +91,7 @@
 
       highliter(elementID)
       {
-        let ulclassname = this.ulClassName();
+        //let ulclassname = this.ulClassName();
           $('#' + elementID + '').css({
               'opacity': '0.4',
               'filter': 'alpha(opacity=40)'
@@ -509,18 +509,19 @@
 
           console.log('keySelection');
           let slctdimgs = [],
-              tempSlctdId = [];
-          let ulclassname = this.ulClassName();
-          let imgs = $('#' + this.moduleId + ' img');
-          let start = Math.min.apply(Math,this.hotKeysIndx),
+              tempSlctdId = [],
+              imgs = $('#' + this.moduleId + ' img');
+              start = Math.min.apply(Math,this.hotKeysIndx),
               end = Math.max.apply(Math,this.hotKeysIndx);
 
+          //let ulclassname = this.ulClassName();
           for(let i = start ; i <= end ; i++ ){
             $('#' + imgs[i].id + '').css({
               'opacity': '0.4',
               'filter': 'alpha(opacity=40)'
             });
-            $('.'+ulclassname+'> li').css("background-color", "yellow");
+            $('#' + imgs[i].id + '').closest('li').css("background-color", "yellow");
+            //$('.'+ulclassname+'> li').css("background-color", "yellow");
             slctdimgs.push(imgs[i].src);
             tempSlctdId.push(imgs[i].id);
           }
