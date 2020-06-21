@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 21-06-20 11:31');
+        console.log('readServerData 21-06-20 11:49');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -97,11 +97,15 @@
               'filter': 'alpha(opacity=40)'
           });
           $('#' + elementID + '').closest("li").css("background-color", "yellow");
+          this.selectedImageID.push(elementID);
+
          
       }
 
       removeHighlight(elementID)
       {
+          let indx = this.selectedImageID.indexOf(elementID);
+          this.selectedImageID.splice(indx,1);
           $('#' + elementID + '').css({
               'opacity': '',
               'filter': ''
