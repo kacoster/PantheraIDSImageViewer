@@ -35,23 +35,22 @@ HTMLWidgets.widget({
                 }
         );
 
-      Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
+        Shiny.addCustomMessageHandler("pttrn_rcgntn_mtch_all_button",
             function(mesg) {
-              console.log("Handler pttrn_rcgntn_no_mtch_all_button");
+              console.log(mesg);
+              saveRejectButtonListerner();
+            }
+        );
+
+        Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
+            function(mesg) {
+              console.log(mesg);
               saveRejectButtonListerner();
               
             }
         );
 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_mtch_all_button",
-            function(mesg) {
-              console.log("Handler pttrn_rcgntn_mtch_all_button");
-              saveRejectButtonListerner();
-            }
-        );
-
         // New 
-
         Shiny.addCustomMessageHandler("pttrn_rcgntn_slct_all_button",
             function(mesg) {
               console.log("Handler pttrn_rcgntn_slct_all_button");
@@ -72,11 +71,6 @@ HTMLWidgets.widget({
               pttrn_rcgntn_invrt();
             }
         );
-
-
-
-
-
 
         // TODO: code to render the widget, e.g.
         // el.innerText = x.message;
