@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 21-06-20 11:49');
+        console.log('readServerData 21-06-20 12:16');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -298,10 +298,12 @@
         let notSelected;
       
         if((this.selected_images).length > 0){
+          console.log('There are currently yellow images');
           notSelected = this.arryCompliment(this.currentDisplayedImgs,this.selected_images);
           this.deSelectAll();
         }
         else{
+          console.log('There are currently no yellow images');
           notSelected = this.arryCompliment(this.currentDisplayedImgs,this.prevSelectedImgs)
         }
         this.highlightInverse(notSelected);
