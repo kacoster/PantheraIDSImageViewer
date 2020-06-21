@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 21-06-20 00:07');
+        console.log('readServerData 21-06-20 11:15');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -535,6 +535,7 @@
 
       matchRejectHighlighter(){
         for(let i = 0 ; i < this.selectedImageID.length ; i++){
+          console.log(this.selectedImageID[i]);
           $('#'+this.selectedImageID[i]+'').closest('li').css("background-color", "#90EE90");
         }
 
