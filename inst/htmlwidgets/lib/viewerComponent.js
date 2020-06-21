@@ -25,7 +25,7 @@
 
 
       readServerData(response) {
-        console.log('readServerData 21-06-20 12:16');
+        console.log('readServerData 21-06-20 17:01');
         let mdid = (this.moduleId).substring(0,27);
         this.imgArray.length = 0;
         this.selectedImageID.length = 0;
@@ -326,12 +326,13 @@
 
         $('#' + this.moduleId + ' img').each(function(){
           if(ar.includes($(this).attr('src'))){
-
+            console.log('highlightInverse');
             $('#' + this.id + '').css({
               'opacity': '0.4',
               'filter': 'alpha(opacity=40)'
             });
             slctdimgs.push($(this).attr('src'));
+            console.log($(this).attr('id'));
             tempSlctdId.push($(this).attr('id'));
           }
           $('#' + this.id + '').closest('li').css("background-color", "yellow");
@@ -340,7 +341,7 @@
         this.selected_images = [...slctdimgs];
         this.selectedImageID = [...tempSlctdId];
         this.sendAllImages();
-
+        console.log('End highlightInverse');
       }
 
       selectAll() {
