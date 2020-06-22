@@ -544,7 +544,7 @@
         console.log('In matchRejectHighlighter ');
         console.log(this.selectedImageID.length);
         for(let i = 0 ; i < this.selectedImageID.length ; i++){
-          console.log(this.selectedImageID[i]);
+          //console.log(this.selectedImageID[i]);
           $('#'+this.selectedImageID[i]+'').closest('li').css("background-color", "#90EE90");
         }
 
