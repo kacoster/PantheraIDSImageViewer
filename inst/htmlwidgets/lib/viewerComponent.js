@@ -32,7 +32,7 @@
         let respArray = [];
         if(response === null )
         {
-          alert(" Error in reading your images.Please check if all requirements are provided.");
+          console.log(" Error in reading your images.Please check if all requirements are provided.");
         }
         else{
           // this.imgArray = response.split(',');
