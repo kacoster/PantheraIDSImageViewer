@@ -14,17 +14,19 @@ HTMLWidgets.widget({
 
       renderValue: function (x) {
 
-        //console.log("case classification module ");
-        //console.log("PantheraIDSImageViewer v 1.2.1");
-        console.log("viewerimgclssfctnud 12-06-20 16:54");
+        console.log("viewerimgclssfctnud 13-09-20 01:50");
 
-        //readServerData(x.message);
         Shiny.addCustomMessageHandler("img_clssfctn_ud_batch_image_size",
           function (message) {
             console.log("img_clssfctn_ud_batch_image_size " + parseInt(JSON.stringify(message)));
             setImagesNumber(parseInt(JSON.stringify(message)));
-            //console.log("Handler img_clssfctn_ud_batch_image_size " + parseInt(JSON.stringify(message)));
-            //readServerData(x.message);
+          }
+        );
+
+        Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_batch_image_size",
+          function (message) {
+            console.log("img_clssfctn_ud_srvr_batch_image_size " + parseInt(JSON.stringify(message)));
+            setImagesNumber(parseInt(JSON.stringify(message)));
           }
         );
 
@@ -32,13 +34,18 @@ HTMLWidgets.widget({
           function (message) {
             console.log('img_clssfctn_ud_img_clmn_numb ' + parseInt(JSON.stringify(message)));
             setColumnNumb(parseInt(JSON.stringify(message)));
-            // console.log("Handler img_clssfctn_ud_img_clmn_numb : " + parseInt(JSON.stringify(message)));
+          }
+        );
+
+        Shiny.addCustomMessageHandler("img_clssfctn_srver_ud_img_clmn_numb",
+          function (message) {
+            console.log('img_clssfctn_srver_ud_img_clmn_numb ' + parseInt(JSON.stringify(message)));
+            setColumnNumb(parseInt(JSON.stringify(message)));
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_button",
           function (mesg) {
-            //console.log("Handler img_clssfctn_ud_fltr_button");
             nextPrevClicked("1");
             fetchServerData(x.message, x.componentID);
             resetProps();
@@ -47,7 +54,6 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_srvr_button",
           function (mesg) {
-            //console.log("Handler img_clssfctn_ud_fltr_button");
             nextPrevClicked("1");
             fetchServerData(x.message, x.componentID);
             resetProps();
