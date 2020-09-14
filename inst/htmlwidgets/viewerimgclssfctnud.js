@@ -14,32 +14,28 @@ HTMLWidgets.widget({
 
       renderValue: function (x) {
 
-        console.log("viewerimgclssfctnud 13-09-20 01:50");
+        console.log("viewerimgclssfctnud 14-09-20 11:45");
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_batch_image_size",
           function (message) {
-            console.log("img_clssfctn_ud_batch_image_size " + parseInt(JSON.stringify(message)));
             setImagesNumber(parseInt(JSON.stringify(message)));
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_batch_image_size",
           function (message) {
-            console.log("img_clssfctn_ud_srvr_batch_image_size " + parseInt(JSON.stringify(message)));
             setImagesNumber(parseInt(JSON.stringify(message)));
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_img_clmn_numb",
           function (message) {
-            console.log('img_clssfctn_ud_img_clmn_numb ' + parseInt(JSON.stringify(message)));
             setColumnNumb(parseInt(JSON.stringify(message)));
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_srver_ud_img_clmn_numb",
           function (message) {
-            console.log('img_clssfctn_srver_ud_img_clmn_numb ' + parseInt(JSON.stringify(message)));
             setColumnNumb(parseInt(JSON.stringify(message)));
           }
         );
@@ -62,7 +58,7 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_sv_edt_button",
           function (msg) {
-            console.log("In Handler img_clssfctn_ud_sv_edt_button");
+            //console.log("In Handler img_clssfctn_ud_sv_edt_button");
             saveButtonListerner();
             //console.log("Handler img_clssfctn_ud_fltr_button");
             //fetchServerData(x.message,x.componentID);

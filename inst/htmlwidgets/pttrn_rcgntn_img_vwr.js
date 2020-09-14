@@ -4,72 +4,72 @@ HTMLWidgets.widget({
 
   type: 'output',
 
-  factory: function(el, width, height) {
+  factory: function (el, width, height) {
 
     // TODO: define shared variables for this instance
 
     return {
 
-      renderValue: function(x) {
+      renderValue: function (x) {
 
         console.log("pttrn_rcgntn_img_vwr");
         console.log("Element ID " + el.id);
 
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
-                function(mesg) {
-                  console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
-                  nextprevclicked("1");
-                  fetchServerData(x.filePath,x.componentID);
-                  reset_props();
-                  
-                }
+          function (mesg) {
+            console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
+            nextprevclicked("1");
+            fetchServerData(x.filePath, x.componentID);
+            reset_props();
+
+          }
         );
 
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_srvr_indvdl_fltr_button",
-                function(mesg) {
-                  console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
-                  nextprevclicked("1");
-                  fetchServerData(x.filePath,x.componentID);
-                  reset_props();
-                  
-                }
+          function (mesg) {
+            console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
+            nextprevclicked("1");
+            fetchServerData(x.filePath, x.componentID);
+            reset_props();
+
+          }
         );
 
         Shiny.addCustomMessageHandler("pttrn_rcgntn_mtch_all_button",
-            function(mesg) {
-              console.log(mesg);
-              saveRejectButtonListerner();
-            }
+          function (mesg) {
+            console.log(mesg);
+            saveRejectButtonListerner();
+          }
         );
 
         Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
-            function(mesg) {
-              console.log(mesg);
-              saveRejectButtonListerner();
-              
-            }
+          function (mesg) {
+            console.log(mesg);
+            saveRejectButtonListerner();
+
+          }
         );
 
         // New 
         Shiny.addCustomMessageHandler("pttrn_rcgntn_slct_all_button",
-            function(mesg) {
-              console.log("Handler pttrn_rcgntn_slct_all_button");
-              pttrn_rcgntn_slct_all();
-            }
+          function (mesg) {
+            console.log("Handler pttrn_rcgntn_slct_all_button");
+            pttrn_rcgntn_slct_all();
+          }
         );
 
         Shiny.addCustomMessageHandler("pttrn_rcgntn_dslct_all_button",
-            function(mesg) {
-              console.log("Handler pttrn_rcgntn_dslct_all_button");
-              pttrn_rcgntn_dslct_all();
-            }
+          function (mesg) {
+            console.log("Handler pttrn_rcgntn_dslct_all_button");
+            pttrn_rcgntn_dslct_all();
+          }
         );
 
         Shiny.addCustomMessageHandler("pttrn_rcgntn_invrt_button",
-            function(mesg) {
-              console.log("Handler pttrn_rcgntn_invrt_button");
-              pttrn_rcgntn_invrt();
-            }
+          function (mesg) {
+            console.log("Handler pttrn_rcgntn_invrt_button");
+            pttrn_rcgntn_invrt();
+          }
         );
 
         // TODO: code to render the widget, e.g.
@@ -77,7 +77,7 @@ HTMLWidgets.widget({
 
       },
 
-      resize: function(width, height) {
+      resize: function (width, height) {
 
         // TODO: code to re-render the widget with a new size
 
