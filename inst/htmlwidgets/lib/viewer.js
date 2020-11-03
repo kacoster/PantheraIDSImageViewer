@@ -3045,13 +3045,13 @@
                addClass(toolbar, CLASS_HIDE);
              }
 
-             $('#toolbar-ul').tooltip({
-               items: 'li',
-               track: true,
-               content: function () {
-                 return $(this).attr("title");
-               }
-             });
+             //  $('#toolbar-ul').tooltip({
+             //    items: 'li',
+             //    track: true,
+             //    content: function () {
+             //      return $(this).attr("title");
+             //    }
+             //  });
 
              if (!options.rotatable) {
                var rotates = toolbar.querySelectorAll('li[class*="rotate"]');
