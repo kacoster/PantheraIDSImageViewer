@@ -45,8 +45,9 @@ HTMLWidgets.widget({
             console.log("------------------------------------------");
             console.log(JSON.stringify(msg));
             console.log("------------------------------------------");
+            let src = JSON.stringify(msg);
             nextPrevClicked("1");
-            fetchServerData(x.message, x.componentID);
+            fetchServerData(src, x.message, x.componentID);
             resetProps();
           }
         );

@@ -1,10 +1,11 @@
-function fetchServerData(csvfile, moduleId) {
+function fetchServerData(src, csvfile, moduleId) {
     console.log('fetchServerData');
     if (moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
         setimgarry(loadFile(csvfile))
     }
     if (moduleId === "img_clssfctn_ud") {
-        setImageArray(loadFile(csvfile))
+        //setImageArray(loadFile(csvfile))
+        setImageArrayTest(src);
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_9") {
         setValidationArray(loadFile(csvfile), 9)
