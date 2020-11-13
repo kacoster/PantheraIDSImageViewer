@@ -76,7 +76,7 @@ class ViewerComponent {
   }
 
   readServerDataTest(response) {
-    console.log('readServerData 13-11-20 13:17');
+    console.log('readServerData 13-11-20 13:57');
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
@@ -94,6 +94,10 @@ class ViewerComponent {
       //  respArray = response.split(",");
 
       //respArray.shift();
+      console.log("*******************************************");
+      console.log(response);
+      console.log("*******************************************");
+
 
       this.imgArray = response.split(",");
 
