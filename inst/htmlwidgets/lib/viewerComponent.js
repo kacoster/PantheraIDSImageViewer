@@ -80,6 +80,8 @@ class ViewerComponent {
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
+
+    response.l
     //  let respArray = [];
     if (response === null) {
       console.log(" Error in reading your images.Please check if all requirements are provided.");
@@ -94,12 +96,12 @@ class ViewerComponent {
       //  respArray = response.split(",");
 
       //respArray.shift();
-      console.log("*******************************************");
-      console.log(response);
-      console.log("*******************************************");
+      // console.log("*******************************************");
+      // console.log(response);
+      // console.log("*******************************************");
 
-
-      this.imgArray = response.split(",");
+      let str = (response.substring(1)).slice(0, -1);
+      this.imgArray = str.split(",");
 
       //  if (respArray[respArray.length - 1] == "") {
 

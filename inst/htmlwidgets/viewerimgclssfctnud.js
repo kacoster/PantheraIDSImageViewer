@@ -42,9 +42,9 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_button",
           function (msg) {
-            console.log("------------------------------------------");
-            console.log(JSON.stringify(msg));
-            console.log("------------------------------------------");
+            // console.log("------------------------------------------");
+            // console.log(JSON.stringify(msg));
+            // console.log("------------------------------------------");
             let src = JSON.stringify(msg);
             nextPrevClicked("1");
             fetchServerData(src, x.message, x.componentID);
