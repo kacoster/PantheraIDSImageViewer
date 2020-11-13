@@ -101,7 +101,8 @@ class ViewerComponent {
       // console.log("*******************************************");
 
       let str = (response.substring(1)).slice(0, -1);
-      this.imgArray = str.split(",");
+      console.log(str);
+      this.imgArray = response.split(",");
 
       //  if (respArray[respArray.length - 1] == "") {
 
@@ -473,7 +474,7 @@ class ViewerComponent {
     for (let i = 0; i < ar.length; i++) {
       let liId = i + '_' + this.moduleId;
       let img = new Image();
-      img.src = ((ar[i].trim()).replace(/['"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
+      img.src = ((ar[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
       console.log("#####################################");
       console.log(img.src);
       console.log("#####################################");
