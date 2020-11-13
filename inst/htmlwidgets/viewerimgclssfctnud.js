@@ -14,7 +14,7 @@ HTMLWidgets.widget({
 
       renderValue: function (x) {
 
-        console.log("viewerimgclssfctnud 13-1-20 12:10");
+        console.log("viewerimgclssfctnud 13-1-20 13:17");
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_batch_image_size",
           function (message) {
@@ -41,8 +41,10 @@ HTMLWidgets.widget({
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_button",
-          function (mesg) {
-            console.log(mesg.stringify);
+          function (msg) {
+            console.log("------------------------------------------");
+            console.log(JSON.stringify(msg));
+            console.log("------------------------------------------");
             nextPrevClicked("1");
             fetchServerData(x.message, x.componentID);
             resetProps();
