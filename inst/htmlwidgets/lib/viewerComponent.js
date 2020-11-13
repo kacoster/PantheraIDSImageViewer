@@ -30,13 +30,8 @@ class ViewerComponent {
     this.selectedImageID.length = 0;
     let respArray = [];
     if (response === null) {
-      console.log(" Error in reading your images.Please check if all requirements are provided.");
+      console.log(" Error in reading your images.");
     } else {
-      // this.imgArray = response.split(',');
-      // this.imgArray.splice(0, 1);
-      // this.imgArray[0] = this.imgArray[0].replace("Source", "");
-      // this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
-      // this.imgArray.splice(this.imgArray.length - 1, 1);
       respArray = response.split("\n");
 
       respArray.shift();
@@ -51,9 +46,6 @@ class ViewerComponent {
         this.imgArray.push(src.replace(',', ''));
       }
 
-      //console.log(this.moduleId + 'Total Imgs : ' + (this.imgArray.length));
-      //console.log("first : " + this.imgArray[0] + " last : " + this.imgArray[this.imgArray.length - 1]);
-
       if (this.moduleId === "img_clssfctn_ud") {
         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
           1 + " / " + this.getBatchNumber());
@@ -69,53 +61,22 @@ class ViewerComponent {
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
-      //console.log('ct_vldt_img_trggr_tbl_vldtn');
       this.imgloop(this.imgArray);
     }
 
   }
 
   readServerDataTest(response) {
-    console.log('readServerData 13-11-20 13:57');
+    console.log('readServerDataTest 13-11-20 16:41');
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
 
-    response.l
-    //  let respArray = [];
     if (response === null) {
-      console.log(" Error in reading your images.Please check if all requirements are provided.");
+      console.log(" Error in reading your images");
     } else {
-      // this.imgArray = response.split(',');
-      // this.imgArray.splice(0, 1);
-      // this.imgArray[0] = this.imgArray[0].replace("Source", "");
-      // this.imgArray[0] = this.imgArray[this.imgArray.length - 1] + this.imgArray[0];
-      // this.imgArray.splice(this.imgArray.length - 1, 1);
-      //  respArray = response.split("\n");
 
-      //  respArray = response.split(",");
-
-      //respArray.shift();
-      // console.log("*******************************************");
-      // console.log(response);
-      // console.log("*******************************************");
-
-      let str = (response.substring(1)).slice(0, -1);
-      console.log(str);
       this.imgArray = response.split(",");
-
-      //  if (respArray[respArray.length - 1] == "") {
-
-      //    respArray.pop();
-      //  }
-
-      //  for (let i = 0; i < respArray.length; i++) {
-      //    let src = respArray[i].substring(respArray[i].indexOf('/'), respArray[i].lastIndexOf('/')) + '/' + respArray[i].substring(0, respArray[i].indexOf('/'));
-      //    this.imgArray.push(src.replace(',', ''));
-      //  }
-
-      //console.log(this.moduleId + 'Total Imgs : ' + (this.imgArray.length));
-      //console.log("first : " + this.imgArray[0] + " last : " + this.imgArray[this.imgArray.length - 1]);
 
       if (this.moduleId === "img_clssfctn_ud") {
         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
@@ -132,10 +93,8 @@ class ViewerComponent {
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
-      //console.log('ct_vldt_img_trggr_tbl_vldtn');
       this.imgloop(this.imgArray);
     }
-
   }
 
   ulClassName() {

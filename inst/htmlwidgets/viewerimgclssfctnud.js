@@ -7,9 +7,6 @@ HTMLWidgets.widget({
 
   factory: function (el, width, height) {
 
-
-    // TODO: define shared variables for this instance
-
     return {
 
       renderValue: function (x) {
@@ -42,9 +39,6 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_button",
           function (msg) {
-            // console.log("------------------------------------------");
-            // console.log(JSON.stringify(msg));
-            // console.log("------------------------------------------");
             let src = JSON.stringify(msg);
             nextPrevClicked("1");
             fetchServerData(src, x.message, x.componentID);
@@ -53,28 +47,23 @@ HTMLWidgets.widget({
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_fltr_srvr_button",
-          function (mesg) {
+          function (msg) {
             nextPrevClicked("1");
-            fetchServerData(x.message, x.componentID);
+            let src = JSON.stringify(msg);
+            fetchServerData(src, x.message, x.componentID);
             resetProps();
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_sv_edt_button",
           function (msg) {
-            //console.log("In Handler img_clssfctn_ud_sv_edt_button");
             saveButtonListerner();
-            //console.log("Handler img_clssfctn_ud_fltr_button");
-            //fetchServerData(x.message,x.componentID);
           }
         );
 
         Shiny.addCustomMessageHandler("img_clssfctn_ud_srvr_sv_edt_button",
           function (msg) {
-            //console.log("In Handler img_clssfctn_ud_sv_edt_button");
             saveButtonListerner();
-            //console.log("Handler img_clssfctn_ud_fltr_button");
-            //fetchServerData(x.message,x.componentID);
           }
         );
 
