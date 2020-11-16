@@ -20,6 +20,7 @@ HTMLWidgets.widget({
           function (mesg) {
             console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             let src = JSON.stringify(mesg);
+            console.log(src);
             nextprevclicked("1");
             fetchServerData(src, x.filePath, x.componentID);
             reset_props();
