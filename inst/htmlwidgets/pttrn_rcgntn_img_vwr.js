@@ -15,18 +15,19 @@ HTMLWidgets.widget({
         console.log("pttrn_rcgntn_img_vwr");
         console.log("Element ID " + el.id);
 
-        Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
+        Shiny.addCustomMessageHandler(
+          "spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
           function (mesg) {
             console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             let src = JSON.stringify(mesg);
             nextprevclicked("1");
             fetchServerData(src, x.filePath, x.componentID);
             reset_props();
-
           }
         );
 
-        Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_srvr_indvdl_fltr_button",
+        Shiny.addCustomMessageHandler(
+          "spcs_idntfctn_pttrn_rcgntn_srvr_indvdl_fltr_button",
           function (mesg) {
             let src = JSON.stringify(mesg);
             console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
@@ -37,14 +38,16 @@ HTMLWidgets.widget({
           }
         );
 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_mtch_all_button",
+        Shiny.addCustomMessageHandler(
+          "pttrn_rcgntn_mtch_all_button",
           function (mesg) {
             console.log(mesg);
             saveRejectButtonListerner();
           }
         );
 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_no_mtch_all_button",
+        Shiny.addCustomMessageHandler(
+          "pttrn_rcgntn_no_mtch_all_button",
           function (mesg) {
             console.log(mesg);
             saveRejectButtonListerner();
@@ -53,36 +56,34 @@ HTMLWidgets.widget({
         );
 
         // New 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_slct_all_button",
+        Shiny.addCustomMessageHandler(
+          "pttrn_rcgntn_slct_all_button",
           function (mesg) {
             console.log("Handler pttrn_rcgntn_slct_all_button");
             pttrn_rcgntn_slct_all();
           }
         );
 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_dslct_all_button",
+        Shiny.addCustomMessageHandler(
+          "pttrn_rcgntn_dslct_all_button",
           function (mesg) {
             console.log("Handler pttrn_rcgntn_dslct_all_button");
             pttrn_rcgntn_dslct_all();
           }
         );
 
-        Shiny.addCustomMessageHandler("pttrn_rcgntn_invrt_button",
+        Shiny.addCustomMessageHandler(
+          "pttrn_rcgntn_invrt_button",
           function (mesg) {
             console.log("Handler pttrn_rcgntn_invrt_button");
             pttrn_rcgntn_invrt();
           }
         );
-
-        // TODO: code to render the widget, e.g.
         // el.innerText = x.message;
-
       },
 
       resize: function (width, height) {
-
         // TODO: code to re-render the widget with a new size
-
       }
 
     };
