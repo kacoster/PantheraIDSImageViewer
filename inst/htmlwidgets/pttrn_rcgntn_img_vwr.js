@@ -18,8 +18,9 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
           function (mesg) {
             console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
+            let src = "src list";
             nextprevclicked("1");
-            fetchServerData(x.filePath, x.componentID);
+            fetchServerData(src, x.filePath, x.componentID);
             reset_props();
 
           }
@@ -27,9 +28,10 @@ HTMLWidgets.widget({
 
         Shiny.addCustomMessageHandler("spcs_idntfctn_pttrn_rcgntn_srvr_indvdl_fltr_button",
           function (mesg) {
+            let src = "src list";
             console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             nextprevclicked("1");
-            fetchServerData(x.filePath, x.componentID);
+            fetchServerData(src, x.filePath, x.componentID);
             reset_props();
 
           }
