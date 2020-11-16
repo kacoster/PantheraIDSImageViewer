@@ -1,7 +1,8 @@
 function fetchServerData(src, csvfile, moduleId) {
     console.log('fetchServerData');
     if (moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
-        setimgarry(loadFile(csvfile))
+        //setimgarry(loadFile(csvfile))
+        setimgarryTest(src);
     }
     if (moduleId === "img_clssfctn_ud") {
         //setImageArray(loadFile(csvfile))

@@ -63,7 +63,6 @@ class ViewerComponent {
       this.clearImages();
       this.imgloop(this.imgArray);
     }
-
   }
 
   readServerDataTest(response) {
