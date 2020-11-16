@@ -76,8 +76,8 @@ class ViewerComponent {
     } else {
 
       this.imgArray = response.split(",");
-      for (let i = 0; i < imgArray.length; i++) {
-        console.log(imgArray[i]);
+      for (let i = 0; i < this.imgArray.length; i++) {
+        console.log(this.imgArray[i]);
       }
       if (this.moduleId === "img_clssfctn_ud") {
         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
