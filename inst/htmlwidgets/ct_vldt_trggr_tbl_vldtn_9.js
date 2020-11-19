@@ -12,13 +12,9 @@ HTMLWidgets.widget({
 
       renderValue: function (x) {
 
-        //console.log("ct_vldt_img_trggr_tbl_vldtn_9");
-        //console.log("x.message : " + x.message);
-        //console.log("x.componentID : " + x.componentID);
-
         Shiny.addCustomMessageHandler("ct_vldt_trggr_tbl_vldtn_9_button",
           function (mesg) {
-            //console.log("Handler ct_vldt_trggr_tbl_vldtn_9_button");
+            console.log("Handler ct_vldt_trggr_tbl_vldtn_9_button");
             let src = JSON.stringify(mesg);
             fetchServerData(src, x.message, x.componentID);
           }
