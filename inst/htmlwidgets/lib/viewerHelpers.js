@@ -1,5 +1,6 @@
 function fetchServerData(src, csvfile, moduleId) {
     console.log('fetchServerData');
+    console.log("src -> " + src);
     if (moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
         //setimgarry(loadFile(csvfile))
         setimgarryTest(src);
@@ -9,15 +10,19 @@ function fetchServerData(src, csvfile, moduleId) {
         setImageArrayTest(src);
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_9") {
+        console.log("ct_vldt_img_trggr_tbl_vldtn_9");
         setValidationArrayTest(loadFile(csvfile), 9)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_10") {
+        console.log("ct_vldt_img_trggr_tbl_vldtn_10");
         setValidationArrayTest(loadFile(csvfile), 10)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_11") {
+        console.log("ct_vldt_img_trggr_tbl_vldtn_11");
         setValidationArrayTest(loadFile(csvfile), 11)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_12") {
+        console.log("ct_vldt_img_trggr_tbl_vldtn_12");
         setValidationArrayTest(loadFile(csvfile), 12)
     }
 }
