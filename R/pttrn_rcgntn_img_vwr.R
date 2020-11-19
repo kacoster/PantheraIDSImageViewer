@@ -5,11 +5,10 @@
 #' @import htmlwidgets
 #'
 #' @export
-pttrn_rcgntn_img_vwr <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+pttrn_rcgntn_img_vwr <- function(width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    filePath = filePath,
     componentID = elementId
   )
 

@@ -1,4 +1,4 @@
-function fetchServerData(src, csvfile, moduleId) {
+function fetchServerData(src, moduleId) {
     console.log('fetchServerData');
     console.log("src -> " + src);
     if (moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
@@ -31,7 +31,7 @@ function fetchServerData(src, csvfile, moduleId) {
     }
 }
 
-function fetchServerDataTest(csvfile, moduleId) {
+/*function fetchServerDataTest(csvfile, moduleId) {
     console.log('fetchServerData 16/11/20');
     if (moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
         //setimgarry(loadFile(csvfile))
@@ -53,7 +53,7 @@ function fetchServerDataTest(csvfile, moduleId) {
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_12") {
         setValidationArray(loadFile(csvfile), 12)
     }
-}
+}*/
 
 
 function loadFile(filename) {

@@ -5,11 +5,10 @@
 #' @import htmlwidgets
 #'
 #' @export
-ct_vldt_trggr_tbl_vldtn_10 <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+ct_vldt_trggr_tbl_vldtn_10 <- function(width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = filePath,
     componentID = elementId
   )
 

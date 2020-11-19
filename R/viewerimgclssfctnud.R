@@ -5,11 +5,10 @@
 #' @import htmlwidgets
 #'
 #' @export
-viewerimgclssfctnud <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+viewerimgclssfctnud <- function(width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = filePath,
     componentID = elementId
   )
 

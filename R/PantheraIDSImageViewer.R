@@ -32,11 +32,10 @@
 #' imageViewer('./www/data/myfile.csv')
 #'
 #' @export
-imageViewer <- function(filePath, width = NULL, height = NULL, elementId = NULL) {
+imageViewer <- function( width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = filePath,
     componentID = elementId
   )
 

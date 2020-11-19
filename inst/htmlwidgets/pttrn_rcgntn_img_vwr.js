@@ -13,7 +13,6 @@ HTMLWidgets.widget({
       renderValue: function (x) {
 
         console.log("pttrn_rcgntn_img_vwr");
-        console.log("Element ID " + el.id);
 
         Shiny.addCustomMessageHandler(
           "spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
@@ -22,7 +21,7 @@ HTMLWidgets.widget({
             let src = JSON.stringify(mesg);
             console.log(src);
             nextprevclicked("1");
-            fetchServerData(src, x.filePath, x.componentID);
+            fetchServerData(src, x.componentID);
             reset_props();
           }
         );
@@ -33,7 +32,7 @@ HTMLWidgets.widget({
             let src = JSON.stringify(mesg);
             console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             nextprevclicked("1");
-            fetchServerData(src, x.filePath, x.componentID);
+            fetchServerData(src, x.componentID);
             reset_props();
 
           }
@@ -52,11 +51,10 @@ HTMLWidgets.widget({
           function (mesg) {
             console.log(mesg);
             saveRejectButtonListerner();
-
           }
         );
 
-        // New 
+        // New
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_slct_all_button",
           function (mesg) {
