@@ -4,7 +4,7 @@
 \alias{viewerimgclssfctnud}
 \title{<Add Title>}
 \usage{
-viewerimgclssfctnud(filePath, width = NULL, height = NULL, elementId = NULL)
+viewerimgclssfctnud(width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 <Add Description>

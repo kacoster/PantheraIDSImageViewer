@@ -4,11 +4,9 @@
 \alias{imageViewer}
 \title{Image Viewer Function}
 \usage{
-imageViewer(filePath, width = NULL, height = NULL, elementId = NULL)
+imageViewer(width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
-\item{filePath}{A string path to a csv file which contains the images source's}
-
 \item{width}{Fixed width for widget (in css units). The default is NULL, which
 results in intelligent automatic sizing based on the widget’s
 container.}
@@ -22,6 +20,8 @@ container.}
  explicitly discover and interact with a specific widget instance.
 in any other case leave as NULL which results in an
 automatically generated one.}
+
+\item{filePath}{A string path to a csv file which contains the images source's}
 }
 \description{
 This function maps images to a html component to complete the

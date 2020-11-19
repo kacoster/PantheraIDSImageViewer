@@ -4,7 +4,7 @@
 \alias{pttrn_rcgntn_img_vwr}
 \title{<Add Title>}
 \usage{
-pttrn_rcgntn_img_vwr(filePath, width = NULL, height = NULL, elementId = NULL)
+pttrn_rcgntn_img_vwr(width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 <Add Description>
