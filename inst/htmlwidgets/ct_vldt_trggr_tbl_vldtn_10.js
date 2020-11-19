@@ -20,7 +20,8 @@ HTMLWidgets.widget({
             //console.log("Handler ct_vldt_trggr_tbl_vldtn_10_pll_spcs_button");
             let src = JSON.stringify(mesg);
             pullSpecClicked("1");
-            fetchServerData(src, x.message, x.componentID);
+            console.log("src -> " + src);
+            //fetchServerData(src, x.message, x.componentID);
           }
         );
 
