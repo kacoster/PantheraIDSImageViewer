@@ -19,8 +19,8 @@ HTMLWidgets.widget({
           function (mesg) {
             console.log("Handler ct_vldt_trggr_tbl_vldtn_11_button");
             let src = JSON.stringify(mesg);
-            // fetchServerData(src, x.message, x.componentID);
             console.log("src -> " + src);
+            fetchServerData(src, x.message, x.componentID);
           }
         );
 

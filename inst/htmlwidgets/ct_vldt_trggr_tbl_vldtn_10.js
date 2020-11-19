@@ -21,7 +21,7 @@ HTMLWidgets.widget({
             let src = JSON.stringify(mesg);
             pullSpecClicked("1");
             console.log("src -> " + src);
-            //fetchServerData(src, x.message, x.componentID);
+            fetchServerData(src, x.message, x.componentID);
           }
         );
 
