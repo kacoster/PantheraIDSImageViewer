@@ -9,16 +9,16 @@ function fetchServerData(src, csvfile, moduleId) {
         setImageArrayTest(src);
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_9") {
-        setValidationArray(loadFile(csvfile), 9)
+        setValidationArrayTest(loadFile(csvfile), 9)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_10") {
-        setValidationArray(loadFile(csvfile), 10)
+        setValidationArrayTest(loadFile(csvfile), 10)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_11") {
-        setValidationArray(loadFile(csvfile), 11)
+        setValidationArrayTest(loadFile(csvfile), 11)
     }
     if (moduleId === "ct_vldt_img_trggr_tbl_vldtn_12") {
-        setValidationArray(loadFile(csvfile), 12)
+        setValidationArrayTest(loadFile(csvfile), 12)
     }
 }
 
