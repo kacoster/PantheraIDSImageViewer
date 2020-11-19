@@ -9,21 +9,17 @@ HTMLWidgets.widget({
     // TODO: define shared variables for this instance
 
     return {
-
       renderValue: function (x) {
         Shiny.addCustomMessageHandler("ct_vldt_trggr_tbl_vldtn_11_button",
           function (mesg) {
             let src = JSON.stringify(mesg);
-            console.log("src -> " + src);
             fetchServerData(src, x.componentID);
           }
         );
 
       },
 
-      resize: function (width, height) {
-
-      }
+      resize: function (width, height) {}
 
     };
   }

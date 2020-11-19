@@ -24,7 +24,7 @@ class ViewerComponent {
 
 
   readServerData(response) {
-    console.log('readServerData 13-11-20 13:17');
+
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
@@ -66,7 +66,6 @@ class ViewerComponent {
   }
 
   readServerDataTest(response) {
-    console.log('readServerDataTest 16-11-20 18:21');
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
@@ -76,9 +75,7 @@ class ViewerComponent {
     } else {
 
       this.imgArray = response.split(",");
-      for (let i = 0; i < this.imgArray.length; i++) {
-        console.log(this.imgArray[i]);
-      }
+
       if (this.moduleId === "img_clssfctn_ud") {
         Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
           1 + " / " + this.getBatchNumber());
@@ -147,7 +144,7 @@ class ViewerComponent {
   }
 
   selectedImgShinyRef() {
-    //console.log('selectedImgShinyRef');
+
     if (this.moduleId === "img_clssfctn_ud") {
       return "clssfctn_slctd_img";
     }
@@ -170,7 +167,7 @@ class ViewerComponent {
       }
     } else {
       if (this.isPlacveHolder(src)) {
-        console.log("Cant Process Place Holder Image orig");
+
         this.callSelectionFind(true);
       } else {
         params.push(src);
@@ -239,7 +236,7 @@ class ViewerComponent {
   }
 
   prev() {
-    console.log("Prev Clicked");
+
     nextPrevClicked("1");
     this.batnum--;
     if (this.batnum > 0) {
@@ -294,15 +291,15 @@ class ViewerComponent {
   }
 
   invertSelection() {
-    console.log("invertSelection")
+
     let notSelected;
 
     if ((this.selected_images).length > 0) {
-      console.log('There are currently yellow images');
+
       notSelected = this.arryCompliment(this.currentDisplayedImgs, this.selected_images);
       this.deSelectAll();
     } else {
-      console.log('There are currently no yellow images');
+
       notSelected = this.arryCompliment(this.currentDisplayedImgs, this.prevSelectedImgs)
     }
     this.highlightInverse(notSelected);
@@ -325,23 +322,21 @@ class ViewerComponent {
 
     $('#' + this.moduleId + ' img').each(function () {
       if (ar.includes($(this).attr('src'))) {
-        //console.log('highlightInverse');
         $('#' + this.id + '').css({
           'opacity': '0.4',
           'filter': 'alpha(opacity=40)'
         });
         slctdimgs.push($(this).attr('src'));
-        //console.log($(this).attr('id'));
         tempSlctdId.push($(this).attr('id'));
         $('#' + this.id + '').closest('li').css("background-color", "yellow");
       }
 
-      //$('.'+ulclassname+'> li').css("background-color", "yellow");
+
     });
     this.selected_images = [...slctdimgs];
     this.selectedImageID = [...tempSlctdId];
     this.sendAllImages();
-    //console.log('End highlightInverse');
+
   }
 
   selectAll() {
@@ -387,7 +382,6 @@ class ViewerComponent {
 
   sendDataToShinny() {
     if (this.selected_images === undefined || this.selected_images.length === 0) {
-      console.log("No Images Selected !!");
       return;
     } else {
       const copy_selected_images = [...this.selected_images];
@@ -426,7 +420,6 @@ class ViewerComponent {
 
   // Creates bilds the images in the panel 
   imgloop(ar) {
-    console.log("imgloop");
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
 
@@ -435,9 +428,6 @@ class ViewerComponent {
       let liId = i + '_' + this.moduleId;
       let img = new Image();
       img.src = ((ar[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
-      console.log("#####################################");
-      console.log(img.src);
-      console.log("#####################################");
       this.currentDisplayedImgs.push(img.src);
       img.alt = "Camera Trap";
       img.datamarked = 0;
@@ -506,7 +496,6 @@ class ViewerComponent {
   // HokKey selection 
   keySelection() {
 
-    console.log('keySelection');
     let slctdimgs = [],
       tempSlctdId = [],
       imgs = $('#' + this.moduleId + ' img'),
@@ -533,11 +522,8 @@ class ViewerComponent {
   }
 
   matchRejectHighlighter() {
-
-    console.log('In matchRejectHighlighter ');
-    console.log(this.selectedImageID.length);
     for (let i = 0; i < this.selectedImageID.length; i++) {
-      //console.log(this.selectedImageID[i]);
+
       $('#' + this.selectedImageID[i] + '').closest('li').css("background-color", "#90EE90");
     }
 
