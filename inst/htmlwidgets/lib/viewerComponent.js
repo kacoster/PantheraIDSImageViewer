@@ -28,42 +28,7 @@ class ViewerComponent {
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
 
-    // let resp = response;
-
-    // console.log('type of -> ' + typeof (resp))
-    // console.log("resp img -> " + resp.img_wrt)
-    // console.log("resp img -> " + resp.match)
-
-    // mtchd = resp.match;
-    // let imgArray = resp.img_wrt;
-
-    // console.log('mtchd - > ' + mtchd);
-    // console.log('imgArray - > ' + imgArray);
-
-    // console.log('---------------')
-
-    // let resp_1 = JSON.parse(resp)
-
-    // console.log('type of -> ' + typeof (resp_1))
-    // console.log("resp img -> " + resp_1.img_wrt)
-    // console.log("resp img -> " + resp_1.match)
-
-    // console.log('img_wrt -> ' + Array.isArray(resp_1.img_wrt))
-    // console.log('match -> ' + Array.isArray(resp_1.match))
-
-    // let mtchd1 = resp_1.match
-    // let imgArray1 = resp_1.img_wrt
-
-    // console.log('mtchd1 - > ' + typeof (mtchd1));
-    // console.log('imgArray1 - > ' + typeof (imgArray1));
-
-    // console.log(mtchd1.length)
-    // console.log(imgArray1.length)
-
-    // console.log('---------------')
-
-
-    console.log('readServerDataTest now');
+    console.log('readServerDataTest');
     console.log(this.moduleId);
 
     if (response === null) {
@@ -87,17 +52,21 @@ class ViewerComponent {
 
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
+      console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
       let resp = JSON.parse(response)
       this.imgArray = resp.img_wrt
       this.mtchdArray = resp.match;
       this.imgArray = response.img_wrt;
 
-      console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
-      console.log((this.imgArray).length)
-      console.log((this.mtchdArray).length)
+      console.log('response.img_wrt -> ' + (response.img_wrt).length);
+      console.log('response.match -> ' + (response.match).length);
 
-      this.clearImages();
-      this.imgloop(this.imgArray);
+
+      // console.log((this.imgArray).length)
+      // console.log((this.mtchdArray).length)
+
+      // this.clearImages();
+      // this.imgloop(this.imgArray);
 
     }
 
