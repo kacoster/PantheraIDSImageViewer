@@ -9,48 +9,69 @@ Copyright (C) 2019 | Panthera Corporation
 $(document).ready(function () {
 
   $("#apply").on("click", function () {
-    // send message to Shiny
-    console.log("classificationHelper.js line 22");
-    Shiny.onInputChange("sources", imgClssfctnObj.sendDataToShinny());
+
+    Shiny.onInputChange(
+      "sources", imgClssfctnObj.sendDataToShinny()
+    );
+
   });
 
-  $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click", function () {
+  $("#img_clssfctn_ud_slct_all_imgs_bttn").on("click",
+    function () {
+      imgClssfctnObj.selectAll();
+    }
+  );
 
-    imgClssfctnObj.selectAll();
-  });
+  $("#img_clssfctn_ud_dslct_all_imgs_bttn").on("click",
+    function () {
+      imgClssfctnObj.deSelectAll();
+    }
+  );
 
-  $("#img_clssfctn_ud_dslct_all_imgs_bttn").on("click", function () {
-    imgClssfctnObj.deSelectAll();
-  });
+  $("#img_clssfctn_ud_nxt_bttn").on("click",
+    function () {
+      Shiny.onInputChange(
+        "next",
+        imgClssfctnObj.next()
+      );
+    }
+  );
 
-  $("#img_clssfctn_ud_nxt_bttn").on("click", function () {
-    Shiny.onInputChange("next", imgClssfctnObj.next());
-  });
-
-  $("#img_clssfctn_ud_prvs_bttn").on("click", function () {
-    Shiny.onInputChange("prev", imgClssfctnObj.prev());
-  });
+  $("#img_clssfctn_ud_prvs_bttn").on("click",
+    function () {
+      Shiny.onInputChange(
+        "prev",
+        imgClssfctnObj.prev()
+      );
+    }
+  );
 
 });
 
-var imgClssfctnObj = new ViewerComponent(0, 50, 5, "img_clssfctn_ud", "img_clssfctn_ud.csv");
+var imgClssfctnObj = new ViewerComponent(
+  0, 50, 5, "img_clssfctn_ud"
+);
 
 /**
  * Handles all image panel click events
  * @parameter - event click/shiftKey
  *
  * Checks if event is shiftKey/click
- * Execute appropriate instructions based on event
+ * Execute specific instructions based on event
  * @return void
  */
-function isKeyPressed(event, id) {
+function isKeyPressed(event) {
 
   arrayClone(imgClssfctnObj.selected_images);
+
   if (event.metaKey && event.shiftKey) {
 
-    console.log('shift+cmd');
     let id = event.target.id;
-    let indx = parseInt(id.substring(0, id.indexOf('_')));
+
+    let indx = parseInt(
+      id.substring(0, id.indexOf('_'))
+    );
+
     if ((imgClssfctnObj.hotKeysIndx).length == 1) {
       (imgClssfctnObj.hotKeysIndx).push(indx);
       imgClssfctnObj.keySelection();
@@ -58,19 +79,27 @@ function isKeyPressed(event, id) {
       (imgClssfctnObj.hotKeysIndx).push(indx);
       imgClssfctnObj.highliter(id);
     }
+
     selectionFind(true);
-    return;
+
   } else if (event.shiftKey) {
-    console.log('shift key');
-    if (imgClssfctnObj.selected_images.includes(event.target.src)) {
+
+    if (
+      imgClssfctnObj.selected_images.includes(event.target.src)) {
       selectionFind(true);
     }
-    imgClssfctnObj.handleExistance(imgClssfctnObj.selected_images, event.target.src, event.target.id);
+
+    imgClssfctnObj.handleExistance(
+      imgClssfctnObj.selected_images,
+      event.target.src, event.target.id
+    );
 
   } else {
-    console.log('view key');
-    objectOf("imgClassification");
-    imgClssfctnObj.callvjs(imgClssfctnObj.moduleId + "_divId");
+
+    imgClssfctnObj.callvjs(
+      imgClssfctnObj.moduleId + "_divId"
+    );
+
   }
 }
 
@@ -93,16 +122,11 @@ function setImagesNumber(numb) {
   imgClssfctnObj.imgNumb = numb;
 }
 
-function setImageArray(resp) {
-  imgClssfctnObj.readServerData(resp);
-}
-
 function setImageArrayTest(resp) {
   imgClssfctnObj.readServerDataTest(resp);
 }
 
 function saveButtonListerner() {
-  console.log('classificationHelper.js saveButtonListerner()');
   imgClssfctnObj.liWhiteBackground();
   imgClssfctnObj.deSelectAll();
   imgClssfctnObj.getCurrClckdImg("clssfctn_slctd_img", "");
