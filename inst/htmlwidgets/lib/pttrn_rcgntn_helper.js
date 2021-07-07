@@ -60,6 +60,11 @@
    }
 
    function setimgarryTest(resp) {
+
+     $('#mtchd').css("background-color", "purple");
+     $('#mtchd > img').css({
+       'filter': 'opacity(0.4)'
+     });
      pttrn_rcgntn_obj.readServerDataTest(resp);
    }
 

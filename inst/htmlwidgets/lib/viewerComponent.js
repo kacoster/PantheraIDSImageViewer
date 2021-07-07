@@ -343,8 +343,7 @@ class ViewerComponent {
     if (ar1.length == 0 || ar2.length == 0) {
       return
     }
-    var elmts = ar1.filter(f => !ar2.includes(f));
-    return elmts;
+    return ar1.filter(f => !ar2.includes(f));
   }
 
   highlightInverse(ar) {
@@ -484,13 +483,7 @@ class ViewerComponent {
             ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
 
           } else {
-
             ul.innerHTML += '<li id="mtchd"  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
-            $('#mtchd').css("background-color", "#1200a6");
-            $('#mtchd > img').css({
-              'filter': 'opacity(0.5)'
-            });
-
           }
 
         } else {
@@ -499,7 +492,7 @@ class ViewerComponent {
 
       } else {
 
-        img.src = '/srv/shiny-server/www/Missing_Image.JPG.jpg';
+        img.src = '/srv/shiny-server/www/Missing_Image.JPG';
         ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"  alt="' + img.alt + '" /> </li>';
 
       }
