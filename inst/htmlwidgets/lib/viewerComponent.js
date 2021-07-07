@@ -32,7 +32,6 @@ class ViewerComponent {
     let resp = response;
 
     console.log('type of -> ' + typeof (resp))
-
     console.log("resp img -> " + resp.img_wrt)
     console.log("resp img -> " + resp.match)
 
@@ -47,18 +46,29 @@ class ViewerComponent {
     let resp_1 = JSON.parse(resp)
 
     console.log('type of -> ' + typeof (resp_1))
-
     console.log("resp img -> " + resp_1.img_wrt)
     console.log("resp img -> " + resp_1.match)
 
-    let mtchd1 = (resp_1.match).split(",");
-    let imgArray1 = (resp_1.img_wrt).split(",");
+    console.log('img_wrt -> ' + Array.isArray(resp_1.img_wrt))
+    console.log('match -> ' + Array.isArray(resp_1.match))
 
-    console.log('mtchd1 - > ' + mtchd1);
-    console.log('imgArray1 - > ' + imgArray1);
+    let mtchd1 = resp_1.match
+    let imgArray1 = resp_1.img_wrt
+
+    console.log('mtchd1 - > ' + typeof (mtchd1));
+    console.log('imgArray1 - > ' + typeof (imgArray1));
 
     console.log(mtchd1.length)
     console.log(imgArray1.length)
+
+
+    let mtchd2 = mtchd1.split(',');
+    let imgArray2 = imgArray1.split(',');
+
+    console.log('Printing 2 ')
+    console.log(mtchd2);
+    console.log(imgArray2);
+
     console.log('---------------')
 
 
