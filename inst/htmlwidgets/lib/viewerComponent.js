@@ -29,48 +29,78 @@ class ViewerComponent {
     this.selectedImageID.length = 0;
     let mtchd = [];
 
-    console.log('readServerDataTest now');
-    console.log(this.moduleId);
+    let resp = response;
 
-    if (response === null) {
-      console.log(" Error in reading your images");
-    } else {
+    console.log('type of -> ' + typeof (resp))
 
-      this.imgArray = response.split(",");
+    console.log("resp img -> " + resp.img_wrt)
+    console.log("resp img -> " + resp.match)
 
-      if (this.moduleId === "img_clssfctn_ud") {
-        Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-          1 + " / " + this.getBatchNumber());
-      }
-    }
+    mtchd = resp.match;
+    let imgArray = resp.img_wrt;
 
-    if (this.moduleId === "img_clssfctn_ud") {
-      this.clearImages();
-      this.imgloop(
-        this.displayImages(this.imgNumb, 0),
-        mtchd
-      );
-    }
+    console.log('mtchd - > ' + mtchd);
+    console.log('imgArray - > ' + imgArray);
 
-    if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
+    console.log('---------------')
 
-      this.imgArray = response.img_wrt;
-      mtchd = response.match;
+    let resp_1 = JSON.parse(resp)
 
-      console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
-      console.log(response.img_wrt)
-      console.log(response.match)
-      console.log("is array img_wrt -> " + Array.isArray(response.img_wrt) + " len : " + (this.imgArray).length);
-      console.log("is array mtchd -> " + Array.isArray(mtchd) + " len : " + (response.match).length);
+    console.log('type of -> ' + typeof (resp_1))
+
+    console.log("resp img -> " + resp_1.img_wrt)
+    console.log("resp img -> " + resp_1.match)
+
+    let mtchd1 = resp_1.match;
+    let imgArray1 = resp_1.img_wrt;
+
+    console.log('mtchd1 - > ' + mtchd1);
+    console.log('imgArray1 - > ' + imgArray1);
+    console.log('---------------')
 
 
-      this.clearImages();
-      this.imgloop(this.imgArray, mtchd);
-    }
-    if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
-      this.clearImages();
-      this.imgloop(this.imgArray, mtchd);
-    }
+    // console.log('readServerDataTest now');
+    // console.log(this.moduleId);
+
+    // if (response === null) {
+    //   console.log(" Error in reading your images");
+    // } else {
+
+    //   this.imgArray = response.split(",");
+
+    //   if (this.moduleId === "img_clssfctn_ud") {
+    //     Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+    //       1 + " / " + this.getBatchNumber());
+    //   }
+    // }
+
+    // if (this.moduleId === "img_clssfctn_ud") {
+    //   this.clearImages();
+    //   this.imgloop(
+    //     this.displayImages(this.imgNumb, 0),
+    //     mtchd
+    //   );
+    // }
+
+    // if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
+
+    //   this.imgArray = response.img_wrt;
+    //   mtchd = response.match;
+
+    //   console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
+    //   console.log(response.img_wrt)
+    //   console.log(response.match)
+    //   console.log("is array img_wrt -> " + Array.isArray(response.img_wrt) + " len : " + (this.imgArray).length);
+    //   console.log("is array mtchd -> " + Array.isArray(mtchd) + " len : " + (response.match).length);
+
+
+    //   this.clearImages();
+    //   this.imgloop(this.imgArray, mtchd);
+    // }
+    // if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
+    //   this.clearImages();
+    //   this.imgloop(this.imgArray, mtchd);
+    // }
   }
 
   ulClassName() {
