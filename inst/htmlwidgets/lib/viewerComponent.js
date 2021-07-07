@@ -483,7 +483,7 @@ class ViewerComponent {
             ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
 
           } else {
-            ul.innerHTML += '<li id="mtchd"  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
+            ul.innerHTML += '<li id="mtchd" style="background-color: rgb(234, 2, 2);" ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + " style='filter: opacity(0.7);' " + '"  alt="' + img.alt + '" /> </li>';
           }
 
         } else {
@@ -498,13 +498,6 @@ class ViewerComponent {
       }
 
       this.setCol();
-    }
-
-    if ((this.mtchdArray).length > 0) {
-      $('#mtchd').css("background-color", "#ea0202");
-      $('#mtchd > img').css({
-        'filter': 'opacity(0.5)'
-      });
     }
 
   }
