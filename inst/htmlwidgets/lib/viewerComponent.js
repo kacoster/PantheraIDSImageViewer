@@ -58,6 +58,8 @@ class ViewerComponent {
       mtchd = response.match;
 
       console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
+      console.log(response.img_wrt)
+      console.log(response.match)
       console.log("is array img_wrt -> " + Array.isArray(response.img_wrt) + " len : " + (this.imgArray).length);
       console.log("is array mtchd -> " + Array.isArray(mtchd) + " len : " + (response.match).length);
 
