@@ -54,12 +54,11 @@ class ViewerComponent {
 
       console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
       let resp = JSON.parse(response)
-      this.imgArray = resp.img_wrt
-      this.mtchdArray = resp.match;
-      this.imgArray = response.img_wrt;
+      this.imgArray = (resp.img_wrt).split(',')
+      this.mtchdArray = (resp.match).split(',');
 
-      console.log('response.img_wrt -> ' + (response.img_wrt).length);
-      console.log('response.match -> ' + (response.match).length);
+      console.log('response.img_wrt -> ' + (this.imgArray).length);
+      console.log('response.match -> ' + (this.mtchdArray).length);
 
 
       // console.log((this.imgArray).length)
