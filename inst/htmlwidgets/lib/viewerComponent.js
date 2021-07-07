@@ -51,11 +51,14 @@ class ViewerComponent {
     console.log("resp img -> " + resp_1.img_wrt)
     console.log("resp img -> " + resp_1.match)
 
-    let mtchd1 = resp_1.match;
-    let imgArray1 = resp_1.img_wrt;
+    let mtchd1 = (resp_1.match).split(",");
+    let imgArray1 = (resp_1.img_wrt).split(",");
 
     console.log('mtchd1 - > ' + mtchd1);
     console.log('imgArray1 - > ' + imgArray1);
+
+    console.log(mtchd1.length)
+    console.log(imgArray1.length)
     console.log('---------------')
 
 
