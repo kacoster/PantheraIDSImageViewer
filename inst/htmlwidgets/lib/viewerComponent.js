@@ -51,7 +51,7 @@ class ViewerComponent {
       this.imgArray = response.img_wrt;
       let matchArry = response.match;
       this.clearImages();
-      this.imgloop(this.imgArray, matchArry);
+      this.imgloop(srcArry = this.imgArray, matchArry = matchArry);
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
