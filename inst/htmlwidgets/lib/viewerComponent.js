@@ -27,8 +27,9 @@ class ViewerComponent {
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
+    let mtchd = [];
 
-    console.log('readServerDataTest');
+    console.log('readServerDataTest now');
     console.log(this.moduleId);
 
     if (response === null) {
@@ -45,24 +46,28 @@ class ViewerComponent {
 
     if (this.moduleId === "img_clssfctn_ud") {
       this.clearImages();
-      this.imgloop(this.displayImages(this.imgNumb, 0));
+      this.imgloop(
+        this.displayImages(this.imgNumb, 0),
+        mtchd
+      );
     }
+
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
-      console.log('spcs_idntfctn_pttrn_rcgntn_mn_pnl')
       this.imgArray = response.img_wrt;
-      this.mtchdArray = response.match;
+      mtchd = response.match;
 
-      console.log(this.imgArray);
-      console.log('--------------')
-      console.log(this.mtchdArray);
+      console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
+      console.log("is array img_wrt -> " + Array.isArray(response.img_wrt) + " len : " + (this.imgArray).length);
+      console.log("is array mtchd -> " + Array.isArray(mtchd) + " len : " + (response.match).length);
+
 
       this.clearImages();
-      this.imgloop(this.imgArray);
+      this.imgloop(this.imgArray, mtchd);
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
-      this.imgloop(this.imgArray);
+      this.imgloop(this.imgArray, mtchd);
     }
   }
 
@@ -190,12 +195,15 @@ class ViewerComponent {
   // We need a function that maps to diff modules
   next() {
     nextPrevClicked("1");
-
+    let mtchd = [];
     if (this.batnum < this.getBatchNumber() - 1) {
       this.batnum++;
       Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
         (this.batnum + 1) + " / " + this.getBatchNumber());
-      this.imgloop(this.displayImages(this.imgNumb, this.batnum));
+      this.imgloop(
+        this.displayImages(this.imgNumb, this.batnum),
+        mtchd
+      );
       this.selected_images.length = 0;
       this.selectedImageID.length = 0;
       this.getCurrClckdImg("clssfctn_slctd_img", "");
@@ -214,18 +222,27 @@ class ViewerComponent {
   prev() {
 
     nextPrevClicked("1");
+    let mtchd = [];
     this.batnum--;
     if (this.batnum > 0) {
-      Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
+      Shiny.onInputChange(
+        "img_clssfctn_ud_btch_tckr",
         (this.batnum + 1) + " / " + this.getBatchNumber());
-      this.imgloop(this.displayImages(this.imgNumb, this.batnum));
+
+      this.imgloop(
+        this.displayImages(this.imgNumb, this.batnum),
+        mtchd
+      );
       this.selected_images.length = 0;
       this.selectedImageID.length = 0;
       this.getCurrClckdImg("clssfctn_slctd_img", "");
     } else {
       Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
         1 + " / " + this.getBatchNumber());
-      this.imgloop(this.displayImages(this.imgNumb, 0));
+      this.imgloop(
+        this.displayImages(this.imgNumb, 0),
+        mtchd
+      );
       this.selected_images.length = 0;
       this.selectedImageID.length = 0;
       this.getCurrClckdImg("clssfctn_slctd_img", "");
@@ -395,7 +412,7 @@ class ViewerComponent {
   }
 
   // Creates bilds the images in the panel 
-  imgloop(arr) {
+  imgloop(arr, mtchdArry) {
 
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
@@ -403,8 +420,9 @@ class ViewerComponent {
     let ul = document.getElementById(this.moduleId);
 
     console.log('imgloop')
+    console.log(mtchdArry)
     console.log(arr)
-    console.log(this.mtchdArray)
+
 
     for (let i = 0; i < arr.length; i++) {
 
