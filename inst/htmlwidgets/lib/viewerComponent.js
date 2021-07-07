@@ -11,6 +11,7 @@ class ViewerComponent {
     this.imgNumb = imgNumb;
     this.moduleId = moduleId;
     this.imgArray = [];
+    this.mtchdArray = [];
     this.selected_images = [];
     this.nextPrev = "0";
     this.result = [];
@@ -49,9 +50,10 @@ class ViewerComponent {
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
       this.imgArray = response.img_wrt;
-      let matchArry = response.match;
+      this.mtchdArray = response.match;
+
       this.clearImages();
-      this.imgloop(srcArry = this.imgArray, matchArry = matchArry);
+      this.imgloop(this.imgArray);
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
@@ -388,22 +390,22 @@ class ViewerComponent {
   }
 
   // Creates bilds the images in the panel 
-  imgloop(srcArry, matchArry = []) {
+  imgloop(arr) {
 
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
 
-    console.log("imgloop");
-    console.log('srcArry -> ' + srcArry);
-    console.log('matchArry -> ' + matchArry);
-
     let ul = document.getElementById(this.moduleId);
 
-    for (let i = 0; i < srcArry.length; i++) {
+    console.log('imgloop')
+    console.log(arr)
+    console.log(this.mtchdArray)
+
+    for (let i = 0; i < arr.length; i++) {
 
       let liId = i + '_' + this.moduleId;
       let img = new Image();
-      img.src = ((srcArry[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
+      img.src = ((arr[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
 
       this.currentDisplayedImgs.push(img.src);
       img.alt = "Camera Trap";
@@ -411,8 +413,9 @@ class ViewerComponent {
 
       if (this.placeHolder(img.src)) {
 
-        if (matchArry.length == srcArry.length) {
-          if (matchArry[i] == "Unvalidated") {
+        if ((this.mtchdArray).length == arr.length) {
+
+          if (this.mtchdArray[i] == "Unvalidated") {
 
             ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
 
