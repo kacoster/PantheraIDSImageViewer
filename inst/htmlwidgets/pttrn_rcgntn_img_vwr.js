@@ -13,7 +13,7 @@ HTMLWidgets.widget({
       renderValue: function (x) {
 
         console.log("pttrn_rcgntn_img_vwr");
-        console.log("07/07/2021 - 14:02");
+        console.log("07/07/2021 - 15:57");
 
         Shiny.addCustomMessageHandler(
           "spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",

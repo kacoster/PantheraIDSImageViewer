@@ -499,6 +499,14 @@ class ViewerComponent {
 
       this.setCol();
     }
+
+    if ((this.mtchdArray).length > 0) {
+      $('#mtchd').css("background-color", "#ea0202");
+      $('#mtchd > img').css({
+        'filter': 'opacity(0.5)'
+      });
+    }
+
   }
 
   // reset missing images handler (Depreciated)
