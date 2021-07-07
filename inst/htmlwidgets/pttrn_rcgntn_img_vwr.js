@@ -13,7 +13,7 @@ HTMLWidgets.widget({
       renderValue: function (x) {
 
         console.log("pttrn_rcgntn_img_vwr");
-        console.log("07/07/2021 - 18:22");
+        console.log("07/07/2021 - 19:12");
 
         Shiny.addCustomMessageHandler(
           "spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
@@ -23,6 +23,10 @@ HTMLWidgets.widget({
             console.log(src);
             nextprevclicked("1");
             fetchServerData(src, x.componentID);
+            $('#mtchd').css("background-color", "#004cff");
+            $('#mtchd > img').css({
+              'filter': 'opacity(0.4)'
+            });
             //reset_props();
           }
         );
@@ -34,6 +38,10 @@ HTMLWidgets.widget({
             console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             nextprevclicked("1");
             fetchServerData(src, x.componentID);
+            $('#mtchd').css("background-color", "#004cff");
+            $('#mtchd > img').css({
+              'filter': 'opacity(0.4)'
+            });
             //reset_props();
 
           }

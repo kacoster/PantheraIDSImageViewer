@@ -78,11 +78,6 @@
      pttrn_rcgntn_obj.matchRejectHighlighter();
    }
 
-   // remove all images from the panel
-   function clearimages() {
-     $("#spcs_idntfctn_pttrn_rcgntn_mn_pnl").html("");
-   }
-
    function pttrn_rcgntn_dslct_all() {
      pttrn_rcgntn_obj.deSelectAll();
    }

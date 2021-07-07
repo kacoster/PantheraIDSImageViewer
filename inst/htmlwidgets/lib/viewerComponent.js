@@ -94,15 +94,8 @@ class ViewerComponent {
       let mtchd1 = resp_1.match;
       let imgArray1 = resp_1.img_wrt;
 
-      console.log('imgArray1 -> ' + Array.isArray(imgArray1));
-      console.log('mtchd1 -> ' + Array.isArray(mtchd1));
-
       this.imgArray = imgArray1;
       this.mtchdArray = mtchd1;
-
-
-      console.log((this.imgArray).length);
-      console.log((this.mtchdArray).length);
 
       this.clearImages();
       this.imgloop(this.imgArray);
@@ -150,6 +143,7 @@ class ViewerComponent {
   /** Not Yet Generic */
   setCol() {
 
+    console.log("setCol");
     $('.pictures > li').css({
       'width': 'calc(100% /' + this.columnSize + ')'
     });
@@ -253,7 +247,8 @@ class ViewerComponent {
 
     } else {
       Shiny.onInputChange("img_clssfctn_ud_btch_tckr",
-        this.getBatchNumber() + " / " + this.getBatchNumber());
+        this.getBatchNumber() + " / " + this.getBatchNumber()
+      );
       this.imgNumb(this.displayImages(this.imgNumb, this.getBatchNumber() - 1));
       this.batnum = this.getBatchNumber() - 1;
       this.selected_images.length = 0;
@@ -265,7 +260,6 @@ class ViewerComponent {
   prev() {
 
     nextPrevClicked("1");
-    let mtchd = [];
     this.batnum--;
     if (this.batnum > 0) {
       Shiny.onInputChange(
@@ -377,14 +371,14 @@ class ViewerComponent {
     this.selectedImageID.length = 0;
     let slctdimgs = [],
       tempSlctdId = [];
-    //let ulclassname = this.ulClassName();
+
     $('#' + this.moduleId + ' img').each(function () {
 
       $('#' + this.id + '').css({
         'opacity': '0.4',
         'filter': 'alpha(opacity=40)'
       });
-      //$('.'+ulclassname+'> li').css("background-color", "yellow");
+
       $('#' + this.id + '').closest('li').css("background-color", "yellow");
       slctdimgs.push($(this).attr('src'));
       tempSlctdId.push($(this).attr('id'));
@@ -459,11 +453,6 @@ class ViewerComponent {
 
     let ul = document.getElementById(this.moduleId);
 
-    console.log('imgloop')
-    console.log(this.mtchdArray)
-    console.log(arr)
-
-
     for (let i = 0; i < arr.length; i++) {
 
       let liId = i + '_' + this.moduleId;
@@ -483,7 +472,8 @@ class ViewerComponent {
             ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
 
           } else {
-            ul.innerHTML += '<li id="mtchd" style="background-color: rgb(234, 2, 2);" ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + " style='filter: opacity(0.7);' " + '"  alt="' + img.alt + '" /> </li>';
+            // ul.innerHTML += '<li id="mtchd" style="background-color: rgb(234, 2, 2);" ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + " style='filter: opacity(0.7);' " + '"  alt="' + img.alt + '" /> </li>';
+            ul.innerHTML += '<li id="mtchd" ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
           }
 
         } else {
