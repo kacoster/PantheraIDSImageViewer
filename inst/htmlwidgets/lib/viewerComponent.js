@@ -389,21 +389,21 @@ class ViewerComponent {
 
   // Creates bilds the images in the panel 
   imgloop(srcArry, matchArry = []) {
+
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
 
-    console.log(srcArry);
-    console.log(matchArry);
+    console.log("imgloop");
+    console.log('srcArry -> ' + srcArry);
+    console.log('matchArry -> ' + matchArry);
 
     let ul = document.getElementById(this.moduleId);
+
     for (let i = 0; i < srcArry.length; i++) {
 
       let liId = i + '_' + this.moduleId;
       let img = new Image();
       img.src = ((srcArry[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
-
-      console.log(src);
-      console.log(matchArry[i]);
 
       this.currentDisplayedImgs.push(img.src);
       img.alt = "Camera Trap";
