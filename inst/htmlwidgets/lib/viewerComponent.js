@@ -48,8 +48,8 @@ class ViewerComponent {
     }
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
-      this.imgArray = response.img_wrt.split(",");
-      let matchArry = response.match.split(",");
+      this.imgArray = response.img_wrt;
+      let matchArry = response.match;
       this.clearImages();
       this.imgloop(this.imgArray, matchArry);
     }
