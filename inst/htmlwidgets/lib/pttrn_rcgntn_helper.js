@@ -52,6 +52,16 @@
      pttrn_rcgntn_obj.getCurrClckdImg(
        "pttrn_rcgntn_mn_pnl_slctd_img", ""
      );
+
+     $("mtchd").css({
+       'background-color': 'rgb(234, 2, 2)'
+     })
+
+     $("#mtchd > img").css({
+       'opacity': '0.4',
+       'filter': 'alpha(opacity=40)'
+     })
+
    }
 
    // set the number of panel images
@@ -60,11 +70,6 @@
    }
 
    function setimgarryTest(resp) {
-
-     $('#mtchd').css("background-color", "purple");
-     $('#mtchd > img').css({
-       'filter': 'opacity(0.4)'
-     });
      pttrn_rcgntn_obj.readServerDataTest(resp);
    }
 
