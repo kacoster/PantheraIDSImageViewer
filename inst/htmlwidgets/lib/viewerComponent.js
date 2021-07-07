@@ -29,7 +29,7 @@ class ViewerComponent {
     this.selectedImageID.length = 0;
 
     console.log('readServerDataTest');
-    console.log(response)
+    console.log(this.moduleId);
 
     if (response === null) {
       console.log(" Error in reading your images");
@@ -49,8 +49,13 @@ class ViewerComponent {
     }
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
+      console.log('spcs_idntfctn_pttrn_rcgntn_mn_pnl')
       this.imgArray = response.img_wrt;
       this.mtchdArray = response.match;
+
+      console.log(this.imgArray);
+      console.log('--------------')
+      console.log(this.mtchdArray);
 
       this.clearImages();
       this.imgloop(this.imgArray);
