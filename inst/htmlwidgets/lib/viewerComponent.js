@@ -41,13 +41,17 @@ class ViewerComponent {
           1 + " / " + this.getBatchNumber());
       }
     }
+
     if (this.moduleId === "img_clssfctn_ud") {
       this.clearImages();
       this.imgloop(this.displayImages(this.imgNumb, 0));
     }
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
+
+      this.imgArray = response.img_wrt.split(",");
+      let matchArry = response.match.split(",");
       this.clearImages();
-      this.imgloop(this.imgArray);
+      this.imgloop(this.imgArray, matchArry);
     }
     if (mdid === 'ct_vldt_img_trggr_tbl_vldtn') {
       this.clearImages();
@@ -384,21 +388,50 @@ class ViewerComponent {
   }
 
   // Creates bilds the images in the panel 
-  imgloop(ar) {
+  imgloop(srcArry, matchArry = []) {
     (this.currentDisplayedImgs).length = 0;
     (this.prevSelectedImgs).length = 0;
 
+    console.log(srcArry);
+    console.log(matchArry);
+
     let ul = document.getElementById(this.moduleId);
-    for (let i = 0; i < ar.length; i++) {
+    for (let i = 0; i < srcArry.length; i++) {
+
       let liId = i + '_' + this.moduleId;
       let img = new Image();
-      img.src = ((ar[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
+      img.src = ((srcArry[i].trim()).replace(/[\[\]'"]+/g, '')).replace(/(\r\n|\n|\r)/gm, "");
+
+      console.log(src);
+      console.log(matchArry[i]);
+
       this.currentDisplayedImgs.push(img.src);
       img.alt = "Camera Trap";
       img.datamarked = 0;
+
       if (this.placeHolder(img.src)) {
-        ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
+
+        if (matchArry.length == srcArry.length) {
+          if (matchArry[i] == "Unvalidated") {
+
+            ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
+
+          } else {
+
+            ul.innerHTML += '<li id="mtchd"  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
+            $('#mtchd').css("background-color", "#1200a6");
+            $('#mtchd > img').css({
+              'filter': 'opacity(0.5)'
+            });
+
+          }
+
+        } else {
+          ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"onerror="' + "this.style.display='none'" + '"  alt="' + img.alt + '" /> </li>';
+        }
+
       } else {
+
         img.src = '/srv/shiny-server/www/Missing_Image.JPG.jpg';
         ul.innerHTML += '<li  ><img id="' + liId + '" data-original="' + img.src + '"  marked="' + img.datamarked + '" src="' + img.src + '"  alt="' + img.alt + '" /> </li>';
 
