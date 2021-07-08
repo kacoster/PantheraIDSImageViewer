@@ -4,6 +4,7 @@
   *   Copyright (C) 2019 | Panthera Corporation
   * ***************************************************************************/
 
+
  var ct_vldt_img_trggr_tbl_vldtn_9 = new ViewerComponent(
    0, 30, 5, "ct_vldt_img_trggr_tbl_vldtn_9"
  );
@@ -54,6 +55,7 @@
    object.setCol();
    object.callvjs(object.moduleId + "_divId");
  }
+
 
  function setValidationArrayTest(resp, vldtnNum) {
 

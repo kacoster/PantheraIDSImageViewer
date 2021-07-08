@@ -345,7 +345,6 @@ class ViewerComponent {
     this.selectedImageID.length = 0;
     let slctdimgs = [],
       tempSlctdId = [];
-    //ulclassname = this.ulClassName();
 
     $('#' + this.moduleId + ' img').each(function () {
       if (ar.includes($(this).attr('src'))) {
@@ -357,9 +356,8 @@ class ViewerComponent {
         tempSlctdId.push($(this).attr('id'));
         $('#' + this.id + '').closest('li').css("background-color", "yellow");
       }
-
-
     });
+
     this.selected_images = [...slctdimgs];
     this.selectedImageID = [...tempSlctdId];
     this.sendAllImages();
@@ -404,6 +402,20 @@ class ViewerComponent {
     this.selected_images.length = 0;
     this.selectedImageID.length = 0;
     this.getCurrClckdImg(this.selectedImgShinyRef(), "");
+    this.highlightMatched();
+
+  }
+
+  highlightMatched() {
+
+    if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
+
+      $("#mtchd > img").css({
+        'opacity': '0.4',
+        'filter': 'alpha(opacity=40)'
+      });
+      $('li#mtchd').css("background-color", "#1200a6");
+    }
 
   }
 
