@@ -12,15 +12,10 @@ HTMLWidgets.widget({
 
       renderValue: function (x) {
 
-        console.log("pttrn_rcgntn_img_vwr");
-        console.log("08/07/2021 - 06:26");
-
         Shiny.addCustomMessageHandler(
           "spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button",
           function (mesg) {
-            console.log("Handler spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             let src = JSON.stringify(mesg);
-            console.log(src);
             nextprevclicked("1");
             fetchServerData(src, x.componentID);
             reset_props();
@@ -31,7 +26,6 @@ HTMLWidgets.widget({
           "spcs_idntfctn_pttrn_rcgntn_srvr_indvdl_fltr_button",
           function (mesg) {
             let src = JSON.stringify(mesg);
-            console.log("Handler svr spcs_idntfctn_pttrn_rcgntn_indvdl_fltr_button");
             nextprevclicked("1");
             fetchServerData(src, x.componentID);
             reset_props();
@@ -42,7 +36,6 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_mtch_all_button",
           function (mesg) {
-            console.log(mesg);
             saveRejectButtonListerner();
           }
         );
@@ -50,7 +43,6 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_no_mtch_all_button",
           function (mesg) {
-            console.log(mesg);
             saveRejectButtonListerner();
           }
         );
@@ -59,7 +51,6 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_slct_all_button",
           function (mesg) {
-            console.log("Handler pttrn_rcgntn_slct_all_button");
             pttrn_rcgntn_slct_all();
           }
         );
@@ -67,7 +58,6 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_dslct_all_button",
           function (mesg) {
-            console.log("Handler pttrn_rcgntn_dslct_all_button");
             pttrn_rcgntn_dslct_all();
           }
         );
@@ -75,7 +65,6 @@ HTMLWidgets.widget({
         Shiny.addCustomMessageHandler(
           "pttrn_rcgntn_invrt_button",
           function (mesg) {
-            console.log("Handler pttrn_rcgntn_invrt_button");
             pttrn_rcgntn_invrt();
           }
         );

@@ -27,45 +27,6 @@ class ViewerComponent {
     let mdid = (this.moduleId).substring(0, 27);
     this.imgArray.length = 0;
     this.selectedImageID.length = 0;
-    // let mtchd = [];
-
-    // let resp = response;
-
-    // console.log('type of -> ' + typeof (resp))
-    // console.log("resp img -> " + resp.img_wrt)
-    // console.log("resp img -> " + resp.match)
-
-    // mtchd = resp.match;
-    // let imgArray = resp.img_wrt;
-
-    // console.log('mtchd - > ' + mtchd);
-    // console.log('imgArray - > ' + imgArray);
-
-    // console.log('---------------')
-
-    // let resp_1 = JSON.parse(resp)
-
-    // console.log('type of -> ' + typeof (resp_1))
-    // console.log("resp img -> " + resp_1.img_wrt)
-    // console.log("resp img -> " + resp_1.match)
-
-    // console.log('img_wrt -> ' + Array.isArray(resp_1.img_wrt))
-    // console.log('match -> ' + Array.isArray(resp_1.match))
-
-    // let mtchd1 = resp_1.match
-    // let imgArray1 = resp_1.img_wrt
-
-    // console.log('mtchd1 - > ' + typeof (mtchd1));
-    // console.log('imgArray1 - > ' + typeof (imgArray1));
-
-    // console.log(mtchd1.length)
-    // console.log(imgArray1.length)
-
-    // console.log('---------------')
-
-
-    console.log('readServerDataTest test');
-    console.log(this.moduleId);
 
     if (response === null) {
       console.log(" Error in reading your images");
@@ -88,7 +49,6 @@ class ViewerComponent {
 
     if (this.moduleId === "spcs_idntfctn_pttrn_rcgntn_mn_pnl") {
 
-      console.log("case spcs_idntfctn_pttrn_rcgntn_mn_pnl");
       let resp = response;
       let resp_1 = JSON.parse(resp);
       let mtchd1 = resp_1.match;
@@ -143,7 +103,6 @@ class ViewerComponent {
   /** Not Yet Generic */
   setCol() {
 
-    console.log("setCol");
     $('.pictures > li').css({
       'width': 'calc(100% /' + this.columnSize + ')'
     });

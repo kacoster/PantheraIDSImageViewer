@@ -2,7 +2,9 @@ window.onload = function () {
   'use strict';
 
   var Viewer = window.Viewer;
-  var console = window.console || { log: function () {} };
+  var console = window.console || {
+    log: function () {}
+  };
   var pictures = document.querySelector('.docs-pictures');
   var toggles = document.querySelector('.docs-toggles');
   var buttons = document.querySelector('.docs-buttons');
@@ -40,7 +42,6 @@ window.onload = function () {
   var viewer = new Viewer(pictures, options);
 
   function toggleButtons(mode) {
-    console.log("In toggleButtons()");
     var targets;
     var target;
     var length;
@@ -61,7 +62,6 @@ window.onload = function () {
   }
 
   function addEventListener(element, type, handler) {
-    console.log("In addEventListener()");
     if (element.addEventListener) {
       element.addEventListener(type, handler, false);
     } else if (element.attachEvent) {
